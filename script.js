@@ -79,7 +79,7 @@ function interactiveDot() {
             dot.style.display = 'flex';
             dot.style.alignItems = 'center';
             dot.style.justifyContent = 'center';
-            dot.style.fontSize = '12px';
+            dot.style.fontSize = '15px';
             dot.style.padding = '5px 15px';
             dot.style.borderRadius = '50px';
             dot.style.color = '#000';
@@ -125,6 +125,7 @@ function updateRealTime() {
         const options = {
             hour: '2-digit',
             minute: '2-digit',
+            second: '2-digit',
             hour12: false
         };
 
@@ -144,3 +145,19 @@ document.addEventListener("DOMContentLoaded", function () {
     interactiveDot()
     updateRealTime();
 });
+
+loader = () => {
+    var loader = document.querySelector("#loader");
+    setTimeout(function () {
+        gsap.to(loader, {
+            opacity: 0,
+            duration: 1.5,
+            ease: "power4.out",
+            onComplete: () => {
+                loader.style.display = "none";
+            }
+        });
+    }, 4500);
+};
+
+// loader();

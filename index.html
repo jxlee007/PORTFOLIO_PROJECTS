@@ -55,16 +55,26 @@
 </head>
 
 <body class=" h-screen bg-black text-white">
+
+    <!-- <div id="loader">
+        <h1>Where</h1>
+        <h1>Creativity</h1>
+        <h1>means</h1>
+        <h1>Tomorrow.</h1>
+    </div> -->
+
     <!-- Dot element that follows the mouse -->
-    <div id="dot"
-        class="absolute z-[99999] w-[17px] h-[17px] bg-white rounded-full mix-blend-difference custom-transition "></div>
+    <div id="dot"  class="absolute z-[99999] w-[17px] h-[17px] bg-white rounded-full mix-blend-difference custom-transition "></div>
 
     <div id="main" class="w-full bg-black">
         <!-- Hero section -->
         <div id="hero" class="relative w-full h-screen">
             <div id="nav" class="w-full px-8 py-8 flex items-center justify-between">
-                <a href="#" id="name"
-                    class="custom-underline text-white no-underline hover:opacity-80 transition-opacity duration-300">JGHMN</a>
+                <div class="flex items-center gap-4">
+                    <a id="remix" href="#" class=" flex rounded-full bg-white font-semibold text-black px-3 duration-300">REMIX /<h5 id="realtime"></h5></a>
+
+                    <a href="" ><img src="./call.png" class="size-9 rounded-full border bg-white" alt="contact"></a>
+                </div>
 
                 <!-- Sidebar navigation - Updated design based on reference -->
                 <div id="sidebar"
@@ -87,7 +97,7 @@
                             <a href="#" class="flex items-center">
                                 <span class="text-gray-400 text-sm mr-4">/01</span>
                                 <span
-                                    class="text-4xl font-light tracking-wider group-hover:pl-8 transition-all duration-300">MAIN
+                                    class="text-4xl font-semibold tracking-wider group-hover:pl-8 transition-all duration-300">MAIN
                                     HOME</span>
                             </a>
                         </div>
@@ -95,42 +105,42 @@
                             <a href="#" class="flex items-center">
                                 <span class="text-gray-400 text-sm mr-4">/02</span>
                                 <span
-                                    class="text-4xl font-light tracking-wider group-hover:pl-8 transition-all duration-300">ABOUT
-                                    KD6</span>
-                                <!-- <span class="ml-4 px-4 py-1 text-xs border rounded-full">OPEN</span> -->
+                                    class="text-4xl font-semibold tracking-wider group-hover:pl-8 transition-all duration-300">ABOUT
+                                    JX7</span>
                             </a>
                         </div>
                         <div class="menu-item py-4 border-b border-gray-800 group font-space-grotesk">
                             <a href="#" class="flex items-center">
                                 <span class="text-gray-400 text-sm mr-4">/03</span>
                                 <span
-                                    class="text-4xl font-light tracking-wider group-hover:pl-8 transition-all duration-300">WORKS</span>
+                                    class="text-4xl font-semibold tracking-wider group-hover:pl-8 transition-all duration-300">WORKS</span>
                             </a>
                         </div>
                         <div class="menu-item py-4 border-b border-gray-800 group font-space-grotesk">
                             <a href="#" class="flex items-center">
                                 <span class="text-gray-400 text-sm mr-4">/04</span>
                                 <span
-                                    class="text-4xl font-light tracking-wider group-hover:pl-8 transition-all duration-300">MY
+                                    class="text-4xl font-semibold tracking-wider group-hover:pl-8 transition-all duration-300">MY
                                     TREK</span>
+                                    <!-- TO ADD PASSION&INTEREST ON THE PAGE -->
                             </a>
                         </div>
                         <div class="menu-item py-4 border-b border-gray-800 group font-space-grotesk">
                             <a href="#" class="flex items-center">
                                 <span class="text-gray-400 text-sm mr-4">/05</span>
                                 <span
-                                    class="text-4xl font-light tracking-wider group-hover:pl-8 transition-all duration-300">CONTACT</span>
+                                    class="text-4xl font-semibold tracking-wider group-hover:pl-8 transition-all duration-300">CONTACT</span>
                             </a>
                         </div>
                     </div>
 
-                    <div id="brand"  class="absolute bottom-8 left-0 w-full px-8 flex justify-between">
+                    <div id="brand"  class="absolute text-lg bottom-10 left-0 w-full px-8 flex justify-between">
                         <a href="#"
-                            class="underline text-gray-400 hover:text-white transition-colors duration-300"><span>INSTAGRAM</span></a>
+                            class="custom-underline text-gray-400 hover:text-white transition-colors duration-300"><span>INSTAGRAM</span></a>
                         <a href="#"
-                            class="underline text-gray-400 hover:text-white transition-colors duration-300"><span>DRIBBBLE</span></a>
+                            class="custom-underline text-gray-400 hover:text-white transition-colors duration-300"><span>LINKEDIN</span></a>
                         <a href="#"
-                            class="underline text-gray-400 hover:text-white transition-colors duration-300"><span>TWITTER</span></a>
+                            class="custom-underline text-gray-400 hover:text-white transition-colors duration-300"><span>GITHUB</span></a>
                     </div>
                 </div>
 
@@ -185,11 +195,10 @@
             </div>
 
 
-            <div id="herofooter" class="w-full px-[2vw] absolute bottom-[3%] flex items-center justify-between">
+            <div id="herofooter" class="w-full text-lg px-[2vw] absolute bottom-[3%] flex items-center justify-between">
                 <!-- Links with icons -->
-                <a href="#"><span>Based in India</span><i class="ri-arrow-right-up-line ml-1"></i></a>
-                <a href="#" target="_blank"><span>passions &interests</span><i class="ri-arrow-right-up-line ml-1"></i></a>
-                <a href="#" id="icon" target="_blank"><span>REMIX</span></a>
+                <a href="#" class="uppercase custom-underline"><span>Based in India</span><i class="ri-arrow-right-up-line ml-1"></i></a>
+                <a href="./about.html" class="custom-underline uppercase" id="icon" target="_blank"><span>///AI Builder + Creative Developer</span></a>
             </div>
         </div>
 
@@ -223,7 +232,7 @@
 
         <!-- Subscription section -->
         <div id="subs" class="py-5 px-10 w-full pb-[50px] leading-relaxed md:py-3 md:px-5">
-            <h5 class="opacity-80 font-light text-base md:text-sm" id="head">(FORGOT TO MENTION)</h5>
+            <h5 class="opacity-80 font-semibold text-base md:text-sm" id="head">(FORGOT TO MENTION)</h5>
             <!-- Link to subscribe to YouTube channel -->
             <a href="#" target="_blank"><span>subscribe to my youtube channel</span><i class="ri-arrow-right-up-line ml-1"></i></a>
         </div>
@@ -234,7 +243,7 @@
             <div id="left" class="flex items-center gap-[2vw] text-lg md:gap-5 md:text-base">
                 <!-- Copyright and time information -->
                 <h5>2023 &copy;</h5>
-                <h5 id="realtime"></h5>
+                
             </div>
 
             <div id="right" class="flex gap-[3.8vw] text-sm font-medium opacity-90 md:gap-6 md:mb-3">
