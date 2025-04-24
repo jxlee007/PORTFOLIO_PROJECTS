@@ -36,3 +36,12 @@
     transform: translate(-50%, -50%);
     cursor: none;
 }
+
+
+@layer base {
+
+    /* Apply font-family directly to headings and #heading */
+    #heading {
+        font-family: 'Space Grotesk', sans-serif;
+    }
+}
