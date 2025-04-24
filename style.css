@@ -34,9 +34,8 @@
 
 #dot {
     transform: translate(-50%, -50%);
-    cursor: none;
+    pointer-events: none; /* Let link hover pass through the dot */
 }
-
 
 @layer base {
 
@@ -44,4 +43,45 @@
     #heading {
         font-family: 'Space Grotesk', sans-serif;
     }
+}
+
+a {
+    position: relative;
+    color: #222;
+    text-decoration: none;
+    overflow: hidden;
+    display: inline-block;
+    padding: 0.25em 0.75em;
+    transition: color 0.3s ease;
+    border-radius: 20px;
+}
+
+#reload a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: 100%;
+    background: #fff;
+    z-index: 0;
+    transition: width 0.4s cubic-bezier(.77, 0, .18, 1);
+}
+
+#reload a:hover::before,
+#reload a:focus::before {
+    width: 100%;
+}
+
+#reload a span {
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s;
+    
+}
+
+#reload a:hover span,
+#reload a:focus span {
+    color: #111;
+    /* Optional: keeps text visible if background is white */
 }

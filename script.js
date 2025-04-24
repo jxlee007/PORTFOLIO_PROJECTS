@@ -6,87 +6,117 @@ const scroll = new LocomotiveScroll({
 
 // Create a function to handle the text revealing animation
 function initTextReveal() {
-    // Make sure the elements are initially hidden and positioned correctly
-    gsap.set(".box .boxelem", {
-        y: "100%",
-        opacity: 0
-    });
-
-    // Animate the elements into view
-    gsap.to(".box .boxelem", {
-        y: "0%",
-        opacity: 1,
-        duration: 1.2,
-        delay: 0.8, // Increased delay to ensure font loads
-        stagger: 0.25,
-        ease: "power3.out"
-    });
+    const tl = gsap.timeline({ delay: 0.5 });
+    // hide each character
+    tl.set(".box .boxelem span", { y: "100%", opacity: 0 });
+    // animate each character into view with a stagger
+    tl.to(".box .boxelem span", { y: "0%", opacity: 1, duration: 1, stagger: 0.1, ease: "bounce.out" });
 }
 
-// Create a smooth moving dot cursor
+// Create a smooth moving dot cursor with improved performance
 function initFollowCursor() {
     const dot = document.getElementById("dot");
-    const pos = { x: 0, y: 0 };
+    let mouseX = 0;
+    let mouseY = 0;
+    let currentX = 0;
+    let currentY = 0;
 
-    // Use GSAP's quickSetter for optimized updates
-    const setDot = gsap.quickSetter(dot, "x", "px");
-    const setDotY = gsap.quickSetter(dot, "y", "px");
+    // Set initial position
+    dot.style.transform = 'translate(-50%, -50%)';
 
-    // Center dot initially
-    gsap.set(dot, {
-        xPercent: -50,
-        yPercent: -50,
-        x: window.innerWidth / 2,
-        y: window.innerHeight / 2
-    });
-
+    // Track mouse position
     document.addEventListener("mousemove", e => {
-        // Update position directly
-        pos.x = e.clientX;
-        pos.y = e.clientY;
-
-        // Use quickSetter for optimized rendering
-        setDot(pos.x);
-        setDotY(pos.y);
+        mouseX = e.clientX;
+        mouseY = e.clientY;
     });
 
+    // Separate animation loop for smooth movement
+    function animateDot() {
+        // Calculate smooth movement - adjust the 0.1 value for different follow speeds
+        // Lower = slower/smoother, higher = faster/more direct
+        const speed = 0.5;
+        currentX += (mouseX - currentX) * speed;
+        currentY += (mouseY - currentY) * speed;
+
+        // Apply position with fixed transform for centering
+        dot.style.left = `${currentX}px`;
+        dot.style.top = `${currentY}px`;
+
+        // Continue animation loop
+        requestAnimationFrame(animateDot);
+    }
+
+    // Start animation loop
+    animateDot();
 }
 
-menu = () => {
+function interactiveDot() {
     const dot = document.getElementById('dot');
-    const elems = document.querySelector('[onclick="openNav()"]');
+    // Generic hover targets (exclude reload menu links)
+    const hoverElements = [
+        ...Array.from(document.querySelectorAll('a:not(#reload .menu-item a)')),
+        document.querySelector('[onclick="openNav()"]')
+    ].filter(Boolean);
+    // All reload menu-item links
+    const reloadLinks = document.querySelectorAll('#reload .menu-item a');
 
-    // On hover: scale dot to 0
-    elems.addEventListener('mouseenter', () => {
-        gsap.to(dot, { scale: 0, duration: 0.3, ease: "power2.out" });
+    hoverElements.forEach(elem => {
+        elem.addEventListener('mouseenter', () => {
+            gsap.to(dot, { scale: 0, duration: 0.3, ease: "power2.out" });
+        });
+
+        elem.addEventListener('mouseleave', () => {
+            gsap.to(dot, { scale: 1, duration: 0.3, ease: "power2.out" });
+        });
+    });
+
+    // Bind transform/reset on each reload link
+    reloadLinks.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            dot.innerHTML = "OPEN";
+            dot.style.width = '70px';
+            dot.style.height = 'auto';
+            dot.style.display = 'flex';
+            dot.style.alignItems = 'center';
+            dot.style.justifyContent = 'center';
+            dot.style.fontSize = '12px';
+            dot.style.padding = '5px 15px';
+            dot.style.borderRadius = '50px';
+            dot.style.color = '#000';
+        });
+
+        link.addEventListener('mouseleave', () => {
+            dot.innerHTML = ""; // Reset dot
+            dot.style.width = '17px';
+            dot.style.height = '17px';
+            dot.style.display = 'block';                                                                                
+            dot.style.fontSize = '0';
+            dot.style.padding = '0';
+            dot.style.borderRadius = '50%';
+        });
     });
 
     document.addEventListener('mousemove', (e) => {
-        const rect = elems.getBoundingClientRect();
-        const dx = e.clientX - (rect.left + rect.width / 2);
-        const dy = e.clientY - (rect.top + rect.height / 2);
-        const distance = Math.sqrt(dx * dx + dy * dy);
+        let nearElement = false;
+        hoverElements.forEach(elem => {
+            const rect = elem.getBoundingClientRect();
+            const dx = e.clientX - (rect.left + rect.width / 2);
+            const dy = e.clientY - (rect.top + rect.height / 2);
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < 50) { // Adjust threshold as needed
+                nearElement = true;
+            }
+        });
 
-        // Adjust threshold (e.g., 60px) as desired
-        if (distance < 60) {
+        if (nearElement) {
             gsap.to(dot, { scale: 0, duration: 0.3, ease: "power2.out" });
         } else {
-            gsap.to(dot, { scale: 1, duration: 0.3, ease: "power2.out" });
+            gsap.to(dot, { scale: 1, duration: 0.3, ease: "bounce.out" });
         }
-    });
-
-
-    // On leave: scale dot back to normal
-    menuSpan.addEventListener('mouseleave', () => {
-        gsap.to(dot, { scale: 1, duration: 0.3, ease: "power2.out" });
     });
 }
 
-
-
-
 // Display real-time in the footer
-
 function updateRealTime() {
     const realTimeElement = document.getElementById("realtime");
 
@@ -111,6 +141,6 @@ function updateRealTime() {
 document.addEventListener("DOMContentLoaded", function () {
     initTextReveal(); // Add this line to initialize the text reveal animation
     initFollowCursor();
-    menu();
+    interactiveDot()
     updateRealTime();
 });
