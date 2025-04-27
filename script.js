@@ -1,17 +1,65 @@
-// Initialize LocomotiveScroll for smooth scrolling
-const scroll = new LocomotiveScroll({
-    el: document.querySelector('#main'),
-    smooth: true
-});
+locoScroll = () => {
+    gsap.registerPlugin(ScrollTrigger);
 
-// Create a function to handle the text revealing animation
-function initTextReveal() {
-    const tl = gsap.timeline({ delay: 0.5 });
-    // hide each character
-    tl.set(".box .boxelem span", { y: "100%", opacity: 0 });
-    // animate each character into view with a stagger
-    tl.to(".box .boxelem span", { y: "0%", opacity: 1, duration: 1, stagger: 0.1, ease: "bounce.out" });
+    // Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
+
+    const locoScroll = new LocomotiveScroll({
+        el: document.querySelector("#main"),
+        smooth: true
+    });
+    // each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
+    locoScroll.on("scroll", ScrollTrigger.update);
+
+    // tell ScrollTrigger to use these proxy methods for the "#main" element since Locomotive Scroll is hijacking things
+    ScrollTrigger.scrollerProxy("#main", {
+        scrollTop(value) {
+            return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
+        }, // we don't have to define a scrollLeft because we're only scrolling vertically.
+        getBoundingClientRect() {
+            return { top: 0, left: 0, width: window.innerWidth, height: window.innerHeight };
+        },
+        // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
+        pinType: document.querySelector("#main").style.transform ? "transform" : "fixed"
+    });
+
+    // each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll. 
+    ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+
+    // after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
+    ScrollTrigger.refresh();
+
+};
+locoScroll();
+
+
+
+function initAnimations() {
+    const tl = gsap.timeline();
+
+    // Loader animation
+    tl.to("#loader", {
+        opacity: 0,
+        duration: 1.5,
+        ease: "power4.out",
+        delay: 4.5, // Wait for 4.5 seconds before starting the loader animation
+        onComplete: () => {
+            document.querySelector("#loader").style.display = "none";
+        }
+    });
+
+    // Text reveal animation
+    tl.set(".box .boxelem span", { y: "100%", opacity: 0 }) // Hide each character
+        .to(".box .boxelem span", {
+            y: "0%",
+            opacity: 1,
+            duration: 1,
+            stagger: 0.1,
+            ease: "bounce.out"
+        }); // Animate each character into view with a stagger
 }
+
+// Initialize animations
+initAnimations();
 
 // Create a smooth moving dot cursor with improved performance
 function initFollowCursor() {
@@ -89,7 +137,7 @@ function interactiveDot() {
             dot.innerHTML = ""; // Reset dot
             dot.style.width = '17px';
             dot.style.height = '17px';
-            dot.style.display = 'block';                                                                                
+            dot.style.display = 'block';
             dot.style.fontSize = '0';
             dot.style.padding = '0';
             dot.style.borderRadius = '50%';
@@ -138,26 +186,29 @@ function updateRealTime() {
     setInterval(updateTime, 1000);
 }
 
+
 // Initialize all functions when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
-    initTextReveal(); // Add this line to initialize the text reveal animation
     initFollowCursor();
     interactiveDot()
     updateRealTime();
 });
 
-loader = () => {
-    var loader = document.querySelector("#loader");
-    setTimeout(function () {
-        gsap.to(loader, {
-            opacity: 0,
-            duration: 1.5,
-            ease: "power4.out",
-            onComplete: () => {
-                loader.style.display = "none";
-            }
-        });
-    }, 4500);
-};
-
-// loader();
+animfooter = () => {
+    gsap.from("#footer h1 span", {
+        y: -100,
+        stagger: .25,
+        opacity: 0,
+        duration: .8,
+        // delay: 1,
+        scrollTrigger: {
+            trigger: "#footer",
+            scroller: "#main",
+            start: "top 70%",
+            end: "top 55%",
+            markers: true,
+            scrub: 2,
+        }
+    })
+}
+animfooter()

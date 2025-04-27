@@ -54,6 +54,10 @@
     }
 }
 
+/* h1 span {
+    display: inline-block;
+} */
+
 /* Custom animations and transitions that Tailwind doesn't directly support */
 @layer utilities {
 
@@ -89,6 +93,7 @@
 }
 
 #dot {
+    position: fixed; /* ensure dot stays relative to viewport */
     transform: translate(-50%, -50%);
     pointer-events: none; /* Let link hover pass through the dot */
 }
@@ -140,4 +145,13 @@ a {
 #reload a:focus span {
     color: #111;
     /* Optional: keeps text visible if background is white */
+}
+
+footer h1 span {
+    font-family: headline;
+    font-weight: 100;
+    font-size: 25vw;
+    line-height: 25vw;
+    display: inline-block;
+    transition: .2s;
 }
