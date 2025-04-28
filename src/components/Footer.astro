@@ -1,0 +1,33 @@
+---
+import CustomLink from './CustomLink.astro';
+
+export interface Props {
+  goHref?: string;
+  title?: string;
+}
+
+const { goHref = "#hero", title = "JAGMOHAN" } = Astro.props;
+const nameArray = title.split('');
+---
+
+<footer id="footer" class="w-full h-fit py-4 px-10 flex items-center justify-between md:flex-col md:items-center md:gap-5">
+  <h1 class="font-space-grotesk font-bold text-[14vw] -mt-28 -mb-16 tracking-wider transition duration-200">
+    {nameArray.map(letter => <span>{letter}</span>)}
+  </h1>
+
+  <div class="w-full px-10 flex items-center justify-between md:flex-row md:items-center md:gap-5">
+    <div id="left" class="font-space-grotesk text-lg uppercase tracking-wider font-thin md:gap-5 md:text-base">
+      <h5>&copy; {new Date().getFullYear()} JGMHN DESIGNS</h5>
+    </div>
+
+    <div id="right" class="font-space-grotesk text-lg uppercase tracking-wider font-thin md:gap-6">
+      <CustomLink 
+        id="go"
+        href={goHref} 
+        className="text-white hover:text-black hover:bg-white transition-colors duration-300"
+      >
+        <span>Go back</span>
+      </CustomLink>
+    </div>
+  </div>
+</footer>

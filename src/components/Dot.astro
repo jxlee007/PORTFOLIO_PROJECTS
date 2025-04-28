@@ -1,0 +1,148 @@
+---
+// Optional props for customization
+export interface Props {
+    size?: string;
+    color?: string;
+    zIndex?: string;
+    blendMode?: string;
+}
+
+const {
+    size = "17px",
+    color = "white",
+    zIndex = "99999",
+    blendMode = "difference",
+} = Astro.props;
+---
+
+<div
+    id="dot"
+    class={`fixed z-[99999] w-[${size}] h-[${size}] bg-${color} rounded-full mix-blend-${blendMode} custom-transition pointer-events-none`}
+    style={`width: ${size}; height: ${size};`}
+></div>
+
+<script>
+    function initFollowCursor() {
+        const dot = document.getElementById("dot");
+        if (!dot) return; // Safety check
+
+        let mouseX = 0;
+        let mouseY = 0;
+        let currentX = 0;
+        let currentY = 0;
+
+        // Set initial position with transform for centering
+        dot.style.transform = "translate(-50%, -50%)";
+
+        // Track mouse position
+        document.addEventListener("mousemove", (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // Separate animation loop for smooth movement
+        function animateDot() {
+            // Calculate smooth movement - 0.5 provides balanced smoothness
+            const speed = 0.5;
+            currentX += (mouseX - currentX) * speed;
+            currentY += (mouseY - currentY) * speed;
+
+            // Apply position
+            if (dot) {
+                dot.style.left = `${currentX}px`;
+                dot.style.top = `${currentY}px`;
+            }
+
+            // Continue animation loop
+            requestAnimationFrame(animateDot);
+        }
+
+        // Start animation loop
+        animateDot();
+    }
+
+    function interactiveDot() {
+        const dot = document.getElementById("dot");
+        if (!dot) return; // Safety check
+
+        // Generic hover targets (exclude reload menu links)
+        const hoverElements = [
+            ...Array.from(
+                document.querySelectorAll("a:not(#reload .menu-item a)"),
+            ),
+            document.querySelector('[onclick="openNav()"]'),
+        ].filter(Boolean);
+
+        // All reload menu-item links
+        const reloadLinks = document.querySelectorAll("#reload .menu-item a");
+
+        hoverElements.forEach((elem) => {
+            if (elem) {
+                elem.addEventListener("mouseenter", () => {
+                    dot.style.transform = "translate(-50%, -50%) scale(0)";
+                    dot.style.opacity = "0";
+                });
+
+                elem.addEventListener("mouseleave", () => {
+                    dot.style.transform = "translate(-50%, -50%) scale(1)";
+                    dot.style.opacity = "1";
+                });
+            }
+        });
+
+        // Bind transform/reset on each reload link
+        reloadLinks.forEach((link) => {
+            link.addEventListener("mouseenter", () => {
+                dot.innerHTML = "OPEN";
+                dot.style.width = "70px";
+                dot.style.height = "auto";
+                dot.style.display = "flex";
+                dot.style.alignItems = "center";
+                dot.style.justifyContent = "center";
+                dot.style.fontSize = "15px";
+                dot.style.padding = "5px 15px";
+                dot.style.borderRadius = "50px";
+                dot.style.color = "#000";
+            });
+
+            link.addEventListener("mouseleave", () => {
+                dot.innerHTML = ""; // Reset dot
+                dot.style.width = "17px";
+                dot.style.height = "17px";
+                dot.style.display = "block";
+                dot.style.fontSize = "0";
+                dot.style.padding = "0";
+                dot.style.borderRadius = "50%";
+            });
+        });
+
+        document.addEventListener("mousemove", (e) => {
+            let nearElement = false;
+            hoverElements.forEach((elem) => {
+                if (!elem) return;
+                const rect = elem.getBoundingClientRect();
+                const dx = e.clientX - (rect.left + rect.width / 2);
+                const dy = e.clientY - (rect.top + rect.height / 2);
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < 50) {
+                    // Adjust threshold as needed
+                    nearElement = true;
+                }
+            });
+
+            if (nearElement) {
+                dot.style.transform = "translate(-50%, -50%) scale(0)";
+                dot.style.opacity = "0";
+            } else {
+                dot.style.transform = "translate(-50%, -50%) scale(1)";
+                dot.style.opacity = "1";
+            }
+        });
+    }
+
+    // Initialize when DOM is ready
+    document.addEventListener("DOMContentLoaded", function () {
+        initFollowCursor();
+        interactiveDot();
+    });
+</script>

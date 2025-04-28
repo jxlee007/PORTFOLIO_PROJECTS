@@ -1,0 +1,9 @@
+---
+const { title } = Astro.props;
+---
+<div class="w-1/2 h-1/2 flex flex-col gap-4">
+  <h2 class="font-space-grotesk text-2xl font-bold">{title}</h2>
+  <p class="uppercase text-xl font-space-grotesk tracking-wider leading-relaxed">
+    <slot />
+  </p>
+</div>

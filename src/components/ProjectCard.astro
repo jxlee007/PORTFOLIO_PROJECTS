@@ -1,0 +1,10 @@
+---
+const { href, src, title, subtitle } = Astro.props;
+---
+<figure class="relative max-w-3xl transition-all duration-300 cursor-pointer">
+  <a href={href}><img class="h-auto max-w-full rounded-lg" src={src} alt={title} /></a>
+  <figcaption class="absolute px-10 text-lg text-white bottom-6">
+    <h2 class="font-space-grotesk text-2xl font-bold">{title}</h2>
+    <p class="uppercase text-xl font-space-grotesk tracking-wider leading-relaxed">{subtitle}</p>
+  </figcaption>
+</figure>

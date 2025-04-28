@@ -1,0 +1,185 @@
+---
+import Nav from '../components/Nav.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Footer from '../components/Footer.astro';
+import Dot from '../components/Dot.astro';
+
+// Define menu items for the sidebar
+const menuItems = [
+  { href: "/", index: "/01", label: "MAIN HOME" },
+  { href: "/about", index: "/02", label: "ABOUT JX7" },
+  { href: "/work", index: "/03", label: "WORKS" },
+  { href: "/trek", index: "/04", label: "MY TREK" },
+  { href: "#contact", index: "/05", label: "CONTACT" }
+];
+
+// Define social media links
+const brandLinks = [
+  { href: "https://www.instagram.com/", text: "INSTAGRAM" },
+  { href: "https://www.linkedin.com/", text: "LINKEDIN" },
+  { href: "https://github.com/", text: "GITHUB" }
+];
+
+// Define work projects with more detail
+const projects = [
+  {
+    id: 1,
+    title: "PROJECT 1",
+    subtitle: "/// cynthia ugwu",
+    href: "#project1",
+    src: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+  },
+  {
+    id: 2,
+    title: "PROJECT 2",
+    subtitle: "/// rayban-redesign",
+    href: "#project2",
+    src: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+  },
+  {
+    id: 3,
+    title: "PROJECT 3",
+    subtitle: "/// duo studio",
+    href: "#project3",
+    src: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+  },
+  {
+    id: 4,
+    title: "PROJECT 4",
+    subtitle: "/// rejoiuce",
+    href: "#project4",
+    src: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+  },
+  {
+    id: 5,
+    title: "PROJECT 5",
+    subtitle: "/// sundown studios",
+    href: "#project5",
+    src: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+  },
+  {
+    id: 6,
+    title: "PROJECT 6",
+    subtitle: "/// sundown studios",
+    href: "#project6",
+    src: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+  },
+  {
+    id: 7,
+    title: "Something new coming soon",
+    subtitle: "/// sundown studios",
+    href: "#project7",
+    src: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+  }
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Work & Portfolio - JX7</title>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,400&display=swap" rel="stylesheet" />
+    <link href="https://api.fontshare.com/v2/css?f[]=space-grotesk@500,400&display=swap" rel="stylesheet" />
+    
+    <!-- Favicon and custom CSS -->
+    <link rel="shortcut icon" href="/icon.ico" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  
+  <body class="bg-black text-white">
+    <!-- Using the Dot component instead of hard-coded cursor dot -->
+    <Dot />
+    
+    <!-- Main content container -->
+    <main id="main" class="w-full h-full bg-black">
+      <!-- Hero section with just the navigation -->
+      <div id="hero" class="relative w-full h-screen">
+        <Nav {menuItems} {brandLinks} />
+      </div>
+      
+      <!-- Projects gallery -->
+      <section id="third" class="py-20 px-10 w-full h-fit flex flex-col justify-items-end gap-12">
+        <h1 class="w-full h-fit grid grid-flow-col justify-items-end text-8xl font-space-grotesk font-semibold text-white tracking-normal">
+          FEATURED CASES
+        </h1>
+
+        <div class="grid grid-flow-row justify-items-start gap-10">
+          <span class="w-1/2 pr-28 flex flex-col gap-4">
+            <p class="uppercase text-2xl font-space-grotesk tracking-wider leading-relaxed">
+              My creative spirit comes alive in the digital realm. With nimble fingers flying across the keyboard, 
+              I craft clear experiences out of nothing but ones and zeroes.
+            </p>
+          </span>
+        </div>
+
+        <div class="w-full h-full">
+          <div class="grid grid-cols-2 gap-2">
+            {projects.map(project => (
+              <ProjectCard 
+                href={project.href}
+                src={project.src}
+                title={project.title}
+                subtitle={project.subtitle}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      <!-- About section with profile image -->
+      <section id="about" class="w-full flex items-center gap-[90px] py-[10vw] px-[10vw] pl-[35vw] md:flex-col md:items-center md:py-10 md:px-5">
+        <span class="rounded-full bg-white overflow-hidden flex h-[250px] w-[250px] md:h-[180px] md:w-[180px]">
+          <img src="/images/contact.png" alt="Profile Picture" class="w-full">
+        </span>
+        <div id="txtabout" class="w-[30rem] md:w-full md:text-center md:mt-8">
+          <h5 class="uppercase opacity-80 text-sm leading-normal">(about me)</h5>
+          <p class="leading-relaxed mb-[30px] text-lg md:text-base">
+            I'm a Front-end dev with a passion for creating projects
+            that not only look good but also solve real
+            problems. When I'm not sketching ideas on paper, you
+            can find me binge-watching a Anime series or playing
+            video games. My work philosophy is simple: make it
+            visually appealing, functional, and bring a smile to
+            people's faces. I'm the developer you want on your team
+            if you want to make people say 'I need that in my life!'.
+          </p>
+          <a href="#" class="custom-underline" target="_blank"><span>Let's talk</span></a>
+        </div>
+      </section>
+      
+      <!-- Subscription section -->
+      <section id="subs" class="py-5 px-10 w-full pb-[50px] leading-relaxed md:py-3 md:px-5">
+        <h5 class="opacity-80 font-semibold text-base md:text-sm" id="head">(FORGOT TO MENTION)</h5>
+        <a href="#" class="custom-underline" target="_blank">
+          <span>subscribe to my youtube channel</span>
+          <i class="ri-arrow-right-up-line ml-1"></i>
+        </a>
+      </section>
+      
+      <!-- Footer with social links -->
+      <div id="footer" class="w-full py-5 px-8 flex items-start justify-between md:flex-col-reverse md:items-start md:gap-5">
+        <div id="left" class="flex items-center gap-[2vw] text-lg md:gap-5 md:text-base">
+          <h5>{new Date().getFullYear()} &copy;</h5>
+        </div>
+
+        <div id="right" class="flex gap-[3.8vw] text-sm font-medium opacity-90 md:gap-6 md:mb-3">
+          <a href="#" class="custom-underline" target="_blank"><span>dribbble</span></a>
+          <a href="#" class="custom-underline" target="_blank"><span>instagram</span></a>
+          <a href="https://www.linkedin.com/" class="custom-underline" target="_blank"><span>linkedin</span></a>
+          <a href="https://github.com/" class="custom-underline" target="_blank"><span>github</span></a>
+        </div>
+      </div>
+    </main>
+    
+    <!-- Scripts for animation and interaction -->
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js" is:inline></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" is:inline></script>
+    <script src="/scripts/script.js" is:inline></script>
+  </body>
+</html>

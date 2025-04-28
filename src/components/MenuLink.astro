@@ -1,0 +1,15 @@
+---
+export interface Props {
+  href: string;
+  index: string;
+  label: string;
+}
+
+const { href, index, label } = Astro.props;
+---
+<div class="menu-item py-4 border-b border-gray-800 group font-space-grotesk">
+  <a href={href} class="flex items-center">
+    <span class="text-gray-400 text-sm mr-4">{index}</span>
+    <span class="text-4xl font-semibold tracking-wider group-hover:pl-8 transition-all duration-300">{label}</span>
+  </a>
+</div>

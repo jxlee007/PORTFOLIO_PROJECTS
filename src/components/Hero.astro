@@ -1,0 +1,62 @@
+---
+import Nav from './Nav.astro';
+import CustomLink from './CustomLink.astro';
+
+interface MenuItem {
+  href: string;
+  index: string;
+  label: string;
+}
+
+interface BrandLink {
+  href: string;
+  text: string;
+}
+
+export interface Props {
+  menuItems: MenuItem[];
+  brandLinks: BrandLink[];
+}
+
+const { menuItems, brandLinks } = Astro.props;
+---
+<div id="hero" class="relative w-full h-screen">
+  <Nav {menuItems} {brandLinks} />
+
+  <div id="heading" class="mt-[90px] mx-auto text-center display-grid place-items-center uppercase">
+    <div class="box w-fit overflow-hidden">
+      <h5 class="boxelem text-[17px] font-space-grotesk">
+        Available for freelance
+      </h5>
+    </div>
+    
+    <div class="box w-fit overflow-hidden mx-auto">
+      <h1 class="boxelem text-[10vw] font-semibold leading-normal text-white opacity-90 font-space-grotesk">
+        <span>J</span>
+        <span>X</span>
+        <span>L</span>
+        <span>E</span>
+        <span>E</span>
+      </h1>
+    </div>
+
+    <div class="block flex-col items-end w-fit mx-auto">
+      <div class="box w-fit overflow-hidden">
+        <h1 class="boxelem text-[10vw] font-semibold leading-[0.9] text-white opacity-90 font-space-grotesk" id="sec">
+          <span>0</span>
+          <span>0</span>
+          <span>7</span>
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  <div id="herofooter" class="w-full text-lg px-[2vw] absolute bottom-[3%] flex items-center justify-between">
+    <CustomLink href="#" underline={true} className="uppercase">
+      <span>Based in India</span><i class="ri-arrow-right-up-line ml-1"></i>
+    </CustomLink>
+    <CustomLink href="/about" underline={true} className="uppercase" id="icon" target="_blank">
+      <span>///AI Builder + Creative Developer</span>
+    </CustomLink>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+{
+  "name": "portfolio_projects",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^5.7.6",
+    "autoprefixer": "^10.4.21",
+    "gsap": "^3.12.7",
+    "locomotive-scroll": "^4.1.4",
+    "postcss": "^8.5.3"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

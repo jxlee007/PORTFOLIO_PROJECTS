@@ -1,0 +1,22 @@
+---
+export interface Props {
+  href: string;
+  target?: string;
+  underline?: boolean;
+  className?: string;
+  id?: string; // Added missing id property
+}
+
+const { href, target = "_self", underline = false, className = "", id } = Astro.props;
+---
+<a 
+  href={href} 
+  target={target}
+  id={id}
+  class:list={[
+    underline ? "custom-underline" : "", 
+    className
+  ]}
+>
+  <slot />
+</a>

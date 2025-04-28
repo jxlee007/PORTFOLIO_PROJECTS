@@ -1,0 +1,17 @@
+---
+import CustomLink from './CustomLink.astro';
+
+export interface Props {
+  href: string;
+  target?: string;
+}
+
+const { href, target } = Astro.props;
+---
+<CustomLink 
+  {href} 
+  {target}
+  className="border-white border-2 rounded-full w-fit h-fit px-5 text-lg font-semibold text-white duration-300 hover:bg-white hover:text-black"
+>
+  <slot />
+</CustomLink>
