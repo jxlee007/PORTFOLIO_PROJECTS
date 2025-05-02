@@ -5,7 +5,7 @@ locoScroll = () => {
 
     // Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
 
-    const locoScrollInstance = new LocomotiveScroll({
+    locoScrollInstance = new LocomotiveScroll({
         el: document.querySelector("#main"),
         smooth: true
     });
@@ -217,11 +217,59 @@ function closeNav() {
     heading.classList.remove("hidden");
 }
 
+// Header scroll functionality that works with LocomotiveScroll
+function initHeaderScroll() {
+    const nav = document.getElementById("nav");
+    let lastScrollY = 0;
+    
+    // Add initial styling to nav
+    gsap.set(nav, {
+        backgroundColor: "rgba(0, 0, 0, 0.8)",
+        backdropFilter: "blur(10px)",
+        y: 0,
+        autoAlpha: 1
+    });
+    
+    // Handle scroll events directly from LocomotiveScroll
+    if (!locoScrollInstance) return;
+    
+    locoScrollInstance.on("scroll", (args) => {
+        const currentScrollY = args.scroll.y;
+        
+        // Skip tiny movements
+        if (Math.abs(currentScrollY - lastScrollY) < 10) return;
+        
+        // Scrolling down and past threshold - hide nav
+        if (currentScrollY > lastScrollY && currentScrollY > 150) {
+            gsap.to(nav, {
+                y: "-100%",
+                duration: 0.3,
+                ease: "power3.out"
+            });
+        } 
+        // Scrolling up - show nav
+        else if (currentScrollY < lastScrollY || currentScrollY < 50) {
+            gsap.to(nav, {
+                y: "0%",
+                duration: 0.3,
+                ease: "power3.out"
+            });
+        }
+        
+        lastScrollY = currentScrollY;
+    });
+}
+
 // Initialize all functions when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
     initFollowCursor();
-    interactiveDot()
+    interactiveDot();
     updateRealTime();
+    
+    // Delay the header scroll init slightly to ensure LocomotiveScroll is ready
+    setTimeout(() => {
+        initHeaderScroll();
+    }, 500);
 });
 
 animfooter = () => {
@@ -270,9 +318,9 @@ form = () => {
                 scroller: "#main",  // This is important - use the LocomotiveScroll container
                 start: "top 20%",
                 endTrigger: "#contact",
-                end: "top 95%", // Changed from "top bottom" to "center bottom" to extend pinning
+                end: "top 105%", // Changed from "top bottom" to "center bottom" to extend pinning
                 pin: true,
-                pinSpacing: false,
+                pinSpacing: true,
                 // markers: true
             });
             
