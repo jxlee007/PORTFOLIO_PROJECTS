@@ -1,0 +1,352 @@
+---
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import Dot from "../components/Dot.astro";
+import CustomLink from "../components/CustomLink.astro";
+
+// Define menu items for the sidebar (same as index page)
+const menuItems = [
+  { href: "/", index: "/01", label: "MAIN HOME" },
+  { href: "/about", index: "/02", label: "ABOUT JX7" },
+  { href: "/work", index: "/03", label: "WORKS" },
+  { href: "/trek", index: "/04", label: "MY TREK" },
+  { href: "/contact", index: "/05", label: "CONTACT" },
+];
+
+// Define social media links
+const brandLinks = [
+  { href: "https://www.instagram.com/", text: "INSTAGRAM" },
+  { href: "https://www.linkedin.com/", text: "LINKEDIN" },
+  { href: "https://github.com/", text: "GITHUB" },
+];
+
+// Statistics
+const stats = [
+  { value: "5+", label: "YEARS" },
+  { value: "120+", label: "PROJECTS" },
+  { value: "$1M+", label: "REVENUE" },
+  { value: "6.2K", label: "FOLLOWERS" },
+];
+
+// Experience items
+const experiences = [
+  {
+    title: "EXPERIENCE",
+    items: [
+      { 
+        position: "LEAD CREATIVE DEVELOPER", 
+        company: "NEUROTECHX", 
+        period: "2023 - NOW" 
+      },
+      { 
+        position: "SENIOR UI/UX DESIGNER", 
+        company: "CYBERMATRIX", 
+        period: "2021 - 2023" 
+      },
+      { 
+        position: "FRONTEND DEVELOPER", 
+        company: "QUANTUM LABS", 
+        period: "2020 - 2021" 
+      }
+    ]
+  }
+];
+
+// Projects
+const projects = [
+  { title: "NEON CITY", type: "DIGITAL TWIN", year: "2024" },
+  { title: "CORTEX", type: "AI ASSISTANT", year: "2023" },
+  { title: "HYPERLINK", type: "WEB3 PROJECT", year: "2022" },
+  { title: "ECHO", type: "MIXED REALITY", year: "2022" }
+];
+
+// Capabilities
+const capabilities = [
+  {
+    title: "CREATIVE VISION DIRECTION",
+    description: "Leading digital experiences from concept to execution with a forward-thinking approach that pushes technological boundaries.",
+    image: "/images/image.png"
+  },
+  {
+    title: "NEURAL ARTS ENGINE",
+    description: "Combining AI algorithms with creative direction to generate unique artistic expressions and interactive visuals.",
+    image: "/images/image.png"
+  },
+  {
+    title: "DIGITAL DIMENSIONS",
+    description: "Building immersive spaces that bridge the gap between reality and digital worlds through cutting-edge WebGL and Three.js.",
+    image: "/images/image.png"
+  }
+];
+
+// Hardware items
+const hardware = [
+  {
+    title: "NEURAL CONNECTOR",
+    description: "Advanced BCI device for mind-machine interface projects",
+    variant: "primary"
+  },
+  {
+    title: "RTX-9i",
+    description: "Custom-built GPU for real-time AI rendering",
+    variant: "secondary"
+  },
+  {
+    title: "HOLOGRID",
+    description: "Holographic display for spatial computing interfaces",
+    variant: "tertiary"
+  },
+  {
+    title: "NEURALNET",
+    description: "Distributed computing network for advanced AI training",
+    variant: "quaternary"
+  }
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About | JX7 Portfolio - Creative Developer & AI Builder</title>
+
+    <!-- External CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=general-sans@500,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=space-grotesk@500,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon and custom CSS -->
+    <link rel="shortcut icon" href="./icon.ico" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body class="bg-black text-white">
+    <!-- Using the Dot component for cursor -->
+    <Dot />
+
+    <!-- Main content container -->
+    <main id="main" class="w-full min-h-screen bg-black" data-scroll-container>
+      <!-- Navigation -->
+      <Nav {menuItems} {brandLinks} />
+      
+      <!-- About Header Section -->
+      <section class="px-10 pt-32 pb-16">
+        <h1 class="font-space-grotesk text-5xl md:text-7xl font-bold mb-4">MORE ABOUT<br />DAVIDSON</h1>
+        <div class="flex justify-between items-end">
+          <p class="w-2/3 text-zinc-400 leading-relaxed">
+            Innovative designer and developer specializing in futuristic interfaces, AI-driven experiences, and cyberpunk aesthetics. 
+            Creating at the intersection of technology and human experience with a focus on next-generation digital solutions.
+          </p>
+          <CustomLink href="/contact" className="px-6 py-3 bg-white text-black uppercase font-space-grotesk hover:bg-zinc-200 transition-colors">
+            <span>Connect</span>
+          </CustomLink>
+        </div>
+      </section>
+
+      <!-- Statistics Section -->
+      <section class="grid grid-cols-4 gap-4 px-10 py-6 border-y border-zinc-800">
+        {stats.map((stat) => (
+          <div class="flex flex-col">
+            <h2 class="text-3xl md:text-5xl font-bold font-space-grotesk">{stat.value}</h2>
+            <span class="text-zinc-400 uppercase text-sm">{stat.label}</span>
+          </div>
+        ))}
+      </section>
+
+      <!-- About Me Section -->
+      <section class="px-10 py-16">
+        <h3 class="uppercase text-sm text-zinc-400 mb-4">ABOUT ME</h3>
+        <p class="w-full md:w-3/4 text-lg leading-relaxed">
+          As a creative developer with expertise in both design and frontend programming, I bring concepts to life through 
+          immersive digital experiences. My work blends cutting-edge technology with artistic vision to create 
+          memorable interfaces that push the boundaries of digital expression. I'm passionate about emerging 
+          technologies like neural interfaces, AI, and extended reality, and how they can enhance human-computer 
+          interaction in increasingly intuitive ways.
+        </p>
+      </section>
+
+      <!-- Gallery Section -->
+      <section class="grid grid-cols-3 gap-2 px-10">
+        <div class="h-80 bg-zinc-900 rounded-md overflow-hidden transition-all duration-300 hover:scale-105">
+          <img src="/images/image.png" alt="Gallery image 1" class="w-full h-full object-cover" />
+        </div>
+        <div class="h-80 bg-zinc-800 rounded-md overflow-hidden transition-all duration-300 hover:scale-105">
+          <img src="/images/image.png" alt="Gallery image 2" class="w-full h-full object-cover" />
+        </div>
+        <div class="h-80 bg-zinc-700 rounded-md overflow-hidden transition-all duration-300 hover:scale-105">
+          <img src="/images/image.png" alt="Gallery image 3" class="w-full h-full object-cover" />
+        </div>
+      </section>
+      
+      <!-- Experience Section -->
+      <section class="px-10 py-16" id="experience">
+        <h2 class="text-5xl font-bold font-space-grotesk mb-10">EXPERIENCE</h2>
+        
+        <div class="grid grid-cols-2 gap-10">
+          <div>
+            {experiences[0].items.map((item) => (
+              <div class="mb-12">
+                <h3 class="text-xl font-semibold font-space-grotesk">{item.position}</h3>
+                <p class="text-zinc-400">{item.company}</p>
+                <p class="text-sm text-zinc-500">{item.period}</p>
+              </div>
+            ))}
+          </div>
+          
+          <div>
+            <h3 class="uppercase text-sm text-zinc-400 mb-4">SUMMARY OF WORK</h3>
+            <div class="grid grid-cols-2 gap-6 pt-2">
+              {projects.map((project) => (
+                <div class="mb-8">
+                  <h4 class="text-lg font-semibold font-space-grotesk">{project.title}</h4>
+                  <p class="text-sm text-zinc-400">{project.type}</p>
+                  <p class="text-xs text-zinc-500">{project.year}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- All My Stack Section -->
+      <section class="px-10 py-16 border-t border-zinc-800">
+        <h2 class="text-4xl font-bold font-space-grotesk mb-10">ALL MY STACK</h2>
+        
+        <div class="grid grid-cols-4 gap-4">
+          <div class="bg-zinc-900 p-6 rounded-md">
+            <span class="text-blue-400 text-4xl"><i class="ri-reactjs-line"></i></span>
+            <h3 class="text-lg mt-6 mb-1 font-semibold">FRONTEND</h3>
+            <p class="text-sm text-zinc-400">React, Next.js, Tailwind, GSAP</p>
+          </div>
+          
+          <div class="bg-zinc-900 p-6 rounded-md">
+            <span class="text-green-400 text-4xl"><i class="ri-terminal-box-line"></i></span>
+            <h3 class="text-lg mt-6 mb-1 font-semibold">BACKEND</h3>
+            <p class="text-sm text-zinc-400">Node.js, Python, API, MONGO</p>
+          </div>
+          
+          <div class="bg-zinc-900 p-6 rounded-md">
+            <span class="text-purple-400 text-4xl"><i class="ri-ai-generate"></i></span>
+            <h3 class="text-lg mt-6 mb-1 font-semibold">AI & Automations</h3>
+            <p class="text-sm text-zinc-400">Huggingface, N8N, OpenAI</p>
+          </div>
+          
+      </section>
+
+      <!-- "Amazing Things" Section -->
+      <section class="px-10 py-20 border-y border-zinc-800">
+        <div class="flex flex-col">
+          <h2 class="text-5xl md:text-7xl font-bold font-space-grotesk mb-4">AMAZING THINGS</h2>
+          <h2 class="text-5xl md:text-7xl font-bold font-space-grotesk mb-4">HAPPEN WITH—</h2>
+          <h2 class="text-5xl md:text-7xl font-bold font-space-grotesk">WONDER.</h2>
+        </div>
+      </section>
+
+      <!-- Capabilities Section -->
+      <section class="px-10 py-16">
+        <h2 class="text-4xl font-bold font-space-grotesk mb-10">CAPABILITIES</h2>
+        <p class="text-zinc-400 mb-12 w-1/2">Creating innovative solutions at the intersection of design and technology, with specialization in digital experiences.</p>
+        
+        <div class="grid grid-cols-3 gap-6">
+          {capabilities.map((capability) => (
+            <div class="flex flex-col">
+              <div class="h-60 bg-zinc-900 rounded-md mb-4 overflow-hidden group">
+                <img src={capability.image} alt={capability.title} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+              </div>
+              <h3 class="text-xl font-semibold font-space-grotesk mb-2">{capability.title}</h3>
+              <p class="text-sm text-zinc-400">{capability.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Hardware Section -->
+      <section class="px-10 py-16 border-t border-zinc-800">
+        <h2 class="text-4xl font-bold font-space-grotesk mb-10">HARDWARES</h2>
+        
+        <div class="grid grid-cols-2 gap-6">
+          {hardware.map((item) => (
+            <div class={`flex items-start p-6 rounded-md ${item.variant === 'primary' ? 'bg-gradient-to-br from-purple-900 to-blue-900' : item.variant === 'secondary' ? 'bg-gradient-to-br from-red-900 to-orange-900' : item.variant === 'tertiary' ? 'bg-gradient-to-br from-teal-900 to-emerald-900' : 'bg-gradient-to-br from-indigo-900 to-violet-900'}`}>
+              <div class="mr-6">
+                <span class="inline-block w-12 h-12 bg-white rounded-full opacity-20"></span>
+              </div>
+              <div>
+                <h3 class="text-xl font-semibold font-space-grotesk mb-2">{item.title}</h3>
+                <p class="text-sm text-zinc-300">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Mind Inspires Section -->
+      <section class="px-10 py-16 relative min-h-screen flex flex-col justify-center border-t border-zinc-800">
+        <div class="absolute inset-0 bg-black opacity-70 z-0"></div>
+        <div class="relative z-10">
+          <h2 class="text-5xl md:text-7xl font-bold font-space-grotesk mb-4">MIND INSPIRES</h2>
+          <h2 class="text-5xl md:text-7xl font-bold font-space-grotesk mb-8">BOUNDLESS</h2>
+          <h2 class="text-5xl md:text-7xl font-bold font-space-grotesk mb-12">IMAGI—NATION.</h2>
+          
+          <p class="text-lg text-zinc-300 w-1/2 mb-12">
+            The future is built on creativity, innovation, and a relentless pursuit of excellence.
+            As we navigate the digital frontier, we find new pathways to express human potential through
+            technology. My mission is to be at the forefront of this exploration.
+          </p>
+          
+          <CustomLink href="/work" className="px-6 py-3 bg-white text-black uppercase font-space-grotesk hover:bg-zinc-200 transition-colors">
+            <span>Explore my work</span>
+          </CustomLink>
+        </div>
+      </section>
+
+      <!-- Final CTA Section -->
+      <section class="px-10 py-16 border-t border-zinc-800">
+        <h2 class="text-5xl md:text-7xl font-bold font-space-grotesk mb-12">LET'S WORK<br/>TOGETHER</h2>
+        
+        <div class="flex justify-between">
+          <CustomLink href="/contact" className="px-6 py-3 bg-white text-black uppercase font-space-grotesk hover:bg-zinc-200 transition-colors">
+            <span>Get in touch</span>
+          </CustomLink>
+          
+          <div class="flex gap-6">
+            {brandLinks.map((link) => (
+              <CustomLink href={link.href} className="text-zinc-400 hover:text-white transition-colors">
+                <span>{link.text}</span>
+                <i class="ri-arrow-right-up-line ml-1"></i>
+              </CustomLink>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <Footer goHref="#main" title="JAGMOHAN" />
+    </main>
+
+    <!-- Scripts for animation and interaction -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"
+      is:inline></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      is:inline></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+      is:inline></script>
+    <script src="/scripts/script.js" is:inline></script>
+  </body>
+</html>
