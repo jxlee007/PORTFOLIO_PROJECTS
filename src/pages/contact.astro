@@ -1,0 +1,244 @@
+---
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import Dot from "../components/Dot.astro";
+import CustomLink from "../components/CustomLink.astro";
+
+// Define menu items for the sidebar
+const menuItems = [
+    { href: "/", index: "/01", label: "MAIN HOME" },
+    { href: "/about", index: "/02", label: "ABOUT JX7" },
+    { href: "/work", index: "/03", label: "WORKS" },
+    { href: "/trek", index: "/04", label: "MY TREK" },
+    { href: "#contact", index: "/05", label: "CONTACT" },
+];
+
+// Define social media links
+const brandLinks = [
+    { href: "https://www.instagram.com/", text: "INSTAGRAM" },
+    { href: "https://www.linkedin.com/", text: "LINKEDIN" },
+    { href: "https://github.com/", text: "GITHUB" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CONTACT-JX7</title>
+
+        <!-- External CSS -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"
+        />
+        <link
+            href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+            rel="stylesheet"
+        />
+        <link
+            href="https://api.fontshare.com/v2/css?f[]=general-sans@500,400&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://api.fontshare.com/v2/css?f[]=space-grotesk@500,400&display=swap"
+            rel="stylesheet"
+        />
+
+        <!-- Favicon and custom CSS -->
+        <link rel="shortcut icon" href="/icon.ico" />
+        <link rel="stylesheet" href="/style.css" />
+    </head>
+
+    <body class="bg-black text-white">
+        <!-- Using the Dot component instead of hard-coded cursor dot -->
+        <Dot />
+
+        <!-- Main content container -->
+        <main id="main" class="w-full bg-black px-10 gap-2">
+            <!-- Hero section with just the navigation -->
+            <div id="hero" class="w-full h-screen flex flex-col my-4">
+                <Nav {menuItems} {brandLinks} />
+
+                <!-- Hero content section - Responsive with flex direction changes -->
+                <div
+                    class="w-full h-screen mt-10 flex flex-row justify-between gap-10"
+                >
+                    <div class="mt-10 flex flex-col gap-16" id="form-section">
+                        <span class="flex flex-col items-start gap-6">
+                            <p class="text-5xl font-bold">RING A BELL!</p>
+
+                            <p
+                                class="uppercase pr-5 text-gray-400 text-xl font-thin font-space-grotesk tracking-widest leading-relaxed"
+                            >
+                                Reach out and let's create something amazing
+                                together. Let's achieve greatness.
+                            </p>
+                        </span>
+
+                        <!-- Form column - Takes full width on mobile -->
+                        <span class="rounded-2xl col-span-1 md:col-span-2">
+                            <form class="flex flex-col gap-4">
+                                <h3
+                                    class="text-white text-xl md:text-2xl font-space-grotesk font-bold mb-4"
+                                >
+                                    FILL THIS FORM OUT
+                                </h3>
+
+                                <!-- Stack form fields on mobile -->
+                                <div
+                                    class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6"
+                                >
+                                    <div class="flex flex-col">
+                                        <input
+                                            type="text"
+                                            id="name"
+                                            class="bg-zinc-900 text-gray-400 p-4 rounded-xl border-0"
+                                            placeholder="NAME"
+                                        />
+                                    </div>
+
+                                    <div class="flex flex-col">
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            class="bg-zinc-900 text-gray-400 p-4 rounded-xl border-0"
+                                            placeholder="E-MAIL"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col">
+                                    <textarea
+                                        id="message"
+                                        rows="5"
+                                        class="bg-zinc-900 text-gray-400 p-4 rounded-xl border-0 resize-none"
+                                        placeholder="MESSAGE"></textarea>
+                                </div>
+
+                                <!-- Button is more prominent on mobile -->
+                                <button
+                                    type="submit"
+                                    class="bg-white text-black p-6 uppercase rounded-xl font-semibold tracking-wide hover:bg-slate-300 transition-colors duration-300 w-full md:w-full"
+                                >
+                                    Send email
+                                </button>
+                            </form>
+                        </span>
+                    </div>
+
+                    <section class="w-4/6 h-screen bg-amber-500" id="image-section">
+                        <div class="h-full w-full overflow-hidden rounded-xl">
+                            <img src="" alt="Contact image" class="w-full h-full object-cover" />
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Contact section - Fully responsive -->
+            <div
+                id="contact"
+                class="mt-40 border-y border-gray-300 py-10 md:py-10 w-full h-fit flex flex-col md:flex-row items-center"
+            >
+                <!-- Responsive row layout with 4 blocks -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-2 w-full text-left">
+                    <!-- Block 4 -->
+                    <div class="py-8 md:py-12 text-center rounded-2xl">
+                        <p
+                            class="text-gray-400 mb-3 md:mb-4 text-2xl uppercase font-medium"
+                        >
+                            follow me
+                        </p>
+                        <div
+                            class="font-space-grotesk text-base md:text-xl font-thin flex flex-col items-center gap-2"
+                        >
+                            <CustomLink
+                                href="https://www.instagram.com/"
+                                target="_blank"
+                                class="text-white hover:text-black hover:bg-white transition-colors duration-300"
+                            >
+                                <span
+                                    >INSTAGRAM<i
+                                        class="ri-arrow-right-up-line ml-1"
+                                    ></i></span
+                                >
+                            </CustomLink>
+                            <CustomLink
+                                href="https://www.linkedin.com/in/jagmohan-singh-malhi-a67805243/"
+                                target="_blank"
+                                class="text-white hover:text-black hover:bg-white transition-colors duration-300"
+                            >
+                                <span
+                                    >LINKEDIN<i
+                                        class="ri-arrow-right-up-line ml-1"
+                                    ></i></span
+                                >
+                            </CustomLink>
+                            <CustomLink
+                                href="https://github.com/jxlee007"
+                                target="_blank"
+                                class="text-white hover:text-black hover:bg-white transition-colors duration-300"
+                            >
+                                <span
+                                    >GITHUB<i
+                                        class="ri-arrow-right-up-line ml-1"
+                                    ></i></span
+                                >
+                            </CustomLink>
+                        </div>
+                    </div>
+
+                    <!-- Block 1 -->
+                    <div
+                        class="flex items-center text-center justify-center rounded-2xl"
+                    >
+                        <h2
+                            class="uppercase text-xl font-space-grotesk tracking-wider leading-relaxed"
+                        >
+                            Let's build something<br />amazing together
+                        </h2>
+                    </div>
+
+                    <!-- Block 2 -->
+                    <div class="py-8 md:py-12 text-center rounded-2xl">
+                        <p class="text-gray-400 mb-3 md:mb-4 text-xl uppercase">
+                            Direct contact
+                        </p>
+                        <p class="text-base md:text-lg mb-1">
+                            jagmohansinghmalhi20@gmail.com
+                        </p>
+                        <p class="text-base md:text-lg">+91 7600925494</p>
+                    </div>
+
+                    <!-- Block 3 -->
+                    <div
+                        class="py-8 md:py-12 text-center rounded-2xl uppercase text-2xl"
+                    >
+                        <p class="text-gray-400 mb-3 md:mb-4">Based in</p>
+                        <p class="text-base md:text-lg">India, GMT+5:30</p>
+                        <p class="text-base md:text-lg">Gorwa, Vadodara</p>
+                        <p class="text-base md:text-lg">Gujarat</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer section -->
+            <div class="pt-20 border-t border-gray-800">
+                <Footer goHref="#hero" title="JAGMOHAN" class="relative" />
+            </div>
+        </main>
+
+        <!-- Scripts for animation and interaction -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"
+            is:inline></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+            is:inline></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
+            is:inline></script>
+        <script src="/scripts/script.js" is:inline></script>
+    </body>
+</html>

@@ -1,10 +1,10 @@
 ---
-import Hero from '../components/Hero.astro';
-import Second from '../components/Second.astro';
-import Third from '../components/Third.astro';
-import About from '../components/About.astro';
-import Footer from '../components/Footer.astro';
-import Dot from '../components/Dot.astro';
+import Hero from "../components/Hero.astro";
+import Second from "../components/Second.astro";
+import Third from "../components/Third.astro";
+import About from "../components/About.astro";
+import Footer from "../components/Footer.astro";
+import Dot from "../components/Dot.astro";
 
 // Define menu items for the sidebar
 const menuItems = [
@@ -12,35 +12,47 @@ const menuItems = [
   { href: "/about", index: "/02", label: "ABOUT JX7" },
   { href: "/work", index: "/03", label: "WORKS" },
   { href: "/trek", index: "/04", label: "MY TREK" },
-  { href: "#contact", index: "/05", label: "CONTACT" }
+  { href: "/contact", index: "/05", label: "CONTACT" },
 ];
 
 // Define social media links
 const brandLinks = [
   { href: "https://www.instagram.com/", text: "INSTAGRAM" },
   { href: "https://www.linkedin.com/", text: "LINKEDIN" },
-  { href: "https://github.com/", text: "GITHUB" }
+  { href: "https://github.com/", text: "GITHUB" },
 ];
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JX7 Portfolio - Creative Developer & AI Builder</title>
-    
+
     <!-- External CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css" />
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
-    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@500,400&display=swap" rel="stylesheet" />
-    <link href="https://api.fontshare.com/v2/css?f[]=space-grotesk@500,400&display=swap" rel="stylesheet" />
-    
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=general-sans@500,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=space-grotesk@500,400&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Favicon and custom CSS -->
     <link rel="shortcut icon" href="./icon.ico" />
     <link rel="stylesheet" href="./style.css" />
   </head>
-  
+
   <body class="bg-black text-white">
     <!-- Loader animation (commented out for now) -->
     <!-- <div id="loader">
@@ -49,32 +61,38 @@ const brandLinks = [
       <h1>means</h1>
       <h1>Tomorrow.</h1>
     </div> -->
-    
+
     <!-- Using the Dot component instead of hard-coded cursor dot -->
     <Dot />
-    
+
     <!-- Main content container -->
-    <main id="main" class="w-full min-h-screen bg-black">
+    <main id="main" class="w-full min-h-screen bg-black px-10" >
       <!-- Hero Section with Nav -->
       <Hero {menuItems} {brandLinks} />
-      
+
       <!-- Second Section - About -->
       <Second />
-      
+
       <!-- Third Section - Featured Work -->
       <Third />
-      
+
       <!-- About/Contact Section -->
       <About />
-      
+
       <!-- Footer with animated name -->
       <Footer goHref="#hero" title="JAGMOHAN" />
     </main>
-    
+
     <!-- Scripts for animation and interaction -->
-    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js" is:inline></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" is:inline></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" is:inline></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"
+      is:inline></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      is:inline></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+      is:inline></script>
     <script src="/scripts/script.js" is:inline></script>
   </body>
 </html>

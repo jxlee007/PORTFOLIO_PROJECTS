@@ -10,7 +10,7 @@ const { goHref = "#hero", title = "JAGMOHAN" } = Astro.props;
 const nameArray = title.split('');
 ---
 
-<footer id="footer" class="w-full h-fit py-4 px-10 flex items-center justify-between md:flex-col md:items-center md:gap-5">
+<footer id="footer" class="w-full h-fit py-4 flex items-center justify-between md:flex-col md:items-center md:gap-5">
   <h1 class="font-space-grotesk font-bold text-[14vw] -mt-28 -mb-16 tracking-wider transition duration-200">
     {nameArray.map(letter => <span>{letter}</span>)}
   </h1>

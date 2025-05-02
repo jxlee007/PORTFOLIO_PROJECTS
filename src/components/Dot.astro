@@ -17,49 +17,49 @@ const {
 
 <div
     id="dot"
-    class={`fixed z-[99999] w-[${size}] h-[${size}] bg-${color} rounded-full mix-blend-${blendMode} custom-transition pointer-events-none`}
+    class={`fixed z-[99999] bg-${color} rounded-full mix-blend-${blendMode} pointer-events-none`}
     style={`width: ${size}; height: ${size};`}
 ></div>
 
 <script>
-    function initFollowCursor() {
-        const dot = document.getElementById("dot");
-        if (!dot) return; // Safety check
+    import { gsap } from "gsap";
 
-        let mouseX = 0;
-        let mouseY = 0;
-        let currentX = 0;
-        let currentY = 0;
+    // Create a smooth moving dot cursor with improved performance
+function initFollowCursor() {
+    const dot = document.getElementById("dot");
+    let mouseX = 0;
+    let mouseY = 0;
+    let currentX = 0;
+    let currentY = 0;
 
-        // Set initial position with transform for centering
-        dot.style.transform = "translate(-50%, -50%)";
+    // Set initial position
+    dot.style.transform = 'translate(-50%, -50%)';
 
-        // Track mouse position
-        document.addEventListener("mousemove", (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
+    // Track mouse position
+    document.addEventListener("mousemove", e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
 
-        // Separate animation loop for smooth movement
-        function animateDot() {
-            // Calculate smooth movement - 0.5 provides balanced smoothness
-            const speed = 0.5;
-            currentX += (mouseX - currentX) * speed;
-            currentY += (mouseY - currentY) * speed;
+    // Separate animation loop for smooth movement
+    function animateDot() {
+        // Calculate smooth movement - adjust the 0.1 value for different follow speeds
+        // Lower = slower/smoother, higher = faster/more direct
+        const speed = 0.5;
+        currentX += (mouseX - currentX) * speed;
+        currentY += (mouseY - currentY) * speed;
 
-            // Apply position
-            if (dot) {
-                dot.style.left = `${currentX}px`;
-                dot.style.top = `${currentY}px`;
-            }
+        // Apply position with fixed transform for centering
+        dot.style.left = `${currentX}px`;
+        dot.style.top = `${currentY}px`;
 
-            // Continue animation loop
-            requestAnimationFrame(animateDot);
-        }
-
-        // Start animation loop
-        animateDot();
+        // Continue animation loop
+        requestAnimationFrame(animateDot);
     }
+
+    // Start animation loop
+    animateDot();
+}
 
     function interactiveDot() {
         const dot = document.getElementById("dot");
@@ -79,13 +79,22 @@ const {
         hoverElements.forEach((elem) => {
             if (elem) {
                 elem.addEventListener("mouseenter", () => {
-                    dot.style.transform = "translate(-50%, -50%) scale(0)";
-                    dot.style.opacity = "0";
+                    // Use GSAP for smoother transitions
+                    gsap.to(dot, {
+                        duration: 0.3,
+                        scale: 0,
+                        opacity: 0,
+                        ease: "power2.out"
+                    });
                 });
 
                 elem.addEventListener("mouseleave", () => {
-                    dot.style.transform = "translate(-50%, -50%) scale(1)";
-                    dot.style.opacity = "1";
+                    gsap.to(dot, {
+                        duration: 0.3,
+                        scale: 1,
+                        opacity: 1,
+                        ease: "power2.out"
+                    });
                 });
             }
         });
@@ -94,25 +103,33 @@ const {
         reloadLinks.forEach((link) => {
             link.addEventListener("mouseenter", () => {
                 dot.innerHTML = "OPEN";
-                dot.style.width = "70px";
-                dot.style.height = "auto";
-                dot.style.display = "flex";
-                dot.style.alignItems = "center";
-                dot.style.justifyContent = "center";
-                dot.style.fontSize = "15px";
-                dot.style.padding = "5px 15px";
-                dot.style.borderRadius = "50px";
-                dot.style.color = "#000";
+                gsap.to(dot, {
+                    duration: 0.3,
+                    width: "70px",
+                    height: "auto",
+                    padding: "5px 15px",
+                    borderRadius: "50px",
+                    fontSize: "15px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "#000",
+                    ease: "power2.out"
+                });
             });
 
             link.addEventListener("mouseleave", () => {
                 dot.innerHTML = ""; // Reset dot
-                dot.style.width = "17px";
-                dot.style.height = "17px";
-                dot.style.display = "block";
-                dot.style.fontSize = "0";
-                dot.style.padding = "0";
-                dot.style.borderRadius = "50%";
+                gsap.to(dot, {
+                    duration: 0.3,
+                    width: "17px",
+                    height: "17px",
+                    padding: 0,
+                    borderRadius: "50%",
+                    fontSize: 0,
+                    display: "block",
+                    ease: "power2.out"
+                });
             });
         });
 
@@ -131,11 +148,19 @@ const {
             });
 
             if (nearElement) {
-                dot.style.transform = "translate(-50%, -50%) scale(0)";
-                dot.style.opacity = "0";
+                gsap.to(dot, {
+                    duration: 0.3,
+                    scale: 0,
+                    opacity: 0,
+                    ease: "power2.out"
+                });
             } else {
-                dot.style.transform = "translate(-50%, -50%) scale(1)";
-                dot.style.opacity = "1";
+                gsap.to(dot, {
+                    duration: 0.3,
+                    scale: 1,
+                    opacity: 1,
+                    ease: "power2.out"
+                });
             }
         });
     }

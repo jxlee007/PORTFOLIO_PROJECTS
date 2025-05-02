@@ -7,6 +7,9 @@ module.exports = {
           'space-grotesk': ['"Space Grotesk"', 'sans-serif'],
         },
         colors: { 'custom-black': '#000' },
+        container: {
+          center: true,
+        },
       },
     },
     plugins: [],

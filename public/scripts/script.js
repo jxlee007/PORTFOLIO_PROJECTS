@@ -242,3 +242,44 @@ animfooter = () => {
     })
 }
 animfooter()
+
+form = () => {
+    document.addEventListener("DOMContentLoaded", function () {
+        // Form elements animation
+        const formElements = document.querySelectorAll(
+            "form input, form textarea",
+        );
+
+        formElements.forEach((element) => {
+            element.addEventListener("focus", function () {
+                this.parentElement.classList.add("scale-105");
+                this.classList.add("bg-gray-50");
+            });
+
+            element.addEventListener("blur", function () {
+                this.parentElement.classList.remove("scale-105");
+                this.classList.remove("bg-gray-50");
+            });
+        });
+        
+        // Wait a bit to ensure the LocomotiveScroll instance is fully initialized
+        setTimeout(() => {
+            // Create the pinning effect compatible with Locomotive Scroll
+            ScrollTrigger.create({
+                trigger: "#form-section",
+                scroller: "#main",  // This is important - use the LocomotiveScroll container
+                start: "top 20%",
+                endTrigger: "#contact",
+                end: "top 95%", // Changed from "top bottom" to "center bottom" to extend pinning
+                pin: true,
+                pinSpacing: false,
+                // markers: true
+            });
+            
+            // Refresh ScrollTrigger to ensure everything is set up correctly
+            ScrollTrigger.refresh();
+        }, 1000);
+    });
+
+}
+form();
