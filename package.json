@@ -8,14 +8,14 @@
     "preview": "astro preview"
   },
   "keywords": [],
-  "author": "",
+  "author": "JXLEE",
   "license": "ISC",
-  "description": "",
+  "description": "Portfolio website",
   "dependencies": {
     "@astrojs/tailwind": "^6.0.2",
     "astro": "^5.7.6",
     "autoprefixer": "^10.4.21",
-    "gsap": "^3.12.7",
+    "gsap": "^3.13.0",
     "locomotive-scroll": "^4.1.4",
     "postcss": "^8.5.3"
   },

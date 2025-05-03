@@ -2,6 +2,7 @@
 import Sidebar from './Sidebar.astro';
 import Peace from './Peace.astro';
 import Icon from './icon.astro';
+import CustomLink from './CustomLink.astro';
 
 interface MenuItem {
   href: string;
@@ -22,13 +23,15 @@ export interface Props {
 const { menuItems, brandLinks } = Astro.props;
 ---
 <div id="nav" class=" w-full py-8 flex items-center justify-between">
-  <div class="flex items-center gap-4">
-    <a id="remix" href="#" class="flex rounded-full bg-white font-semibold text-black  duration-300">
-      REMIX / &nbsp; <h5 id="realtime"></h5>
-    </a>
-    
+<div class="flex items-center gap-4">
+  <a id="remix" href="#" class="flex rounded-full bg-white font-semibold text-black  duration-300">
+    REMIX / &nbsp; <h5 id="realtime"></h5>
+  </a>
+  
+  <CustomLink href="/contact" className="text-white">    
     <Icon ico="/images/call.png" />
-  </div>
+  </CustomLink>
+</div>
   
   <span class="cursor-pointer flex items-center" onclick="openNav()">
     <div class="w-8 h-8 flex items-center border-2 border-white rounded-full bg-white">

@@ -224,6 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
     updateRealTime();
 });
 
+
 animfooter = () => {
     gsap.from("#footer h1 span", {
         y: -100,

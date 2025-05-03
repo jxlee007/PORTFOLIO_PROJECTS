@@ -1,0 +1,161 @@
+
+
+              <div class="pin-item" data-target="professional-profile">
+                <h2 class="text-3xl font-bold font-space-grotesk mb-4">
+                  PROFESSIONAL PROFILE
+                </h2>
+              </div>
+
+              <div class="pin-item" data-target="top-skills">
+                <h3 class="text-xl font-bold font-space-grotesk mb-6 flex items-center">
+                  <span class="inline-block mr-3 text-2xl">
+                    <i class="ri-tools-line"></i>
+                  </span>
+                  TOP SKILLS
+                </h3>
+              </div>
+
+              <div class="pin-item" data-target="certifications">
+                <h3 class="text-xl font-bold font-space-grotesk mb-6 flex items-center">
+                  <span class="inline-block mr-3 text-2xl">
+                    <i class="ri-award-line"></i>
+                  </span>
+                  CERTIFICATIONS
+                </h3>
+              </div>
+
+              <div class="pin-item" data-target="experience-education">
+                <h2 class="text-2xl font-bold font-space-grotesk mb-4">
+                  EXPERIENCE & EDUCATION
+                </h2>
+              </div>
+
+              ----------------------------------------------------------------------
+
+
+
+            <!-- Professional Summary -->
+            <div class="content-panel mb-32" id="professional-profile">
+              <div class="bg-zinc-800/50 p-8 rounded-lg">
+                <h3 class="text-xl font-bold font-space-grotesk mb-6 flex items-center">
+
+                </h3>
+                <p class="text-zinc-300 leading-relaxed">
+                  {
+                    profileSummary.split("\n").map((paragraph, i) => (
+                      <>
+                        {paragraph}
+                        {i < profileSummary.split("\n").length - 1 && (
+                          <>
+                            <br />
+                            <br />
+                          </>
+                        )}
+                      </>
+                    ))
+                  }
+                </p>
+              </div>
+            </div>
+
+            <!-- Top Skills -->
+            <div class="content-panel mb-32" id="top-skills">
+              <div class="bg-zinc-800/50 p-8 rounded-lg">
+                <div class="space-y-3">
+                  {
+                    topSkills.map((skill) => (
+                      <div class="flex items-center">
+                        <span class="inline-block w-2 h-2 rounded-full bg-blue-400 mr-3" />
+                        <span class="text-zinc-100">{skill}</span>
+                      </div>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+
+            <!-- Certifications -->
+            <div class="content-panel mb-32" id="certifications">
+              <div class="bg-zinc-800/50 p-8 rounded-lg">
+                <div class="space-y-4">
+                  {
+                    certifications.map((cert) => (
+                      <div class="border-l-2 border-zinc-600 pl-4 py-1">
+                        <p class="text-zinc-100">{cert}</p>
+                      </div>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+
+            <!-- Experience & Education -->
+            <div class="content-panel mb-32" id="experience-education">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Experience -->
+                <div class="bg-zinc-800/50 p-8 rounded-lg">
+                  <h3 class="text-xl font-bold font-space-grotesk mb-6 flex items-center">
+                    <span class="inline-block mr-3 text-2xl">
+                      <i class="ri-briefcase-4-line"></i>
+                    </span>
+                    EXPERIENCE
+                  </h3>
+                  <div class="space-y-8">
+                    {
+                      profileExperience.map((exp) => (
+                        <div class="border-l-2 border-zinc-600 pl-6 relative">
+                          <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-400" />
+                          <h4 class="text-lg font-semibold text-white">
+                            {exp.position}
+                          </h4>
+                          <p class="text-blue-300 mb-2">{exp.company}</p>
+                          <div class="flex items-center gap-2 text-sm text-zinc-400 mb-3">
+                            <span class="inline-block">
+                              <i class="ri-calendar-line" />
+                            </span>{" "}
+                            {exp.period}
+                            <span class="mx-2">•</span>
+                            <span class="inline-block">
+                              <i class="ri-map-pin-line" />
+                            </span>{" "}
+                            {exp.location}
+                          </div>
+                        </div>
+                      ))
+                    }
+                  </div>
+                </div>
+
+                <!-- Education -->
+                <div class="bg-zinc-800/50 p-8 rounded-lg">
+                  <h3 class="text-xl font-bold font-space-grotesk mb-6 flex items-center">
+                    <span class="inline-block mr-3 text-2xl">
+                      <i class="ri-graduation-cap-line"></i>
+                    </span>
+                    EDUCATION
+                  </h3>
+                  <div class="space-y-6">
+                    {
+                      education.map((edu) => (
+                        <div class="border-l-2 border-zinc-600 pl-6 relative">
+                          <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-400" />
+                          <h4 class="text-lg font-semibold text-white">
+                            {edu.degree}
+                          </h4>
+                          <p class="text-blue-300 mb-2">{edu.institution}</p>
+                          <div class="flex items-center gap-2 text-sm text-zinc-400">
+                            <span class="inline-block">
+                              <i class="ri-calendar-line" />
+                            </span>{" "}
+                            {edu.period}
+                          </div>
+                        </div>
+                      ))
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+

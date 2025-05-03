@@ -217,55 +217,12 @@ function closeNav() {
     heading.classList.remove("hidden");
 }
 
-// Header scroll functionality that works with LocomotiveScroll
-function initHeaderScroll() {
-    const nav = document.getElementById("nav");
-    let lastScrollY = 0;
-    
-    // Add initial styling to nav
-    gsap.set(nav, {
-        backgroundColor: "rgba(0, 0, 0, 0.8)",
-        backdropFilter: "blur(10px)",
-        y: 0,
-        autoAlpha: 1
-    });
-    
-    // Handle scroll events directly from LocomotiveScroll
-    if (!locoScrollInstance) return;
-    
-    locoScrollInstance.on("scroll", (args) => {
-        const currentScrollY = args.scroll.y;
-        
-        // Skip tiny movements
-        if (Math.abs(currentScrollY - lastScrollY) < 10) return;
-        
-        // Scrolling down and past threshold - hide nav
-        if (currentScrollY > lastScrollY && currentScrollY > 150) {
-            gsap.to(nav, {
-                y: "-100%",
-                duration: 0.3,
-                ease: "power3.out"
-            });
-        } 
-        // Scrolling up - show nav
-        else if (currentScrollY < lastScrollY || currentScrollY < 50) {
-            gsap.to(nav, {
-                y: "0%",
-                duration: 0.3,
-                ease: "power3.out"
-            });
-        }
-        
-        lastScrollY = currentScrollY;
-    });
-}
-
 // Initialize all functions when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
     initFollowCursor();
     interactiveDot();
     updateRealTime();
-    
+
     // Delay the header scroll init slightly to ensure LocomotiveScroll is ready
     setTimeout(() => {
         initHeaderScroll();
@@ -309,7 +266,7 @@ form = () => {
                 this.classList.remove("bg-gray-50");
             });
         });
-        
+
         // Wait a bit to ensure the LocomotiveScroll instance is fully initialized
         setTimeout(() => {
             // Create the pinning effect compatible with Locomotive Scroll
@@ -323,7 +280,7 @@ form = () => {
                 pinSpacing: true,
                 // markers: true
             });
-            
+
             // Refresh ScrollTrigger to ensure everything is set up correctly
             ScrollTrigger.refresh();
         }, 1000);
