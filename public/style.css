@@ -110,46 +110,6 @@ html, body{
     }
 }
 
-
-.content-container {
-    display: flex;
-  }
-  .content-container > * {
-    width: 100%;
-  }
-  
-  .right-content {
-    padding-right: 15px;
-  }
-  
-  .left-content {
-    height: 100vh;
-    position: relative;
-  }
-  
-  .left-content > * {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    opacity: 0;
-    visibility: hidden;
-  }
-  
-  @media screen and (max-width: 800px) {
-    .left-content {
-      display: none;
-    }
-    .right-content {
-      padding-left: 15px;
-    }
-  }
-  
-  .header-section {
-    text-align: center;
-    padding: 1rem 6rem;
-  }
-  
-
 /* Important dot styling - ensuring proper behavior */
 #dot {
     position: fixed !important;
