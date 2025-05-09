@@ -1,0 +1,371 @@
+Absolutely! The video you referenced demonstrates a **split-screen scroll-triggered pinning effect** using [GSAP ScrollTrigger](https://greensock.com/scrolltrigger/). This is a popular technique for modern websites, where one side scrolls with content and the other side pins and animates as you scroll.
+
+Below is a **Markdown guide** to help you implement this effect, including the basics of layout, GSAP/ScrollTrigger setup, staggered animation, and making it responsive. You can copy-paste this into your documentation or project README.
+
+---
+
+# Split-Screen ScrollTrigger Pinning Effect (GSAP)
+
+This guide shows you how to create a split-screen layout where the right side pins and animates as you scroll the left side, inspired by [this video tutorial](https://youtu.be/CQHvWqYXI5s).
+
+---
+
+## Demo
+
+- [CodePen Demo](https://codepen.io/snorkltv/pen/vYVBPJq?editors=0010) (from the video)
+
+---
+
+## 1. HTML Structure
+
+```html
+
+<div class="spacer"></div>
+
+<div class="gallery">
+	<div class="left">
+		<div class="desktopContent">
+			<div class="desktopContentSection">
+				<h1>Red</h1>
+				<p>Red is a color often associated with strong emotions such as passion, love, and anger. It's a bold and attention-grabbing color that can evoke feelings of excitement, warmth, and energy.</p>
+			</div>
+			<div class="desktopContentSection">
+				<h1>Green</h1>
+				<p>Green is a color that is often associated with nature, growth, and harmony. It is a calming and relaxing color that can evoke feelings of balance, stability, and freshness. In color psychology, green is said to represent balance and stability, making it a popular choice for branding and marketing in the health and wellness industry. </p>
+			</div>
+			<div class="desktopContentSection">
+				<h1>Pink</h1>
+				<p>Pink is a color that is often associated with femininity, romance, and sweetness. It is a softer and more delicate shade of red that can evoke feelings of warmth, love, and nurturing.</p>
+				<p>In the world of branding and marketing, pink is often used to target a female audience or to promote products that are associated with beauty, love, or romance.</p>
+				<p>Pink is also used in the food industry, as it is associated with sweetness and desserts. Pink is often used in breast cancer awareness campaigns, as it has become the signature color of the movement. </p><p>Pink is also commonly used in baby showers and weddings, as it symbolizes love, innocence, and new beginnings.</p>
+			</div>
+			<div class="desktopContentSection">
+				<h1>Blue</h1>
+				<p>Blue is a color that is often associated with calmness, trust, and reliability. It is a peaceful and serene color that can evoke feelings of stability, security, and professionalism. In color psychology, blue is said to represent loyalty and trust, making it a popular choice for branding and marketing in the finance and technology industries.</p>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="right">
+
+		<!-- mobile content -->
+		<div class="mobileContent">
+			<div class="mobilePhoto red"></div>
+			<h1>Red</h1>
+			<p>Red is a color often associated with strong emotions such as passion, love, and anger. It's a bold and attention-grabbing color that can evoke feelings of excitement, warmth, and energy.</p>
+
+			<div class="mobilePhoto green"></div>
+			<h1>Green</h1>
+			<p>Green is a color that is often associated with nature, growth, and harmony. It is a calming and relaxing color that can evoke feelings of balance, stability, and freshness. In color psychology, green is said to represent balance and stability, making it a popular choice for branding and marketing in the health and wellness industry. </p>
+
+			<div class="mobilePhoto pink"></div>
+			<h1>Pink</h1>
+			<p>Pink is a color that is often associated with femininity, romance, and sweetness. It is a softer and more delicate shade of red that can evoke feelings of warmth, love, and nurturing. In the world of branding and marketing, pink is often used to target a female audience or to promote products that are associated with beauty, love, or romance.</p>
+
+			<div class="mobilePhoto blue"></div>
+			<h1>Blue</h1>
+			<p>Blue is a color that is often associated with calmness, trust, and reliability. It is a peaceful and serene color that can evoke feelings of stability, security, and professionalism. In color psychology, blue is said to represent loyalty and trust, making it a popular choice for branding and marketing in the finance and technology industries.</p>
+		</div>
+
+		<!-- desktop content -->
+
+		<div class="desktopPhotos">
+			<div class="desktopPhoto red"></div>
+			<div class="desktopPhoto green"></div>
+			<div class="desktopPhoto pink"></div>
+			<div class="desktopPhoto blue"></div>
+		</div>
+
+	</div>
+</div>
+
+<div class="spacer"></div>
+<div class="spacer"></div>
+<div class="spacer"></div>
+```
+
+---
+
+## 2. CSS Layout
+
+```css
+body {
+	background:#EEF4FF;
+	margin:0;
+	font-family:sans-serif;
+	color:#333;
+}
+
+.spacer {
+	width:100%;
+	height:50vh;
+	background:#ddd;
+}
+
+
+.gallery h1 {
+	font-size:clamp(2em, 4vw, 6em);
+}
+
+.gallery p {
+	font-size:clamp(1.4em, 2.5vw, 3.5em);
+	line-height:1.4;
+}
+
+
+.gallery {
+  display:flex;	
+  /* outline:1px solid red; */
+}
+
+.left {
+	width:50%;
+}
+
+.right {
+	height:100vh;
+	/* outline:1px solid purple; */
+	width:50%;
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+}
+
+.desktopContent {
+	margin:auto;
+	width:80%;
+}
+
+.desktopContentSection {
+	min-height:100vh;
+	/* outline:1px solid green; */
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+}
+
+
+.desktopPhotos {
+	width:40vw;
+	height:40vw;
+	border-radius:20px;
+	position:relative;
+	overflow:hidden;
+	box-shadow:4px 4px 4px rgba(0, 0, 0, 0.4);
+}
+
+.desktopPhoto {
+	position:absolute;
+	width:100%;
+	height:100%;
+}
+
+
+
+
+.red {
+	background: crimson;
+}
+
+.green {
+	background:MediumSeaGreen;
+}
+
+.blue {
+	background:dodgerblue;
+}
+
+.pink{
+	background:deepPink;
+}
+
+
+/* small screen / mobile layout */
+.mobileContent {
+	display:none;
+	width:80vw;
+}
+
+.mobilePhoto {
+	width:80vw;
+	height:80vw;
+	margin-top:5em;
+	border-radius:6vw;
+}
+
+
+
+
+
+
+/* defines styles for screens up to 599px wide */
+@media screen and (max-width: 599px) {
+	.left {
+		display:none;
+	}
+	
+	.right {
+		height:auto;
+		width:100%;
+		align-items:center;	
+	}	
+	
+	.desktopPhotos {
+		display:none;
+	}
+	
+	.mobileContent {
+		display:block;
+	}
+	
+
+}
+
+```
+
+---
+
+## 3. GSAP & ScrollTrigger Setup
+
+Include GSAP and ScrollTrigger via CDN:
+
+```html
+
+
+```
+
+---
+
+## 4. JavaScript: Pinning and Animations
+
+```js
+// learn what all this code means at
+// https://www.creativecodingclub.com/bundles/creative-coding-club
+// unlock over 250 GSAP lessons today
+
+
+const details = gsap.utils.toArray(".desktopContentSection:not(:first-child)")
+const photos = gsap.utils.toArray(".desktopPhoto:not(:first-child)")
+
+
+gsap.set(photos, {yPercent:101})
+
+const allPhotos = gsap.utils.toArray(".desktopPhoto")
+
+
+// create
+let mm = gsap.matchMedia();
+
+// add a media query. When it matches, the associated function will run
+mm.add("(min-width: 600px)", () => {
+
+  // this setup code only runs when viewport is at least 600px wide
+  console.log("desktop")
+	
+  ScrollTrigger.create({
+	trigger:".gallery",
+	start:"top top",
+	end:"bottom bottom",
+	pin:".right"
+})
+
+//create scrolltrigger for each details section
+//trigger photo animation when headline of each details section 
+//reaches 80% of window height
+details.forEach((detail, index)=> {
+
+	let headline = detail.querySelector("h1")
+	let animation = gsap.timeline()
+	   .to(photos[index], {yPercent:0})
+	   .set(allPhotos[index], {autoAlpha:0})
+	ScrollTrigger.create({
+		trigger:headline,
+		start:"top 80%",
+		end:"top 50%",
+		animation:animation,
+		scrub:true,
+		markers:false
+	})
+})
+	
+	
+  
+  return () => { // optional
+    // custom cleanup code here (runs when it STOPS matching)
+	  console.log("mobile")
+  };
+});
+
+
+/* ScrollTrigger Docs
+
+https://greensock.com/docs/v3/Plugins/ScrollTrigger
+
+*/
+
+```
+
+---
+
+## 5. Responsive Design
+
+Switch to a single-column layout and disable pinning on small screens:
+
+```css
+@media (max-width: 800px) {
+  .container {
+    flex-direction: column;
+  }
+  .right {
+    position: static;
+    width: 100%;
+  }
+  .photo {
+    position: static;
+    width: 100%;
+    height: 200px;
+    margin-bottom: 1rem;
+  }
+}
+```
+
+And in JS, use `gsap.matchMedia`:
+
+```js
+let mm = gsap.matchMedia();
+
+mm.add("(min-width: 801px)", () => {
+  // Pinning and animation code here
+});
+
+mm.add("(max-width: 800px)", () => {
+  // Optional: reset any pinning/animation if needed
+});
+```
+
+---
+
+## 6. Tips
+
+- Make sure the number of `.photo` elements matches the number of `.details` sections.
+- Adjust the `start` and `end` triggers for custom effects.
+- Use [GSAP docs](https://greensock.com/docs/) for more advanced options.
+
+---
+
+## References
+
+- [GSAP ScrollTrigger Docs](https://greensock.com/scrolltrigger/)
+- [Original Video Tutorial](https://youtu.be/CQHvWqYXI5s)
+- [Demo CodePen](https://codepen.io/snorkltv/pen/vYVBPJq?editors=0010)
+
+---
+
+Feel free to copy, adapt, and expand this template for your project! If you need a working starter file or more advanced features, just ask!
+
+Citations:
+[1] https://www.youtube.com/watch?v=CQHvWqYXI5s
+
+---
+Answer from Perplexity: https://www.perplexity.ai/search/https-youtu-be-cqhvwqyxi5s-si-M1_hNKu1RcKX7AHGD2Gp2w?utm_source=copy_output

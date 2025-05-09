@@ -1,10 +1,11 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import Dot from "../components/Dot.astro";
 import CustomLink from "../components/CustomLink.astro";
 import Split from "../components/Split.astro";
-import About from "../components/About.astro";
+import AboutComponent from "../components/About.astro";
 
 // Define menu items for the sidebar (same as index page)
 const menuItems = [
@@ -113,114 +114,99 @@ const education = [
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About | JX7 Portfolio</title>
+<BaseLayout title="About | JX7 Portfolio">
+  <!-- Using the Dot component for cursor -->
+  <Dot />
 
-    <!-- External CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://api.fontshare.com/v2/css?f[]=general-sans@500,400&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://api.fontshare.com/v2/css?f[]=space-grotesk@500,400&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Navigation -->
+  <Nav {menuItems} {brandLinks} />
 
-    <!-- Favicon and custom CSS -->
-    <link rel="shortcut icon" href="./icon.ico" />
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-
-  <body class="bg-black text-white">
-    <!-- Using the Dot component for cursor -->
-    <Dot />
-
-    <!-- Main content container -->
-    <main
-      id="main"
-      class="w-full min-h-screen bg-black px-10"
-      data-scroll-container
+  <!-- About Header Section -->
+  <section class="mt-10 pb-10">
+    <div
+      class="font-bold font-space-grotesk w-full h-fit gap-10 flex flex-col items-center justify-center"
     >
-      <!-- Navigation -->
-      <Nav {menuItems} {brandLinks} />
+      <span>
+        <Split text="MORE ABOUT " />
+        <Split text="JXLEE" />
+      </span>
 
-      <!-- About Header Section -->
-      <section class="mt-10 pb-10">
-        <div
-          class="font-bold font-space-grotesk w-full h-fit gap-10 flex flex-col items-center justify-center"
-        >
-          <span>
-            <Split text="MORE ABOUT " />
-            <Split text="JXLEE" />
-          </span>
-
-          <p
-            class="w-2/3 text-zinc-400 leading-relaxed text-xl mt-4 text-center tracking-wide font-light"
-          >
-            UNLEASH YOUR CREATIVITY. SHOWCASE YOU WORK AND <br />
-            HIGHLIGHT YOUR UNIQUE SKILLS TO ATTRACT NEW CLIENTS.
-          </p>
-        </div>
-      </section>
-
-      <!-- Statistics Section -->
-      <section
-        class="grid grid-cols-4 gap-4 px-10 py-6 border-y border-zinc-800"
+      <p
+        class="w-2/3 text-zinc-400 leading-relaxed text-xl mt-4 text-center tracking-wide font-light"
       >
-        {
-          stats.map((stat) => (
-            <div class="flex flex-col">
-              <h2 class="text-3xl md:text-5xl font-bold font-space-grotesk">
-                {stat.value}
-              </h2>
-              <span class="text-zinc-400 uppercase text-sm">{stat.label}</span>
-            </div>
-          ))
-        }
-      </section>
+        UNLEASH YOUR CREATIVITY. SHOWCASE YOU WORK AND <br />
+        HIGHLIGHT YOUR UNIQUE SKILLS TO ATTRACT NEW CLIENTS.
+      </p>
+    </div>
+  </section>
 
-      <section>
-
-        div
-
-        <div id="pinlist">
-          <div class="pinlist"></div>
-          <div class="pinlist"></div>
-          <div class="pinlist"></div>
-          <div class="pinlist"></div>
+  <!-- Statistics Section -->
+  <section
+    class="grid grid-cols-4 gap-4 px-10 py-6 border-y border-zinc-800"
+  >
+    {
+      stats.map((stat) => (
+        <div class="flex flex-col">
+          <h2 class="text-3xl md:text-5xl font-bold font-space-grotesk">
+            {stat.value}
+          </h2>
+          <span class="text-zinc-400 uppercase text-sm">{stat.label}</span>
         </div>
+      ))
+    }
+  </section>
 
+  <section
+    class="content flex flex-row gap-20 bg-red-500 py-10"
+  >
+    <!-- Left Column -->
+    <div
+      id="pinlist"
+      class="left border-2 border-white  w-2/6 items-start justify-center"
+    >
+      <div class="pinlist">About me</div>
+      <div class="pinlist">profileSummary</div>
+      <div class="pinlist">experience</div>
+      <div class="pinlist"></div>
+    </div>
 
-      </section>
+    <div class="h-full w-4/6 flex flex-col">
+      <!-- Right Column -->
+      <div
+        class=" border-2 border-white w-4/6 h-screen items-end justify-center"
+      >
+      </div>
 
-      <About /> 
+      <div
+        class="border-2 border-green-400 w-4/6 h-screen items-end justify-center"
+      >
+      </div>
 
-      <Footer />
-    </main>
+      <div
+        class="border-2 border-blue-400 w-4/6 h-screen items-end justify-center"
+      >
+      </div>
+    </div>
+  </section>
 
-        <!-- Scripts for animation and interaction -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"
-            is:inline></script>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
-            is:inline></script>
-        <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
-            is:inline></script>
-        <script src="/scripts/script.js" is:inline></script>
+  <AboutComponent />
 
-  </body>
-</html>
+  <Footer />
+  
+  <script is:inline>
+    // Add to window.initPageScripts to be called on page transitions
+    window.initPageScripts = () => {
+      ScrollTrigger.create({
+        trigger: ".content",
+        start: "top top",
+        end: "bottom bottom",
+        pin: ".left",
+        pinSpacing: true,
+        markers: true,
+      });
+    };
+    
+    // Call immediately on first load
+    window.initPageScripts();
+  </script>
+</BaseLayout>

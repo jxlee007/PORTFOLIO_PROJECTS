@@ -1,0 +1,94 @@
+---
+// BaseLayout.astro - Main layout component with Swup page transitions
+const { title = "JX7 Portfolio - Creative Developer & AI Builder" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+
+    <!-- External CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=general-sans@500,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=space-grotesk@500,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon and custom CSS -->
+    <link rel="shortcut icon" href="/icon.ico" />
+    <link rel="stylesheet" href="/style.css" />
+    
+    <!-- Swup transition styles -->
+    <style>
+      .transition-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 999;
+        background-color: #000;
+        pointer-events: none;
+        transform: translateY(-100%);
+      }
+    </style>
+  </head>
+
+  <body class="bg-black text-white">
+    <!-- Transition overlay element for Swup -->
+    <div class="transition-overlay" data-swup-overlay></div>
+    
+    <!-- Main content container that Swup will replace between pages -->
+    <main id="main" class="w-full min-h-screen bg-black px-10" data-swup="container">
+      <slot />
+    </main>
+
+    <!-- Scripts for animation and interaction -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"
+      is:inline></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+      is:inline></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+      is:inline></script>
+    <script src="/scripts/script.js" is:inline></script>
+    
+    <!-- Initialize Swup with overlay theme -->
+    <script type="module">
+      import Swup from 'https://unpkg.com/swup@latest/dist/swup.esm.js';
+      import OverlayTheme from 'https://unpkg.com/@swup/overlay-plugin@1.1.0/dist/OverlayTheme.esm.js';
+      
+      const swup = new Swup({
+        plugins: [new OverlayTheme({
+          color: '#000',
+          duration: 600,
+          direction: 'to-bottom'
+        })]
+      });
+      
+      // Reinitialize scripts after page change
+      swup.on('contentReplaced', () => {
+        // You can reinitialize your scripts here
+        if (window.initPageScripts) {
+          window.initPageScripts();
+        }
+      });
+    </script>
+  </body>
+</html>

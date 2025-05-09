@@ -14,7 +14,13 @@ html, body{
     background-color: #fff;
     color: #000;
     /* cursor: none; */
+    --swup-overlay-theme-color: #2D2E82;
+    --swup-overlay-theme-duration: .6s;
+    --swup-overlay-theme-delay: .2s;
+    --swup-overlay-theme-scale: 1.2;
+    --swup-overlay-theme-skew: 5deg;
 }
+
 
 #footer h1 span{
     display: inline-block;
@@ -109,6 +115,10 @@ html, body{
         transform-origin: left;
     }
 }
+
+.swup-transition-overlay {
+    background: linear-gradient(45deg, rgb(131,58,180), rgb(253,29,29), rgb(252,176,69));
+  }
 
 /* Important dot styling - ensuring proper behavior */
 #dot {
