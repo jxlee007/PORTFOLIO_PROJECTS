@@ -2,7 +2,6 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
-import Dot from "../components/Dot.astro";
 import CustomLink from "../components/CustomLink.astro";
 import Split from "../components/Split.astro";
 import AboutComponent from "../components/About.astro";
@@ -115,9 +114,6 @@ const education = [
 ---
 
 <BaseLayout title="About | JX7 Portfolio">
-  <!-- Using the Dot component for cursor -->
-  <Dot />
-
   <!-- Navigation -->
   <Nav {menuItems} {brandLinks} />
 

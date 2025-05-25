@@ -17,49 +17,12 @@ const {
 
 <div
     id="dot"
-    class={`fixed z-[99999] bg-${color} rounded-full mix-blend-${blendMode} pointer-events-none`}
-    style={`width: ${size}; height: ${size};`}
+    class={`fixed z-[${zIndex}] bg-${color} rounded-full mix-blend-${blendMode} pointer-events-none`}
+    style={`width: ${size}; height: ${size}; top: 0; left: 0;`}
 ></div>
 
 <script>
     import { gsap } from "gsap";
-
-    // Create a smooth moving dot cursor with improved performance
-function initFollowCursor() {
-    const dot = document.getElementById("dot");
-    let mouseX = 0;
-    let mouseY = 0;
-    let currentX = 0;
-    let currentY = 0;
-
-    // Set initial position
-    dot.style.transform = 'translate(-50%, -50%)';
-
-    // Track mouse position
-    document.addEventListener("mousemove", e => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-
-    // Separate animation loop for smooth movement
-    function animateDot() {
-        // Calculate smooth movement - adjust the 0.1 value for different follow speeds
-        // Lower = slower/smoother, higher = faster/more direct
-        const speed = 0.5;
-        currentX += (mouseX - currentX) * speed;
-        currentY += (mouseY - currentY) * speed;
-
-        // Apply position with fixed transform for centering
-        dot.style.left = `${currentX}px`;
-        dot.style.top = `${currentY}px`;
-
-        // Continue animation loop
-        requestAnimationFrame(animateDot);
-    }
-
-    // Start animation loop
-    animateDot();
-}
 
     function interactiveDot() {
         const dot = document.getElementById("dot");
@@ -133,7 +96,17 @@ function initFollowCursor() {
             });
         });
 
-        document.addEventListener("mousemove", (e) => {
+        // Cursor following functionality
+        let mouseX = 0;
+        let mouseY = 0;
+        let currentX = 0;
+        let currentY = 0;
+
+        // Listen to mousemove on window and use pageX/pageY for full-page tracking
+        window.addEventListener("mousemove", (e) => {
+            mouseX = e.pageX;
+            mouseY = e.pageY;
+
             let nearElement = false;
             hoverElements.forEach((elem) => {
                 if (!elem) return;
@@ -142,7 +115,6 @@ function initFollowCursor() {
                 const dy = e.clientY - (rect.top + rect.height / 2);
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 if (distance < 50) {
-                    // Adjust threshold as needed
                     nearElement = true;
                 }
             });
@@ -163,11 +135,29 @@ function initFollowCursor() {
                 });
             }
         });
+
+        // Smooth cursor following animation
+        function animateDot() {
+            const speed = 0.15;
+            currentX += (mouseX - currentX) * speed;
+            currentY += (mouseY - currentY) * speed;
+
+            gsap.set(dot, {
+                x: currentX,
+                y: currentY,
+                xPercent: -50,
+                yPercent: -50
+            });
+
+            requestAnimationFrame(animateDot);
+        }
+
+        // Start animation loop
+        animateDot();
     }
 
     // Initialize when DOM is ready
     document.addEventListener("DOMContentLoaded", function () {
-        initFollowCursor();
         interactiveDot();
     });
 </script>

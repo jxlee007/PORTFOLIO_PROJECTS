@@ -2,7 +2,6 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
-import Dot from "../components/Dot.astro";
 import CustomLink from "../components/CustomLink.astro";
 
 // Define menu items for the sidebar
@@ -23,9 +22,6 @@ const brandLinks = [
 ---
 
 <BaseLayout title="CONTACT-JX7">
-    <!-- Using the Dot component instead of hard-coded cursor dot -->
-    <Dot />
-
     <!-- Hero section with just the navigation -->
     <div id="hero" class="w-full h-screen flex flex-col my-4">
         <Nav {menuItems} {brandLinks} />
@@ -198,7 +194,7 @@ const brandLinks = [
     </div>
 
     <!-- Footer section -->
-    <div class="pt-20 border-t border-gray-800">
+    <div class="pt-20">
         <Footer goHref="#hero" title="JAGMOHAN" />
     </div>
 </BaseLayout>

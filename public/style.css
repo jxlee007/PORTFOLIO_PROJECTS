@@ -1,32 +1,28 @@
 /* reference/style.css */
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+
 }
 
-html, body{
+html,
+body {
     height: 100%;
     width: 100%;
     font-family: 'Space Grotesk', sans-serif;
     background-color: #fff;
     color: #000;
     /* cursor: none; */
-    --swup-overlay-theme-color: #2D2E82;
-    --swup-overlay-theme-duration: .6s;
-    --swup-overlay-theme-delay: .2s;
-    --swup-overlay-theme-scale: 1.2;
-    --swup-overlay-theme-skew: 5deg;
 }
 
 
-#footer h1 span{
+#footer h1 span {
     display: inline-block;
 }
 
-#loader{
+#loader {
     height: 100%;
     width: 100%;
     background-color: #000;
@@ -39,48 +35,91 @@ html, body{
     justify-content: center;
 }
 
-#loader h1{
+#loader h1 {
     font-size: 4vw;
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 900;
     text-transform: uppercase;
     color: transparent;
-    background: linear-gradient(to right,white,gray);
+    background: linear-gradient(to right, white, gray);
+    background-clip: text;
     -webkit-background-clip: text;
     position: absolute;
     opacity: 0;
     animation: load 1s 1s linear;
 }
-#loader h1:nth-child(2){
+
+#loader h1:nth-child(2) {
     animation-delay: 2s;
 }
-#loader h1:nth-child(3){
+
+#loader h1:nth-child(3) {
     animation-delay: 3s;
 }
-#loader h1:nth-child(4){
+
+#loader h1:nth-child(4) {
     animation-delay: 4s;
 }
 
 @keyframes load {
-    0%{
+    0% {
         opacity: 0;
     }
-    10%{
+
+    10% {
         opacity: 1;
     }
-    90%{
+
+    90% {
         opacity: 1;
     }
-    100%{
+
+    100% {
         opacity: 0;
     }
 }
 
 @media (max-width:600px) {
-    #loader h1{
+    #loader h1 {
         font-size: 10vw;
     }
 }
+
+.transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background-color: #000;
+    /* This is also set by the plugin's 'color' option */
+    pointer-events: none;
+
+    opacity: 0;
+    /* Initial transform for 'to-bottom' direction; plugin starts it at -100% */
+    transform: translateY(-100%);
+    /* The plugin will set its own transition for transform. We add one for opacity. */
+    transition: opacity 800ms ease-in-out;
+    /* Match plugin's duration */
+}
+
+.transition-overlay.is-active {
+    opacity: 1;
+    /* The OverlayTheme plugin handles animating the transform (e.g., to translateY(0)) 
+           when this class is active, and then animates it out (e.g., to translateY(100%)) 
+           before removing the class. */
+}
+
+/* 
+        The following rules that were previously here for 
+        html.is-changing .transition-overlay, 
+        html.is-animating .transition-overlay,
+        html.is-rendering .transition-overlay
+        have been removed as the OverlayTheme plugin manages the overlay's 
+        slide animation and 'is-active' state directly.
+      */
+
 
 /* Custom animations and transitions that Tailwind doesn't directly support */
 @layer utilities {
@@ -116,21 +155,19 @@ html, body{
     }
 }
 
-.swup-transition-overlay {
-    background: linear-gradient(45deg, rgb(131,58,180), rgb(253,29,29), rgb(252,176,69));
-  }
-
 /* Important dot styling - ensuring proper behavior */
 #dot {
     position: fixed !important;
-    transform: translate(-50%, -50%) !important;
     pointer-events: none !important;
-    transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
     z-index: 99999 !important;
     mix-blend-mode: difference;
+    top: 0;
+    left: 0;
+    /* Remove any default transform here, GSAP will handle it */
 }
 
 @layer base {
+
     /* Apply font-family directly to headings and #heading */
     #heading {
         font-family: 'Space Grotesk', sans-serif;

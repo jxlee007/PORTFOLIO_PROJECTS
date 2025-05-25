@@ -5,7 +5,6 @@ import Second from "../components/Second.astro";
 import Third from "../components/Third.astro";
 import About from "../components/About.astro";
 import Footer from "../components/Footer.astro";
-import Dot from "../components/Dot.astro";
 
 // Define menu items for the sidebar
 const menuItems = [
@@ -25,9 +24,6 @@ const brandLinks = [
 ---
 
 <BaseLayout title="JX7 Portfolio - Creative Developer & AI Builder">
-  <!-- Using the Dot component instead of hard-coded cursor dot -->
-  <Dot />
-
   <!-- Hero Section with Nav -->
   <Hero {menuItems} {brandLinks} />
 
