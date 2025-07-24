@@ -1,0 +1,214 @@
+/* reference/style.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #fff;
+    color: #000;
+    /* cursor: none; */
+}
+
+
+#footer h1 span {
+    display: inline-block;
+}
+
+#loader {
+    height: 100%;
+    width: 100%;
+    background-color: #000;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    transition: all ease 0.7s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#loader h1 {
+    font-size: 4vw;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: transparent;
+    background: linear-gradient(to right, white, gray);
+    background-clip: text;
+    -webkit-background-clip: text;
+    position: absolute;
+    opacity: 0;
+    animation: load 1s 1s linear;
+}
+
+#loader h1:nth-child(2) {
+    animation-delay: 2s;
+}
+
+#loader h1:nth-child(3) {
+    animation-delay: 3s;
+}
+
+#loader h1:nth-child(4) {
+    animation-delay: 4s;
+}
+
+@keyframes load {
+    0% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@media (max-width:600px) {
+    #loader h1 {
+        font-size: 10vw;
+    }
+}
+
+.transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background-color: #000;
+    /* This is also set by the plugin's 'color' option */
+    pointer-events: none;
+
+    opacity: 0;
+    /* Initial transform for 'to-bottom' direction; plugin starts it at -100% */
+    transform: translateY(-100%);
+    /* The plugin will set its own transition for transform. We add one for opacity. */
+    transition: opacity 800ms ease-in-out;
+    /* Match plugin's duration */
+}
+
+.transition-overlay.is-active {
+    opacity: 1;
+    /* The OverlayTheme plugin handles animating the transform (e.g., to translateY(0)) 
+           when this class is active, and then animates it out (e.g., to translateY(100%)) 
+           before removing the class. */
+}
+
+/* 
+        The following rules that were previously here for 
+        html.is-changing .transition-overlay, 
+        html.is-animating .transition-overlay,
+        html.is-rendering .transition-overlay
+        have been removed as the OverlayTheme plugin manages the overlay's 
+        slide animation and 'is-active' state directly.
+      */
+
+
+/* Custom animations and transitions that Tailwind doesn't directly support */
+@layer utilities {
+
+    /* Custom animations */
+    .custom-transition {
+        transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.8s;
+    }
+
+    /* Custom underline animation */
+    .custom-underline {
+        position: relative;
+        display: inline-block;
+        padding-bottom: 5px;
+    }
+
+    .custom-underline::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #fff;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .custom-underline:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+}
+
+/* Important dot styling - ensuring proper behavior */
+#dot {
+    position: fixed !important;
+    pointer-events: none !important;
+    z-index: 99999 !important;
+    mix-blend-mode: difference;
+    top: 0;
+    left: 0;
+    /* Remove any default transform here, GSAP will handle it */
+}
+
+@layer base {
+
+    /* Apply font-family directly to headings and #heading */
+    #heading {
+        font-family: 'Space Grotesk', sans-serif;
+    }
+}
+
+a {
+    position: relative;
+    color: #222;
+    text-decoration: none;
+    overflow: hidden;
+    display: inline-block;
+    padding: 0.25em 0.75em;
+    transition: color 0.3s ease;
+    border-radius: 20px;
+}
+
+#reload a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: 100%;
+    background: #fff;
+    z-index: 0;
+    transition: width 0.4s cubic-bezier(.77, 0, .18, 1);
+}
+
+#reload a:hover::before,
+#reload a:focus::before {
+    width: 100%;
+}
+
+#reload a span {
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s;
+}
+
+#reload a:hover span,
+#reload a:focus span {
+    color: #111;
+}
