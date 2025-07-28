@@ -33,21 +33,52 @@ locoScroll = () => {
 };
 locoScroll();
 
-// Add event listener for 'go' button if it exists
-const goButton = document.getElementById('go');
-if (goButton) {
-    goButton.addEventListener('click', () => {
-        if (locoScrollInstance) {
-            locoScrollInstance.scrollTo(0, {
-                duration: 1000, // duration in ms
-                easing: [0.25, 0.0, 0.35, 1.0] // optional easing (cubic-bezier)
-            });
-        }
-    });
+// Back to top button functionality
+const backToTopButton = document.getElementById('back-to-top');
+
+function toggleBackToTopButton() {
+    if (!backToTopButton) return;
+    
+    // Use LocomotiveScroll's scroll position if available, otherwise fallback to window.scrollY
+    const scrollY = locoScrollInstance ? locoScrollInstance.scroll.instance.scroll.y : window.scrollY;
+    
+    if (scrollY > 300) {
+        backToTopButton.classList.remove('opacity-0', 'invisible');
+        backToTopButton.classList.add('opacity-100', 'visible');
+    } else {
+        backToTopButton.classList.add('opacity-0', 'invisible');
+        backToTopButton.classList.remove('opacity-100', 'visible');
+    }
 }
 
+function scrollToTop() {
+    if (locoScrollInstance) {
+        locoScrollInstance.scrollTo(0, {
+            duration: 1000,
+            easing: [0.25, 0.0, 0.35, 1.0]
+        });
+    } else {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+}
 
+// Add scroll listener for LocomotiveScroll
+if (locoScrollInstance) {
+    locoScrollInstance.on("scroll", toggleBackToTopButton);
+} else {
+    window.addEventListener('scroll', toggleBackToTopButton);
+}
 
+// Add click event listener for back to top button
+if (backToTopButton) {
+    backToTopButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        scrollToTop();
+    });
+}
 
 function initAnimations() {
     const tl = gsap.timeline();
@@ -204,10 +235,10 @@ form = () => {
                     scroller: "#main",  // This is important - use the LocomotiveScroll container
                     start: "top 20%",
                     endTrigger: "#contact",
-                    end: "top 105%", // Changed from "top bottom" to "center bottom" to extend pinning
+                    end: "top 20%", // Changed from "top bottom" to "center bottom" to extend pinning
                     pin: true,
-                    pinSpacing: true,
-                    // markers: true
+                    // pinSpacing: true,
+                    markers: true
                 });
 
                 // Refresh ScrollTrigger to ensure everything is set up correctly
@@ -219,4 +250,4 @@ form = () => {
     });
 
 }
-form();
+// form();

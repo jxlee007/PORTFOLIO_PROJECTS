@@ -23,15 +23,15 @@ const { menuItems, brandLinks } = Astro.props;
 <div id="hero" class="relative w-full h-screen">
   <Nav {menuItems} {brandLinks} />
 
-  <div id="heading" class="mt-16 mx-auto text-center display-grid place-items-center uppercase">
+  <div id="heading" class="mt-8 md:mt-16 mx-auto text-center display-grid place-items-center uppercase px-4 md:px-0">
     <div class="box w-fit overflow-hidden">
-      <h5 class="boxelem text-xl font-space-grotesk">
+      <h5 class="boxelem text-sm md:text-xl font-space-grotesk">
         Available for freelance
       </h5>
     </div>
     
     <div class="box w-fit overflow-hidden mx-auto">
-      <h1 class="boxelem text-[10vw] font-semibold leading-normal text-white opacity-90 font-space-grotesk">
+      <h1 class="boxelem text-[15vw] md:text-[10vw] font-semibold leading-normal text-white opacity-90 font-space-grotesk">
         <span>J</span>
         <span>X</span>
         <span>L</span>
@@ -42,7 +42,7 @@ const { menuItems, brandLinks } = Astro.props;
 
     <div class="block flex-col items-end w-fit mx-auto">
       <div class="box w-fit overflow-hidden">
-        <h1 class="boxelem text-[10vw] font-semibold leading-[0.9] text-white opacity-90 font-space-grotesk" id="sec">
+        <h1 class="boxelem text-[15vw] md:text-[10vw] font-semibold leading-[0.9] text-white opacity-90 font-space-grotesk" id="sec">
           <span>0</span>
           <span>0</span>
           <span>7</span>
@@ -51,12 +51,12 @@ const { menuItems, brandLinks } = Astro.props;
     </div>
   </div>
 
-  <div id="herofooter" class="w-full text-lg absolute bottom-10 flex items-center justify-between">
-    <CustomLink href="#" underline={true} className="uppercase text-white">
+  <div id="herofooter" class="w-full text-sm md:text-lg absolute bottom-4 md:bottom-10 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0 px-4 md:px-0">
+    <CustomLink href="#" underline={true} className="uppercase text-white text-center md:text-left">
       <span>Based in India</span><i class="ri-arrow-right-up-line ml-1"></i>
     </CustomLink>
-    <CustomLink href="/about" underline={true} className="uppercase text-white">
-      <span>&sol; &sol; &sol; AI Builder + Creative Developer</span>
+    <CustomLink href="/about" underline={true} className="uppercase text-white text-center md:text-right">
+      <span class="hidden md:inline">&sol; &sol; &sol; </span>AI Builder + Creative Developer
     </CustomLink>
   </div>
 </div>

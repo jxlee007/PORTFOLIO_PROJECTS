@@ -118,19 +118,19 @@ const education = [
   <Nav {menuItems} {brandLinks} />
 
   <!-- About Header Section -->
-  <section class="mt-10 pb-10">
+  <section class="mt-6 md:mt-10 pb-6 md:pb-10 px-4 md:px-0">
     <div
-      class="font-bold font-space-grotesk w-full h-fit gap-10 flex flex-col items-center justify-center"
+      class="font-bold font-space-grotesk w-full h-fit gap-6 md:gap-10 flex flex-col items-center justify-center"
     >
-      <span>
+      <span class="text-center">
         <Split text="MORE ABOUT " />
         <Split text="JXLEE" />
       </span>
 
       <p
-        class="w-2/3 text-zinc-400 leading-relaxed text-xl mt-4 text-center tracking-wide font-light"
+        class="w-full md:w-2/3 text-zinc-400 leading-relaxed text-lg md:text-xl mt-4 text-center tracking-wide font-light px-4 md:px-0"
       >
-        UNLEASH YOUR CREATIVITY. SHOWCASE YOU WORK AND <br />
+        UNLEASH YOUR CREATIVITY. SHOWCASE YOU WORK AND <br class="hidden md:block" />
         HIGHLIGHT YOUR UNIQUE SKILLS TO ATTRACT NEW CLIENTS.
       </p>
     </div>
@@ -138,27 +138,27 @@ const education = [
 
   <!-- Statistics Section -->
   <section
-    class="grid grid-cols-4 gap-4 px-10 py-6 border-y border-zinc-800"
+    class="grid grid-cols-2 md:grid-cols-4 gap-4 px-4 md:px-10 py-4 md:py-6 border-y border-zinc-800"
   >
     {
       stats.map((stat) => (
-        <div class="flex flex-col">
-          <h2 class="text-3xl md:text-5xl font-bold font-space-grotesk">
+        <div class="flex flex-col text-center md:text-left">
+          <h2 class="text-2xl md:text-3xl lg:text-5xl font-bold font-space-grotesk">
             {stat.value}
           </h2>
-          <span class="text-zinc-400 uppercase text-sm">{stat.label}</span>
+          <span class="text-zinc-400 uppercase text-xs md:text-sm">{stat.label}</span>
         </div>
       ))
     }
   </section>
 
   <section
-    class="content flex flex-row gap-20 bg-red-500 py-10"
+    class="content flex flex-col lg:flex-row gap-10 md:gap-20 bg-red-500 py-6 md:py-10 px-4 md:px-0"
   >
     <!-- Left Column -->
     <div
       id="pinlist"
-      class="left border-2 border-white  w-2/6 items-start justify-center"
+      class="left border-2 border-white w-full lg:w-2/6 items-start justify-center"
     >
       <div class="pinlist">About me</div>
       <div class="pinlist">profileSummary</div>
@@ -166,20 +166,20 @@ const education = [
       <div class="pinlist"></div>
     </div>
 
-    <div class="h-full w-4/6 flex flex-col">
+    <div class="h-full w-full lg:w-4/6 flex flex-col">
       <!-- Right Column -->
       <div
-        class=" border-2 border-white w-4/6 h-screen items-end justify-center"
+        class="border-2 border-white w-full lg:w-4/6 h-screen items-end justify-center"
       >
       </div>
 
       <div
-        class="border-2 border-green-400 w-4/6 h-screen items-end justify-center"
+        class="border-2 border-green-400 w-full lg:w-4/6 h-screen items-end justify-center"
       >
       </div>
 
       <div
-        class="border-2 border-blue-400 w-4/6 h-screen items-end justify-center"
+        class="border-2 border-blue-400 w-full lg:w-4/6 h-screen items-end justify-center"
       >
       </div>
     </div>
@@ -192,17 +192,26 @@ const education = [
   <script is:inline>
     // Add to window.initPageScripts to be called on page transitions
     window.initPageScripts = () => {
-      ScrollTrigger.create({
-        trigger: ".content",
-        start: "top top",
-        end: "bottom bottom",
-        pin: ".left",
-        pinSpacing: true,
-        markers: true,
-      });
+      // Only create ScrollTrigger on larger screens
+      if (window.innerWidth >= 1024) {
+        ScrollTrigger.create({
+          trigger: ".content",
+          start: "top top",
+          end: "bottom bottom",
+          pin: ".left",
+          pinSpacing: true,
+          markers: true,
+        });
+      }
     };
     
     // Call immediately on first load
     window.initPageScripts();
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      setTimeout(window.initPageScripts, 100);
+    });
   </script>
 </BaseLayout>

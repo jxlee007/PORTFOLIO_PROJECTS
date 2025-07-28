@@ -2,13 +2,17 @@
 // BaseLayout.astro - Main layout component
 import Dot from '../components/Dot.astro';
 const { title = "JX7 Portfolio - Creative Developer & AI Builder" } = Astro.props;
+
+
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="JX7 Portfolio - Creative Developer & AI Builder showcasing innovative web experiences" />
+    <meta name="theme-color" content="#000000" />
     <title>{title}</title>
 
     <!-- External CSS -->
@@ -32,6 +36,7 @@ const { title = "JX7 Portfolio - Creative Developer & AI Builder" } = Astro.prop
     <!-- Favicon and custom CSS -->
     <link rel="shortcut icon" href="/icon.ico" />
     <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/responsive.css" />
     
   </head>
 
@@ -47,7 +52,7 @@ const { title = "JX7 Portfolio - Creative Developer & AI Builder" } = Astro.prop
     <Dot />
 
     <!-- Main content container -->
-    <main id="main" class="w-full min-h-screen bg-black px-10">
+    <main id="main" class="w-full min-h-screen bg-black px-4 md:px-10">
       <slot />
     </main>
 

@@ -1,49 +1,131 @@
 ---
-import Link from './Link.astro';
-import CustomLink from './CustomLink.astro';
+import Link from "./Link.astro";
+import CustomLink from "./CustomLink.astro";
+import Pixelcard from "./Pixelcard.astro";
+
+const pixelArtLinks = [
+  "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWZtMGU2cmJsdHRxaGx4OXF2cWE4enhyZnp4c2lqNGc1cWd6dXk2eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lkceXNDw4Agryfrwz8/giphy.gif",
+  "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbTVkamt6NWNscHFoZ3ZjemIzcmdoMXQzcngwMW83NDM2ZGVrcTQ3MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/10GVNnqO2ZoAh2/giphy.gif",
+  "https://i.pinimg.com/originals/39/40/aa/3940aa8921a234fb8c0d63063186bc1c.gif",
+  "https://i.pinimg.com/originals/c8/97/1f/c8971ffc6d60b7399b0fbdd4ddede7b9.gif",
+  "https://i.pinimg.com/originals/4c/51/c8/4c51c880d4f87336f5ee686654eb10fc.gif",
+  "https://mir-s3-cdn-cf.behance.net/project_modules/disp/5f2185107300061.5fa3d6a0a2db9.gif",
+  "https://cdnb.artstation.com/p/assets/images/images/049/826/519/original/elyse-miyake-csbackground.gif?1653413753",
+  "https://c.tenor.com/rrR6Sw3rbFIAAAAC/tenor.gif",
+  "https://i.pinimg.com/originals/72/bd/bd/72bdbd20d38ab581aba4eac36a94ffae.gif",
+  "https://i.imgur.com/9cd4GXm.gif",
+  "https://i.pinimg.com/originals/07/af/d8/07afd895751c9c58a20d1227a5e437d2.gif",
+  "https://theawesomer.com/photos/2015/09/animations_by_kirokaze_3.gif",
+  "https://theawesomer.com/photos/2015/09/animations_by_kirokaze_6.gif",
+  "https://mir-s3-cdn-cf.behance.net/project_modules/disp/05bcbe36673071.5724e5962f04b.gif",
+  "https://i.imgur.com/HkGZZtJ.gif",
+  "https://i.imgur.com/9TvD3ud.gif",
+  "https://i.redd.it/a9o4m7iozwv61.gif",
+  "https://i.redd.it/37rm6bbozwv61.gif",
+  "https://i.redd.it/grusq8ynzwv61.gif",
+  "https://i.redd.it/uha1facpzwv61.gif",
+  "https://i.redd.it/f8e68cgpzwv61.gif",
+  "https://i.redd.it/ykr4t1tpzwv61.gif",
+  "https://i.redd.it/ykr4t1tpzwv61.gif",
+  "https://i.redd.it/vjwv5r4qzwv61.gif",
+  "https://i.redd.it/054gngaqzwv61.gif",
+  "https://c.tenor.com/gFqfi8XwGN8AAAAd/tenor.gif",
+  "https://c.tenor.com/2hvdA8PjEMwAAAAd/tenor.gif",
+  "https://c.tenor.com/VKJ9AjmiswkAAAAd/tenor.gif",
+  "https://c.tenor.com/PBcGjKppnacAAAAd/tenor.gif",
+  "https://imagedelivery.net/c2SKP8Bk0ZKw6UDgeeIlbw/c087116d-7687-47df-8eb7-8df4f2824400/public",
+  "https://backend.wallpics.app/live/2024/12/10/teZQhLPAThwxqpOfwxkxmei0KbEQT54gGuxTUsZm.mp4",
+  "https://cdnb.artstation.com/p/assets/images/images/086/596/183/original/killer-rabbit-media-making-our-own-way-there-album-animation-reel-gif.gif?1743583340",
+  "https://cdna.artstation.com/p/assets/images/images/086/594/410/original/killer-rabbit-media-gothic-castle-poster-animated-gif.gif?1743578738",
+  "https://cdna.artstation.com/p/assets/images/images/074/051/678/original/killer-rabbit-media-pixel-art-cyberpunk-neotokyo-storefront-8bit-night-rain.gif?1711093877",
+  "https://cdna.artstation.com/p/assets/images/images/070/915/830/original/killer-rabbit-media-drive.gif?1703941160",
+  "https://cdna.artstation.com/p/assets/images/images/079/639/600/original/killer-rabbit-media-roof-dog-boy-reel.gif?1725441192",
+  "https://i.pinimg.com/originals/aa/a9/2d/aaa92dfb8b4f18822505574280da331c.gif",
+  "https://i.pinimg.com/originals/8b/13/2c/8b132c13e4378b02e401cd4c6968ef75.gif",
+  "https://i.pinimg.com/originals/09/cc/14/09cc14191586aa0c5bb8938672534f4f.gif",
+  "https://i.pinimg.com/originals/77/de/d9/77ded9bcae360ceb832629b4b3b4fe91.gif",
+  "https://i.pinimg.com/originals/39/d2/45/39d245b800aba34d4200443546f47c92.gif",
+  "https://i.pinimg.com/originals/ef/e1/91/efe1912967f2163f4820c164e85ed36c.gif",
+  "https://i.pinimg.com/originals/b4/1f/83/b41f8318fd1a64fc080fc9db4dbb78d9.gif",
+  "https://i.pinimg.com/originals/53/11/b1/5311b1bbafc3768b015cf977b3eb3069.gif",
+  "https://i.pinimg.com/originals/c5/53/f9/c553f9e54a81c21c8025647aa1ae2eb3.gif",
+  "https://i.pinimg.com/originals/53/af/54/53af5444d76896adedadb586069aa67b.gif",
+];
+const socialLinks = {
+  instagram: "https://www.instagram.com/jx7dev/",
+  linkedin: "https://www.linkedin.com/in/jx7dev/",
+  github: "https://github.com/jx7dev",
+};
+
+// Generate random link from the array
+const randomLink =
+  pixelArtLinks[Math.floor(Math.random() * pixelArtLinks.length)];
 ---
-<section id="about" class="py-20 w-full h-fit flex flex-col items-center gap-12">
-  <h1 class="w-full h-fit text-8xl font-space-grotesk font-semibold text-white text-center tracking-normal">
-    LET'S WORK<br>TOGETHER
+
+<section
+  id="about"
+  class="py-10 md:py-20 w-full h-fit flex flex-col items-center gap-8 md:gap-12 px-4 md:px-0"
+>
+  <h1
+    class="w-full h-fit text-4xl md:text-8xl font-space-grotesk font-semibold text-white text-center tracking-normal"
+  >
+    LET'S WORK<br />TOGETHER
   </h1>
 
   <Link href="#contact" target="_self">CONTACT NOW*</Link>
 
-  <div class="w-full grid grid-cols-3">
-    <div class="py-56 text-center flex flex-col justify-between">
-      <h2 class="uppercase text-lg font-space-grotesk tracking-wider leading-relaxed">
-        Connect yourself<br>into Cyberpunk universe.
+  <div class="w-full grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-0">
+    <div class="py-20 md:py-56 text-center flex flex-col justify-center">
+      <h2
+        class="uppercase text-base md:text-lg font-space-grotesk tracking-wider leading-relaxed"
+      >
+        Connect yourself<br />into Cyberpunk universe.
       </h2>
     </div>
-    
-    <div class="bg-white py-56 rounded-2xl mx-16 flex flex-col justify-between">
-      <div class="flex flex-col gap-2">
-        <!-- Contact form or content goes here -->
-      </div>
+
+    <div class="relative flex justify-center items-center">
+      <img
+        src={randomLink}
+        alt="Random Pixel Art"
+        class="w-[300px] h-[400px] object-cover rounded-[25px] absolute z-0"
+        loading="lazy"
+      />
+      <Pixelcard variant="pink" className="relative z-10">
+      </Pixelcard>
     </div>
-    
-    <div class="py-56 text-center flex flex-col justify-between">
-      <h2 class="uppercase text-lg font-space-grotesk tracking-wider leading-relaxed">
-        Innovation is an<br>outlet for your vision.
+
+    <div class="py-20 md:py-56 text-center flex flex-col justify-center">
+      <h2
+        class="uppercase text-base md:text-lg font-space-grotesk tracking-wider leading-relaxed"
+      >
+        Innovation is an<br />outlet for your vision.
       </h2>
     </div>
   </div>
 
-  <p class="uppercase text-md font-semibold text-center tracking-wider w-1/2 px-16">
+  <p
+    class="uppercase text-sm md:text-md font-semibold text-center tracking-wider w-full md:w-1/2 px-4 md:px-16"
+  >
     <span class="text-white">
-      I am always open to new opportunities and collaborations. If you have a project in mind or just want to say hi, feel free to reach out!
+      I am always open to new opportunities and collaborations. If you have a
+      project in mind or just want to say hi, feel free to reach out!
     </span>
   </p>
 
-  <div class="font-space-grotesk text-xl font-thin w-1/3 flex justify-between">
-    <CustomLink target='_blank' href="/about" className="text-white hover:text-black hover:bg-white transition-colors duration-300">
+  <div
+    class="font-space-grotesk text-lg md:text-xl font-thin w-full md:w-1/3 flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-center"
+  >
+    <CustomLink target="_blank" href={socialLinks.instagram}>
       <span>INSTAGRAM<i class="ri-arrow-right-up-line ml-1"></i></span>
     </CustomLink>
-    <CustomLink target='_blank' href="https://www.linkedin.com/in/jagmohan-singh-malhi-a67805243" className="text-white hover:text-black hover:bg-white transition-colors duration-300">
+    <CustomLink target="_blank" href={socialLinks.linkedin}>
       <span>LINKEDIN<i class="ri-arrow-right-up-line ml-1"></i></span>
     </CustomLink>
-    <CustomLink target='_blank' href="https://github.com/jxlee007" className="text-white hover:text-black hover:bg-white transition-colors duration-300">
+    <CustomLink target="_blank" href={socialLinks.github}>
       <span>GITHUB<i class="ri-arrow-right-up-line ml-1"></i></span>
+    </CustomLink>
+  </div>
+</section>
     </CustomLink>
   </div>
 </section>

@@ -34,14 +34,14 @@ const projects = [
 ];
 ---
 
-<section id="third" class="py-20 w-full h-fit flex flex-col justify-items-end gap-12">
-  <h1 class="w-full h-fit grid grid-flow-col justify-items-end text-8xl font-space-grotesk font-semibold text-white tracking-normal">
+<section id="third" class="py-10 md:py-20 w-full h-fit flex flex-col justify-items-end gap-8 md:gap-12 px-4 md:px-0">
+  <h1 class="w-full h-fit grid grid-flow-col justify-items-center md:justify-items-end text-4xl md:text-8xl font-space-grotesk font-semibold text-white tracking-normal">
     FEATURED CASES
   </h1>
 
-  <div class="grid grid-flow-row justify-items-start gap-10">
-    <span class="w-1/2 pr-28 flex flex-col gap-4">
-      <p class="uppercase text-2xl font-space-grotesk tracking-wider leading-relaxed">
+  <div class="grid grid-flow-row justify-items-start gap-6 md:gap-10">
+    <span class="w-full md:w-1/2 md:pr-28 flex flex-col gap-4">
+      <p class="uppercase text-lg md:text-2xl font-space-grotesk tracking-wider leading-relaxed">
         My creative spirit comes alive in the digital realm. With nimble fingers flying across the keyboard, 
         I craft clear experiences out of nothing but ones and zeroes.
       </p>
@@ -51,7 +51,7 @@ const projects = [
   </div>
 
   <div class="w-full h-full">
-    <div class="grid grid-cols-2 gap-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4">
       {projects.map(project => (
         <ProjectCard 
           href={project.href}

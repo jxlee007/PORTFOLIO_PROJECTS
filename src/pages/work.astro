@@ -1,4 +1,5 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import Footer from "../components/Footer.astro";
@@ -73,101 +74,55 @@ const projects = [
 ];
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Work & Portfolio - JX7</title>
+<BaseLayout title="Work & Portfolio - JX7">
+  <!-- Hero section with just the navigation -->
+  <div id="hero" class="relative w-full h-full gap-4 flex flex-col">
+    <Nav {menuItems} {brandLinks} />
 
-    <!-- External CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://api.fontshare.com/v2/css?f[]=general-sans@500,400&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://api.fontshare.com/v2/css?f[]=space-grotesk@500,400&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Favicon and custom CSS -->
-    <link rel="shortcut icon" href="/icon.ico" />
-    <link rel="stylesheet" href="/style.css" />
-  </head>
-
-  <body class="bg-black text-white">
-    <!-- Main content container -->
-    <main id="main" class="w-full h-fit bg-black px-10">
-      <!-- Hero section with just the navigation -->
-      <div id="hero" class="relative w-full h-full gap-4 flex flex-col">
-        <Nav {menuItems} {brandLinks} />
-
-        <div
-          class="w-full h-full px-2 mt-40 flex flex-row justify-between items-end gap-10"
+    <div
+      class="w-full h-full px-2 mt-20 md:mt-40 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 md:gap-10"
+    >
+      <section class="w-full lg:w-auto lg:pr-40">
+        <p
+          class="uppercase text-gray-400 text-lg md:text-xl/3 font-space-grotesk tracking-wider leading-relaxed"
         >
-          <section class=" pr-40">
-            <p
-              class="uppercase text-gray-400 text-xl/3 font-space-grotesk tracking-wider leading-relaxed"
-            >
-              My creative spirit comes alive in the digital realm. With nimble
-              fingers flying across the keyboard, I craft clear experiences out
-              of nothing but ones and zeroes.
-            </p>
-          </section>
-
-          <section class="flex flex-col items-end text-[9.8vw] font-bold">
-            <p class="uppercase text-xl text-gray-300 font-thin">
-              ( 2021 - 2024 )
-            </p>
-
-            <p class=" leading-none line-clamp-2 text-right mt-4 " >SELECTED WORKS</p>
-          </section>
-        </div>
-      </div>
-
-      <!-- Projects gallery -->
-      <section
-        id="third"
-        class="py-20 w-full h-fit flex flex-col justify-items-end gap-12"
-      >
-        <div class="w-full h-full">
-          <div class="grid grid-cols-2">
-            {
-              projects.map((project) => (
-                <ProjectCard
-                  href={project.href}
-                  src={project.src}
-                  title={project.title}
-                  subtitle={project.subtitle}
-                />
-              ))
-            }
-          </div>
-        </div>
+          My creative spirit comes alive in the digital realm. With nimble
+          fingers flying across the keyboard, I craft clear experiences out
+          of nothing but ones and zeroes.
+        </p>
       </section>
 
-      <!-- Footer section -->
-      <Footer goHref="#hero" title="JAGMOHAN" />
-    </main>
+      <section class="flex flex-col items-start lg:items-end text-[12vw] md:text-[9.8vw] font-bold">
+        <p class="uppercase text-lg md:text-xl text-gray-300 font-thin">
+          ( 2021 - 2024 )
+        </p>
 
-    <!-- Scripts for animation and interaction -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"
-      is:inline></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
-      is:inline></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"
-      is:inline></script>
-    <script src="/scripts/script.js" is:inline></script>
-  </body>
-</html>
+        <p class="leading-none line-clamp-2 text-left lg:text-right mt-2 md:mt-4">SELECTED WORKS</p>
+      </section>
+    </div>
+  </div>
+
+  <!-- Projects gallery -->
+  <section
+    id="third"
+    class="py-10 md:py-20 w-full h-fit flex flex-col justify-items-end gap-8 md:gap-12"
+  >
+    <div class="w-full h-full">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+        {
+          projects.map((project) => (
+            <ProjectCard
+              href={project.href}
+              src={project.src}
+              title={project.title}
+              subtitle={project.subtitle}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer section -->
+  <Footer goHref="#hero" title="JAGMOHAN" />
+</BaseLayout>

@@ -7,9 +7,9 @@ export interface Props {
 
 const { href, index, label } = Astro.props;
 ---
-<div class="menu-item py-4 border-b border-gray-800 group font-space-grotesk">
+<div class="menu-item py-3 md:py-4 border-b border-gray-800 group font-space-grotesk">
   <a href={href} class="flex items-center">
-    <span class="text-gray-400 text-sm mr-4">{index}</span>
-    <span class="text-4xl font-semibold tracking-wider group-hover:pl-8 transition-all duration-300">{label}</span>
+    <span class="text-gray-400 text-xs md:text-sm mr-3 md:mr-4">{index}</span>
+    <span class="text-2xl md:text-4xl font-semibold tracking-wider group-hover:pl-4 md:group-hover:pl-8 transition-all duration-300">{label}</span>
   </a>
 </div>

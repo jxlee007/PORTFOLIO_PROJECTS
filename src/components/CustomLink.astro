@@ -15,8 +15,33 @@ const { href, target = "_self", underline = false, className = "", id } = Astro.
   id={id}
   class:list={[
     underline ? "custom-underline" : "", 
+    "group",
     className
-  ]}
+    ]}
 >
   <slot />
 </a>
+
+<style>
+  .group:hover i {
+    animation: arrowUp 0.6s ease-in-out;
+  }
+
+  @keyframes arrowUp {
+    0% {
+      transform: translateY(0px);
+    }
+    25% {
+      transform: translateY(-6px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+    75% {
+      transform: translateY(-6px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+</style>

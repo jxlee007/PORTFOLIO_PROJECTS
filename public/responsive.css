@@ -1,0 +1,129 @@
+/* Mobile-first responsive utilities */
+
+/* Touch targets for mobile */
+@media (max-width: 768px) {
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Ensure text is readable on mobile */
+  .text-responsive {
+    font-size: clamp(0.875rem, 4vw, 1.25rem);
+  }
+  
+  /* Optimize scrolling for mobile */
+  .smooth-scroll {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+  
+  /* Hide elements that might be problematic on mobile */
+  .desktop-only {
+    display: none !important;
+  }
+  
+  /* Mobile-specific animations */
+  .mobile-animate {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+  .mobile-only {
+    display: none !important;
+  }
+  
+  .desktop-only {
+    display: block !important;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Crisp images and icons */
+  img, .icon {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .portrait-only {
+    display: none !important;
+  }
+  
+  /* Adjust hero section for landscape mobile */
+  #hero {
+    height: 100vh;
+  }
+  
+  #heading {
+    margin-top: 2rem;
+  }
+}
+
+/* Safe area for devices with notches */
+@supports (padding: max(0px)) {
+  .safe-area-top {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+  
+  .safe-area-left {
+    padding-left: max(1rem, env(safe-area-inset-left));
+  }
+  
+  .safe-area-right {
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+}
+
+/* Accessibility improvements for mobile */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+  /* Additional dark mode styles if needed */
+}
+
+/* Focus improvements for keyboard navigation */
+@media (hover: none) and (pointer: coarse) {
+  /* Touch device specific styles */
+  .hover-effect:hover {
+    /* Disable hover effects on touch devices */
+    background-color: inherit;
+    color: inherit;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  * {
+    background: white !important;
+    color: black !important;
+  }
+}
