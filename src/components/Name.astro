@@ -1,0 +1,14 @@
+---
+const fullName = "JAGMOHAN";
+const shortName = "JGMHN";
+
+// Use CSS classes to handle responsive display instead
+const fullNameArray = fullName.split('');
+const shortNameArray = shortName.split('');
+---
+  <h1 class="md:hidden font-space-grotesk font-bold text-[16vw] md:text-[14vw] -mt-12 md:-mt-28 -mb-6 md:-mb-16 tracking-wider transition duration-200 text-center">
+    <span>{shortNameArray.map((letter) => <span>{letter}</span>)}</span>
+  </h1>
+  <h1 class="hidden md:inline font-space-grotesk font-bold text-[16vw] md:text-[14vw] -mt-12 md:-mt-28 -mb-6 md:-mb-16 tracking-wider transition duration-200 text-center">
+    <span>{fullNameArray.map((letter) => <span>{letter}</span>)}</span>
+  </h1>
