@@ -1,10 +1,30 @@
 ---
 const { href, src, title, subtitle } = Astro.props;
 ---
-<figure class="relative max-w-3xl transition-all duration-300 cursor-pointer">
-  <a href={href}><img class="h-auto max-w-full rounded-lg" src={src} alt={title} /></a>
-  <figcaption class="absolute px-4 md:px-10 text-sm md:text-lg text-white bottom-2 md:bottom-6">
-    <h2 class="font-space-grotesk text-lg md:text-2xl font-bold">{title}</h2>
-    <p class="uppercase text-sm md:text-xl font-space-grotesk tracking-wider leading-relaxed">{subtitle}</p>
-  </figcaption>
-</figure>
+<div class="uppercase relative overflow-hidden rounded-2xl group w-full h-[28rem] sm:h-[22rem] md:h-[20rem] md:max-w-2xl md:mx-auto">
+  <!-- Background Image -->
+  <a href={href} class="absolute inset-0 w-full h-full block">
+    <img
+      src={src}
+      alt={title}
+      class="w-full h-full object-cover absolute inset-0"
+    />
+  </a>
+
+  <!-- Noise Overlay -->
+  <div class="absolute inset-0 pointer-events-none opacity-10 mix-blend-overlay bg-noise"></div>
+
+  <!-- Text Overlay -->
+  <div class="absolute bottom-0 left-0 right-0 p-4 text-white z-10">
+    <h2 class="text-xl sm:text-2xl font-bold">{title}</h2>
+    <p class="text-lg sm:text-xl tracking-widest">{subtitle}</p>
+  </div>
+</div>
+
+<style>
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 182px;
+  }
+</style>
