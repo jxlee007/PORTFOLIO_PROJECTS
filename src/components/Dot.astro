@@ -1,5 +1,4 @@
 ---
-// Optional props for customization
 export interface Props {
     size?: string;
     color?: string;
@@ -17,7 +16,7 @@ const {
 
 <div
     id="dot"
-    class={`fixed z-[${zIndex}] bg-${color} rounded-full mix-blend-${blendMode} pointer-events-none`}
+    class={`fixed z-[${zIndex}] bg-${color} rounded-full mix-blend-${blendMode} pointer-events-none hidden sm:inline-block`}
     style={`width: ${size}; height: ${size}; top: 0; left: 0;`}
 ></div>
 
@@ -26,7 +25,18 @@ const {
 
     function interactiveDot() {
         const dot = document.getElementById("dot");
-        if (!dot) return; // Safety check
+        if (!dot) return;
+
+        // Hide dot on mobile/tablet (width < 1024px)
+        function handleResize() {
+            if (window.innerWidth < 1024) {
+                dot.style.display = "none";
+            } else {
+                dot.style.display = "";
+            }
+        }
+        window.addEventListener("resize", handleResize);
+        handleResize();
 
         // Generic hover targets (exclude reload menu links)
         const hoverElements = [
@@ -42,7 +52,6 @@ const {
         hoverElements.forEach((elem) => {
             if (elem) {
                 elem.addEventListener("mouseenter", () => {
-                    // Use GSAP for smoother transitions
                     gsap.to(dot, {
                         duration: 0.3,
                         scale: 0,
@@ -62,7 +71,6 @@ const {
             }
         });
 
-        // Bind transform/reset on each reload link
         reloadLinks.forEach((link) => {
             link.addEventListener("mouseenter", () => {
                 dot.innerHTML = "OPEN";
@@ -82,7 +90,7 @@ const {
             });
 
             link.addEventListener("mouseleave", () => {
-                dot.innerHTML = ""; // Reset dot
+                dot.innerHTML = "";
                 gsap.to(dot, {
                     duration: 0.3,
                     width: "17px",
@@ -96,14 +104,15 @@ const {
             });
         });
 
-        // Cursor following functionality
         let mouseX = 0;
         let mouseY = 0;
         let currentX = 0;
         let currentY = 0;
 
-        // Listen to mousemove on window and use pageX/pageY for full-page tracking
         window.addEventListener("mousemove", (e) => {
+            // Don't move dot on mobile/tablet
+            if (window.innerWidth < 1024) return;
+
             mouseX = e.pageX;
             mouseY = e.pageY;
 
@@ -136,8 +145,12 @@ const {
             }
         });
 
-        // Smooth cursor following animation
         function animateDot() {
+            // Don't animate on mobile/tablet
+            if (window.innerWidth < 1024) {
+                requestAnimationFrame(animateDot);
+                return;
+            }
             const speed = 0.15;
             currentX += (mouseX - currentX) * speed;
             currentY += (mouseY - currentY) * speed;
@@ -152,11 +165,9 @@ const {
             requestAnimationFrame(animateDot);
         }
 
-        // Start animation loop
         animateDot();
     }
 
-    // Initialize when DOM is ready
     document.addEventListener("DOMContentLoaded", function () {
         interactiveDot();
     });

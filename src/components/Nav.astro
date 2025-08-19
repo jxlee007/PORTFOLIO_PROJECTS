@@ -2,7 +2,7 @@
 import Sidebar from './Sidebar.astro';
 import Peace from './Peace.astro';
 import Icon from './icon.astro';
-import CustomLink from './CustomLink.astro';
+import Link from './Link.astro';
 import Remix from './Remix.astro';
 
 interface MenuItem {
@@ -27,13 +27,13 @@ const { menuItems, brandLinks } = Astro.props;
 <div class="flex items-center gap-2 md:gap-4">
   <Remix />
 
-  <CustomLink href="/contact" className="text-white">
-    <Icon ico="/images/call.png" />
-  </CustomLink>
+  <!-- <Link href="/contact" class="w-12 h-12 flex items-center justify-center rounded-full" style="background: url('/images/call.svg') center center / cover no-repeat;">
+    <Icon ico="lucide:phone" class="w-6 h-6" />
+  </Link> -->
 </div>
   
   <span class="cursor-pointer flex items-center" onclick="openNav()">
-    <div class="w-6 h-6 md:w-8 md:h-8 flex items-center border-2 border-white rounded-full bg-white">
+    <div class="w-8 h-8 flex items-center border-2 border-white rounded-full bg-white">
       <Peace />
     </div>
   </span>
