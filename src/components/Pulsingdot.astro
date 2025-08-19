@@ -1,0 +1,54 @@
+---
+const {
+  size = 15,
+  dotRadius = 5.5,
+  ringColor = 'rgba(0, 153, 255, 0.5)',
+  dotColor = '#0099FF',
+  pulseDuration = '0.6s',
+  ringDuration = '1.2s',
+} = Astro.props;
+---
+
+<style>
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.2); }
+  }
+
+  @keyframes pulse-ring {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(1); opacity: 0; }
+  }
+
+  svg circle#dot {
+    transform-origin: 50% 50%;
+    animation: pulse var(--pulse-duration) cubic-bezier(0.455, 0.03, 0.515, 0.955) alternate infinite;
+  }
+
+  svg circle#ring {
+    transform-origin: 50% 50%;
+    animation: pulse-ring var(--ring-duration) cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  }
+</style>
+
+<svg
+  width={size}
+  height={size}
+  viewBox={`0 0 ${size} ${size}`}
+  style={`--pulse-duration: ${pulseDuration}; --ring-duration: ${ringDuration};`}
+>
+  <circle
+    id="ring"
+    cx={size / 2}
+    cy={size / 2}
+    r={size / 2}
+    fill={ringColor}
+  />
+  <circle
+    id="dot"
+    cx={size / 2}
+    cy={size / 2}
+    r={dotRadius}
+    fill={dotColor}
+  />
+</svg>
