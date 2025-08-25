@@ -81,10 +81,10 @@ const randomLink =
 
         <!-- Hero content section - Responsive with flex direction changes -->
         <div
-            class="w-full h-fit mt-6 md:mt-10 flex flex-col lg:flex-row justify-between gap-6 md:gap-10 px-4 md:px-0"
+            class="w-full h-fit sm:pr-10 mt-6 md:mt-10 flex flex-col lg:flex-row justify-between gap-6 md:gap-10 px-4 md:px-0"
         >
             <div
-                class="w-full md:w-1/2 mt-6 md:mt-10 flex flex-col gap-8 md:gap-16 order-1"
+                class="w-full sm:pr-10 md:w-1/2 mt-6 md:mt-10 flex flex-col gap-8 md:gap-16 order-1"
                 id="form-section"
             >
                 <span class="flex flex-col items-start gap-4 md:gap-6">
@@ -154,14 +154,14 @@ const randomLink =
             </div>
 
             <section
-                class="md:absolute right-0 p-10 w-full md:w-1/2 h-screen bg-black order-2"
+                class=" md:absolute right-0 md:right-5 w-full md:w-1/2 h-full md:h-screen order-2 "
                 id="image-section"
             >
-                <div class="rounded-2xl h-full w-full overflow-hidden">
+                <div class=" h-full w-full overflow-hidden">
                     <img
                         src={randomLink}
                         alt="Contact image"
-                        class="w-full h-full object-cover"
+                        class="w-full h-full object-cover rounded-2xl"
                     />
                 </div>
             </section>
@@ -170,22 +170,22 @@ const randomLink =
         <!-- Contact section - Fully responsive -->
         <div
             id="contact"
-            class="mt-10 border-y border-gray-300 py-6 md:py-10 w-full md:w-1/2 h-fit flex flex-col items-center px-4 md:px-0"
+            class="mt-10 sm:pr-10 py-6 md:py-10 w-full md:w-1/2 h-fit flex flex-col items-center"
         >
             <!-- Single column stacked layout for desk (and mobile) -->
-            <div class="flex flex-col w-full text-left gap-6 md:gap-10">
+            <div class="flex flex-col w-full gap-6 md:gap-10">
                 <!-- Block 1 - Follow Me -->
-                <div class="flex items-start w-full">
+                <div class="flex text-center w-full">
                     <div
                         class="text-lg md:text-xl font-space-grotesk font-medium flex flex-col w-full"
                     >
                         <p
-                            class="pl-0 md:pl-4 text-gray-400 text-base md:text-lg uppercase font-medium mb-4"
+                            class="text-gray-400 text-base md:text-lg uppercase font-medium mb-4"
                         >
                             FOLLOW ME
                         </p>
 
-                        <div class="flex flex-col gap-2 md:gap-3 md:pl-4">
+                        <div class="flex flex-col gap-2 md:gap-3">
                             <CustomLink
                                 href="https://www.instagram.com/"
                                 target="_blank"
@@ -224,7 +224,7 @@ const randomLink =
                 </div>
 
                 <!-- Block 2 - Phone -->
-                <div class="py-4 md:py-8 rounded-2xl w-full">
+                <div class="py-4 md:py-8 rounded-2xl w-full text-center">
                     <p
                         class="text-gray-400 text-base md:text-lg mb-2 md:mb-3 uppercase"
                     >
@@ -236,7 +236,7 @@ const randomLink =
                 </div>
 
                 <!-- Block 3 - Location -->
-                <div class="py-4 md:py-8 rounded-2xl w-full">
+                <div class="py-4 md:py-8 rounded-2xl w-full text-center">
                     <p
                         class="text-gray-400 text-base md:text-lg mb-2 md:mb-3 uppercase"
                     >
@@ -285,58 +285,12 @@ const randomLink =
                             anticipatePin: 1,
                             markers: false,
                         });
-
-                        const imgAnim = gsap.fromTo(
-                            "#image-section img",
-                            { scale: 1.1, opacity: 0.7 },
-                            {
-                                scale: 1,
-                                opacity: 1,
-                                ease: "none",
-                                scrollTrigger: {
-                                    trigger: "#form-section",
-                                    scroller: "#main",
-                                    start: "top top",
-                                    end: () =>
-                                        `+=${document.querySelector("#form-section").offsetHeight}`,
-                                    scrub: true,
-                                    markers: false,
-                                },
-                            },
-                        );
-
                         // cleanup when leaving this media query
                         return () => {
-                            imgAnim.kill();
                             pinST.kill();
                         };
                     });
 
-                    // Mobile / Tablet: don't pin, use a subtle reveal/scale on scroll
-                    mm.add("(max-width: 767px)", () => {
-                        const imgAnim = gsap.fromTo(
-                            "#image-section img",
-                            { y: 40, scale: 1.03, opacity: 0.85 },
-                            {
-                                y: 0,
-                                scale: 1,
-                                opacity: 1,
-                                ease: "none",
-                                scrollTrigger: {
-                                    trigger: "#image-section",
-                                    scroller: "#main",
-                                    start: "top 85%",
-                                    end: "bottom 25%",
-                                    scrub: true,
-                                    markers: false,
-                                },
-                            },
-                        );
-
-                        return () => {
-                            imgAnim.kill();
-                        };
-                    });
 
                     // Optional: handle other queries or a default cleanup on destroy
                     // mm.add(() => { return () => mm.revert(); });
