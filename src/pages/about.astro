@@ -4,6 +4,7 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import Split from "../components/Split.astro";
 import AboutComponent from "../components/About.astro";
+import InfoBlock from "../components/InfoBlock.astro";
 
 // Define menu items for the sidebar (same as index page)
 const menuItems = [
@@ -21,41 +22,28 @@ const brandLinks = [
   { href: "https://github.com/", text: "GITHUB" },
 ];
 
-// Statistics
-const stats = [
-  { value: "2+", label: "YEARS" },
-  { value: "5+", label: "PROJECTS" },
-  { value: "$1M+", label: "REVENUE" },
-  { value: "6.2K", label: "FOLLOWERS" },
-];
-
-// Projects
-const projects = [
-  { title: "FRONT-END PROJECTS", type: "DIGITAL TWIN", year: "2024" },
-  { title: "PINTEREST CLONE", type: "Embedded JS", year: "2023" },
-  { title: "ANDROID CHAT APP", type: "JAVA", year: "2022" },
-  { title: "CYNTHIA UGWU", type: "PORTFOLIO SITE", year: "2021" },
-];
-
 // Capabilities
 const capabilities = [
   {
-    title: "CREATIVE VISION DIRECTION",
+    title: "LANDING PAGES & WEBSITES",
     description:
-      "Leading digital experiences from concept to execution with a forward-thinking approach that pushes technological boundaries.",
-    image: "/images/image.png",
+      "LANDING PAGE DESIGNED TO CONVERT VISITORS INTO ENGAGED USERS EFFORTLESSLY.",
+    image: "/images/about.png",
+    price: "$ 320+",
   },
   {
-    title: "NEURAL ARTS ENGINE",
+    title: "MOBILE APPS",
     description:
-      "Combining AI algorithms with creative direction to generate unique artistic expressions and interactive visuals.",
-    image: "/images/image.png",
+      "LEADING THE FOREFRONT OF MOBILE APP DEVELOPMENT WITH ADVANCED TECHNOLOGIES.",
+    image: "/images/about.png",
+    price: "$ 500+",
   },
   {
-    title: "DIGITAL DIMENSIONS",
+    title: "DIGITAL MARKETING AUTOMATION",
     description:
-      "Building immersive spaces that bridge the gap between reality and digital worlds through cutting-edge WebGL and Three.js.",
-    image: "/images/image.png",
+      "UNIQUE BRAND IDENTITIES THAT RESONATE WITH AUDIENCES MEMORABLE CONNECTIONS THROUGH STRATEGIC NARRATIVE FORGING.",
+    image: "/images/about.png",
+    price: "$ 600+",
   },
 ];
 
@@ -67,7 +55,7 @@ const contactDetails = [
     value: "https://www.linkedin.com/in/jagmohan-singh-malhi-a67805243",
   },
   { label: "GitHub", value: "https://github.com/jxlee007" },
-  { label: "Portfolio", value: "https://jxlee007.github.io/" },
+  ,
 ];
 const topSkills = ["No-Code Development Platforms", "AI Agents", "Jira"];
 const certifications = [
@@ -75,20 +63,6 @@ const certifications = [
   "Introduction to HTML Course",
   "Back End Development and APIs",
 ];
-const profileSummary = `I'm a no-code developer with a passion for building intuitive and
-scalable digital solutions using tools like AI-Saas, Convex, and Figma-Make.
-With a year of experience in product management, I've successfully
-led products from ideation to execution, ensuring efficiency and
-innovation.
-I also have a strong frontend web development foundation, creating
-visually appealing and user-friendly websites using HTML, CSS, and
-JavaScript. My expertise in AI and prompt engineering allows me to
-integrate automation and intelligent solutions into web experiences,
-making them smarter and more efficient.
-I'm always eager to learn, innovate, and push creative boundaries.
-Currently open to collaborations where I can apply my skills in
-frontend and no-code development. Let's connect and build
-something amazing! ✨`;
 const profileExperience = [
   {
     company: "Kit Solutions",
@@ -113,13 +87,12 @@ const education = [
 ---
 
 <BaseLayout title="About | JX7 Portfolio">
-  <!-- Navigation -->
   <Nav {menuItems} {brandLinks} />
 
-  <!-- About Header Section -->
-  <section class="mt-6 md:mt-10 pb-6 md:pb-10 px-4 md:px-0">
+  <!-- Header -->
+  <section class="mt-10 pb-6 md:pb-10 px-4 md:px-0">
     <div
-      class="font-bold font-space-grotesk w-full h-fit gap-6 md:gap-10 flex flex-col items-center justify-center"
+      class="font-bold font-space-grotesk w-full gap-6 md:gap-10 flex flex-col items-center justify-center"
     >
       <span class="text-center">
         <Split text="MORE ABOUT " />
@@ -127,100 +100,453 @@ const education = [
       </span>
 
       <p
-        class="w-full md:w-2/3 text-zinc-400 leading-relaxed text-lg md:text-xl mt-4 text-center tracking-wide font-light px-4 md:px-0"
+        class="w-full md:w-2/3 text-zinc-400 leading-relaxed text-2xl md:text-3xl mt-4 text-center tracking-wide font-light px-4 md:px-0"
       >
-        UNLEASH YOUR CREATIVITY. SHOWCASE YOU WORK AND <br class="hidden md:block" />
+        UNLEASH YOUR CREATIVITY. SHOWCASE YOU WORK AND
+        <br class="hidden md:block" />
         HIGHLIGHT YOUR UNIQUE SKILLS TO ATTRACT NEW CLIENTS.
       </p>
     </div>
   </section>
 
-  <!-- Statistics Section -->
-  <section class="flex flex-col gap-10 md:gap-14 px-4 md:px-0 py-6 md:py-10">
-    <div class="flex flex-col gap-10 md:gap-16">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-10 md:gap-0">
-        <div class="flex flex-col items-center md:items-start">
-          <span class="text-5xl md:text-6xl font-bold font-space-grotesk text-white">4+</span>
-          <span class="text-zinc-400 uppercase tracking-widest text-sm mt-2">YEARS OF EXPERIENCE</span>
-        </div>
-        <div class="flex flex-col items-center md:items-start">
-          <span class="text-5xl md:text-6xl font-bold font-space-grotesk text-white">10+</span>
-          <span class="text-zinc-400 uppercase tracking-widest text-sm mt-2">COMPLETED PROJECTS</span>
-        </div>
+  <!-- Statistics -->
+  <section class="px-4 md:px-0 py-6 md:py-10">
+    <div
+      class="flex flex-col md:flex-row items-center md:items-center justify-around gap-8 md:gap-6 w-full"
+    >
+      <div class="flex-1 flex flex-col items-center">
+        <span
+          class="text-4xl md:text-5xl lg:text-6xl font-bold font-space-grotesk text-white"
+          >4+</span
+        >
+        <span
+          class="text-zinc-400 uppercase tracking-widest text-sm mt-2 text-center md:text-left"
+          >YEARS OF EXPERIENCE</span
+        >
       </div>
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-10 md:gap-0">
-        <div class="flex flex-col items-center md:items-start">
-          <span class="text-5xl md:text-6xl font-bold font-space-grotesk text-white">$M</span>
-          <span class="text-zinc-400 uppercase tracking-widest text-sm mt-2">PARTNERS RAISED</span>
-        </div>
-        <div class="flex flex-col items-center md:items-start">
-          <span class="text-5xl md:text-6xl font-bold font-space-grotesk text-white">5.00</span>
-          <span class="text-zinc-400 uppercase tracking-widest text-sm mt-2">CUSTOMER SUCCESS</span>
-        </div>
+
+      <div class="flex-1 flex flex-col items-center">
+        <span
+          class="text-4xl md:text-5xl lg:text-6xl font-bold font-space-grotesk text-white"
+          >10+</span
+        >
+        <span
+          class="text-zinc-400 uppercase tracking-widest text-sm mt-2 text-center md:text-left"
+          >COMPLETED PROJECTS</span
+        >
+      </div>
+
+      <div class="flex-1 flex flex-col items-center">
+        <span
+          class="text-4xl md:text-5xl lg:text-6xl font-bold font-space-grotesk text-white"
+          >♾️</span
+        >
+        <span
+          class="text-zinc-400 uppercase tracking-widest text-sm mt-2 text-center md:text-left"
+          >CREATIVE POTENTIAL</span
+        >
+      </div>
+
+      <div class="flex-1 flex flex-col items-center">
+        <span
+          class="text-4xl md:text-5xl lg:text-6xl font-bold font-space-grotesk text-white"
+          >5.00</span
+        >
+        <span
+          class="text-zinc-400 uppercase tracking-widest text-sm mt-2 text-center md:text-left"
+          >CUSTOMER SUCCESS</span
+        >
       </div>
     </div>
   </section>
 
-  <section
-    class="content flex flex-col lg:flex-row gap-10 md:gap-20 bg-red-500 py-6 md:py-10 px-4 md:px-0"
-  >
-    <!-- Left Column -->
+  <div class="w-full px-4 mt-10 flex flex-col items-end">
     <div
-      id="pinlist"
-      class="left border-2 border-white w-full lg:w-2/6 items-start justify-center"
+      class="mt-10 w-full lg:w-2/3 h-full grid grid-flow-row justify-items-end gap-4 md:gap-6"
     >
-      <div class="pinlist">About me</div>
-      <div class="pinlist">profileSummary</div>
-      <div class="pinlist">experience</div>
-      <div class="pinlist"></div>
+      <InfoBlock title="ABOUT JX7">
+        I'm on the cutting edge of no-code tools that allow me to bring my
+        creative visions to life. Though my methods may be unconventional, my
+        dedication to the craft is unparalleled. I thrive on finding "unexpected
+        solutions" and believe that with the right perspective.
+      </InfoBlock>
     </div>
 
-    <div class="h-full w-full lg:w-4/6 flex flex-col">
-      <!-- Right Column -->
-      <div
-        class="border-2 border-white w-full lg:w-4/6 h-screen items-end justify-center"
+    <div
+      class="mt-10 w-full lg:w-2/3 h-full grid grid-flow-row justify-items-end gap-4 md:gap-6"
+    >
+      <InfoBlock title="MY APPROACH & STRATEGY">
+        I take a pragmatic, design-first approach — rapid code & AI prototyping
+        to validate ideas, then polish with hand-crafted HTML/Tailwind/JS when
+        it matters. I prioritize clear UX, automation that saves time, and fast
+        iteration through collaboration and curiosity. Always down to build
+        smart, beautiful experiences together.
+      </InfoBlock>
+    </div>
+  </div>
+
+  <section class="my-8 w-screen md:w-full -mx-4 md:mx-0">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      {
+        capabilities.slice(0, 3).map((cap) => (
+          <div
+            class="relative overflow-hidden rounded-lg"
+            style="padding-top:100%;"
+          >
+            <img
+              src={cap.image}
+              alt={cap.title}
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Experience -> LEFT shows full content sections (scrollable), RIGHT shows single pinned heading -->
+  <div
+    class="gallery w-full flex flex-col lg:flex-row justify-between gap-6 md:gap-10"
+  >
+    <!-- LEFT: Full content sections (experience + education + profile) -->
+    <div class="w-full lg:w-2/3 order-2 space-y-16 experience-content">
+      <section class="experience-section" id="experience-item-1">
+        <h3
+          class="text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-wide mb-4"
+        >
+          KIT SOLUTIONS
+        </h3>
+        <p class="text-zinc-400 text-lg leading-relaxed">
+          IT Business Analyst — April 2024 - April 2025<br />
+          Vadodara, Gujarat, India<br />
+          Led product initiatives, gathered requirements, and translated business
+          needs into actionable technical plans. Focused on optimizing workflows
+          and delivering scalable solutions across cross-functional teams.
+        </p>
+      </section>
+
+      <section class="experience-section" id="experience-item-2">
+        <h3
+          class="text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-wide mb-4"
+        >
+          INTERNPE
+        </h3>
+        <p class="text-zinc-400 text-lg leading-relaxed">
+          Web Development Intern — November 2023<br />
+          Jaipur, Rajasthan, India<br />
+          Built frontend features, improved UI/UX consistency, and collaborated with
+          engineering to ship responsive pages and small interactive components.
+        </p>
+      </section>
+
+      <section
+        class="education-section experience-section"
+        id="education-item-1"
       >
+        <h3
+          class="text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-wide mb-4"
+        >
+          EDUCATION
+        </h3>
+        <p class="text-zinc-400 text-lg leading-relaxed">
+          Parul University — Bachelor's in Computer Application, Cybersecurity<br
+          />
+          August 2021 - April 2024<br />
+          Focused on software fundamentals, security principles, and practical projects
+          that bridged theory with real-world implementation.
+        </p>
+      </section>
+
+      <!-- shared end marker used by ScrollTrigger to calculate pin duration -->
+      <hr id="experience-end" class="border border-transparent mt-2" />
+    </div>
+
+    <!-- RIGHT: Single pinned heading for the whole experience block -->
+    <aside
+      id="experience-headings"
+      class="w-full lg:w-1/3 order-1 flex items-start"
+    >
+      <div class="w-full">
+        <h2
+          id="experience-main-heading"
+          class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide uppercase"
+        >
+          EXPERIENCE
+        </h2>
+      </div>
+    </aside>
+  </div>
+
+  <!-- My Stack Section -->
+  <div class="my-24" id="my-stack">
+    <div
+      class="gallery-stack w-full flex flex-col lg:flex-row justify-between gap-8"
+    >
+      <!-- Left: My Stack heading (now on the left and will be pinned on large screens) -->
+      <div
+        class="md:pl-8 w-full lg:w-1/2 order-1 lg:order-1 flex items-start justify-start"
+      >
+        <h2
+          id="my-stack-heading"
+          class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide mb-8 uppercase lg:mb-0 lg:min-w-[220px]"
+        >
+          MY STACK
+        </h2>
       </div>
 
+      <!-- Right: Stack cards (moved to the right) -->
       <div
-        class="border-2 border-green-400 w-full lg:w-4/6 h-screen items-end justify-center"
+        id="my-stack-cards"
+        class="w-full lg:w-1/2 order-2 lg:order-2 flex flex-col gap-6"
       >
+        <div
+          class="bg-zinc-900 p-6 md:p-8 rounded-2xl shadow-lg hover:bg-zinc-800 transition-colors duration-300"
+        >
+          <h3
+            class="text-xl md:text-2xl font-bold mb-4 uppercase tracking-wide"
+          >
+            DEVELOPMENT
+          </h3>
+          <ul class="text-zinc-400 space-y-3 text-lg">
+            <li>HTML/CSS/JavaScript</li>
+            <li>React/Next.js</li>
+            <li>Astro</li>
+            <li>Tailwind CSS</li>
+            <li>WebGL/Three.js</li>
+          </ul>
+        </div>
+
+        <div
+          class="bg-zinc-900 p-6 md:p-8 rounded-xl hover:bg-zinc-800 transition-colors duration-300"
+        >
+          <h3
+            class="text-xl md:text-2xl font-bold mb-4 uppercase tracking-wide"
+          >
+            NO-CODE
+          </h3>
+          <ul class="text-zinc-400 space-y-3 text-lg">
+            <li>AI-SaaS</li>
+            <li>Convex</li>
+            <li>Figma</li>
+            <li>Make</li>
+            <li>AI Agents</li>
+          </ul>
+        </div>
+
+        <div
+          class="bg-zinc-900 p-6 md:p-8 rounded-xl hover:bg-zinc-800 transition-colors duration-300"
+        >
+          <h3
+            class="text-xl md:text-2xl font-bold mb-4 uppercase tracking-wide"
+          >
+            TOOLS
+          </h3>
+          <ul class="text-zinc-400 space-y-3 text-lg">
+            <li>Figma</li>
+            <li>Framer</li>
+            <li>VS Code</li>
+            <li>GitHub</li>
+            <li>Jira</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- end marker for GSAP pin end -->
+    <hr id="my-stack-end" class="border border-transparent mt-6" />
+  </div>
+
+  <section class="w-full px-4 md:px-0">
+    <div class="flex flex-col lg:flex-row gap-6 items-end">
+      <!-- Left box -->
+      <div class="w-full lg:w-1/2 p-6 md:p-8 order-2 lg:order-1 shadow-lg flex flex-col">
+        <InfoBlock>
+          A designer crafts visual narratives that blend creativity with
+          functionality, shaping impactful experiences through artful design.
+        </InfoBlock>
+      </div>
+      <!-- Right box -->
+      <div
+        class="w-full lg:w-1/2 text-4xl md:text-8xl order-1 lg:order-2 leading-tight md:leading-none font-space-grotesk "
+      >
+        <h1 class="font-semibold text-white  tracking-normal uppercase">
+          AWE MAKES THINGS HAPPEN .wo—nder
+        </h1>
+      </div>
+    </div>
+
+    <!-- Hero Image -->
+    <div class="mt-8 w-full mx-auto">
+      <div class="relative overflow-hidden rounded-2xl shadow-lg bg-zinc-900">
+        <!-- Responsive horizontal rectangle: adjust padding-top for aspect ratio -->
+        <div class="w-full" style="padding-top:36%;">
+          <img
+            src="/images/about.png"
+            alt="Wide about hero"
+            class="absolute inset-0 w-full h-full object-cover"
+            style="position: absolute; left: 0; top: 0;"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Capabilities -->
+    <div class="my-14" id="capabilities">
+      <div
+        class="gallery-capabilities w-full flex flex-col lg:flex-row justify-between gap-8"
+      >
+        <!-- Left: Capabilities heading (can be pinned on large screens) -->
+        <div class="md:pl-8 w-full lg:w-1/3 order-1 flex items-start">
+          <h2
+            id="capabilities-heading"
+            class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide mb-8 uppercase lg:mb-0"
+          >
+            CAPABILITIES
+          </h2>
+        </div>
+
+        <!-- Right: capability cards (image + content) -->
+        <div
+          class="w-full lg:w-2/3 order-2 grid grid-cols-1 place-items-center gap-6"
+        >
+          {
+            capabilities.slice(0, 3).map((cap) => (
+              <section class="capability-section flex flex-col my-6 bg-tranparent shadow-sm border border-gray-700 rounded-3xl w-full md:w-4/5">
+                <div class="h-80 m-2.5 overflow-hidden text-white bg-white rounded-md">
+                  <img
+                    src={cap.image}
+                    alt={cap.title}
+                    class=" w-full h-full object-cover capability-image"
+                  />
+                </div>
+
+                <div class="p-8">
+                  <div class=" mb-4 flex flex-row gap-2 items-start ">
+                    <h6 class="text-3xl tracking-wide font-semibold">
+                      {cap.title}
+                    </h6>
+
+                    <p class="ml-3 hidden tracking-wider rounded-full bg-gray-100 px-2 py-0.5 text-lg font-medium whitespace-nowrap text-gray-700 lg:block dark:bg-gray-400/15 dark:text-gray-300">
+                      {cap.price}
+                    </p>
+                  </div>
+
+                  <p class="text-gray-300 uppercase text-lg tracking-wide leading-9">
+                    {cap.description}
+                  </p>
+                </div>
+              </section>
+            ))
+          }
+        </div>
       </div>
 
-      <div
-        class="border-2 border-blue-400 w-full lg:w-4/6 h-screen items-end justify-center"
-      >
-      </div>
+      <!-- end marker for GSAP pin/end -->
+      <hr id="capabilities-end" class="border border-transparent mt-6" />
     </div>
   </section>
 
   <AboutComponent />
 
   <Footer />
-  
+
   <script is:inline>
-    // Add to window.initPageScripts to be called on page transitions
-    window.initPageScripts = () => {
-      // Only create ScrollTrigger on larger screens
-      if (window.innerWidth >= 1024) {
-        ScrollTrigger.create({
-          trigger: ".content",
-          start: "top top",
-          end: "bottom bottom",
-          pin: ".left",
-          pinSpacing: true,
-          markers: true,
+    document.addEventListener("DOMContentLoaded", () => {
+      // small delay to allow other scripts/hydration to finish
+      setTimeout(() => {
+        if (!(window.gsap && window.ScrollTrigger)) return;
+        const gsap = window.gsap;
+        const ScrollTrigger = window.ScrollTrigger;
+        const mm = gsap.matchMedia();
+        // keep references to created ScrollTriggers for cleanup
+        const created = [];
+
+        // Desktop: pins and image swap behavior
+        mm.add("(min-width: 1024px)", () => {
+          // EXPERIENCE heading pin
+          const experienceHead = document.querySelector("#experience-headings");
+          const experienceEnd = document.querySelector("#experience-end");
+          if (experienceHead && experienceEnd) {
+            created.push(
+              ScrollTrigger.create({
+                trigger: experienceHead,
+                scroller: "#main",
+                start: "top top+=20%",
+                endTrigger: experienceEnd,
+                end: "bottom top+=80%",
+                pin: experienceHead,
+                pinSpacing: false,
+                anticipatePin: 1,
+                markers: false,
+              }),
+            );
+          }
+
+          // MY STACK heading pin
+          const myStackHeading = document.querySelector("#my-stack-heading");
+          const myStackEnd = document.querySelector("#my-stack-end");
+          const myStack = document.querySelector("#my-stack");
+          if (myStack && myStackHeading && myStackEnd) {
+            created.push(
+              ScrollTrigger.create({
+                trigger: myStack,
+                scroller: "#main",
+                start: "top top+=120",
+                endTrigger: myStackEnd,
+                end: "bottom top+=80%",
+                pin: myStackHeading,
+                pinSpacing: false,
+                anticipatePin: 1,
+                markers: false,
+              }),
+            );
+          }
+
+          // cleanup for this media query
+          return () => {
+            created.forEach((t) => t && t.kill && t.kill());
+            created.length = 0;
+          };
         });
-      }
-    };
-    
-    // Call immediately on first load
-    window.initPageScripts();
-    
-    // Handle window resize
-    window.addEventListener('resize', () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      setTimeout(window.initPageScripts, 100);
+
+        // Mobile: no large-screen pinning; still swap capability images on scroll
+        mm.add("(max-width: 1023px)", () => {
+          const sections = Array.from(
+            document.querySelectorAll(".capability-section"),
+          );
+          const images = Array.from(
+            document.querySelectorAll(".capability-image"),
+          );
+          const mobileTriggers = [];
+
+          if (!images.length) return () => {};
+
+          // show first image by default on mobile
+          images.forEach((img, i) => img.classList.toggle("hidden", i !== 0));
+
+          sections.forEach((section, index) => {
+            mobileTriggers.push(
+              ScrollTrigger.create({
+                trigger: section,
+                scroller: "#main",
+                start: "top center",
+                end: "bottom center",
+                onEnter: () => {
+                  images.forEach((img) => img.classList.add("hidden"));
+                  if (images[index]) images[index].classList.remove("hidden");
+                },
+                onEnterBack: () => {
+                  images.forEach((img) => img.classList.add("hidden"));
+                  if (images[index]) images[index].classList.remove("hidden");
+                },
+                markers: false,
+              }),
+            );
+          });
+
+          return () => mobileTriggers.forEach((t) => t && t.kill && t.kill());
+        });
+      }, 250);
     });
   </script>
 </BaseLayout>
