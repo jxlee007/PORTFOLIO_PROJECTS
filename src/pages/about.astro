@@ -15,36 +15,54 @@ const menuItems = [
   { href: "/contact", index: "/05", label: "CONTACT" },
 ];
 
-// Define social media links
-const brandLinks = [
-  { href: "https://www.instagram.com/", text: "INSTAGRAM" },
-  { href: "https://www.linkedin.com/", text: "LINKEDIN" },
-  { href: "https://github.com/", text: "GITHUB" },
-];
-
 // Capabilities
 const capabilities = [
   {
     title: "LANDING PAGES & WEBSITES",
     description:
       "LANDING PAGE DESIGNED TO CONVERT VISITORS INTO ENGAGED USERS EFFORTLESSLY.",
-    image: "/images/about.png",
+    image: "/reference/about-page.png",
     price: "$ 320+",
   },
   {
     title: "MOBILE APPS",
     description:
       "LEADING THE FOREFRONT OF MOBILE APP DEVELOPMENT WITH ADVANCED TECHNOLOGIES.",
-    image: "/images/about.png",
+    image: "/reference/about-page.png",
     price: "$ 500+",
   },
   {
     title: "DIGITAL MARKETING AUTOMATION",
     description:
       "UNIQUE BRAND IDENTITIES THAT RESONATE WITH AUDIENCES MEMORABLE CONNECTIONS THROUGH STRATEGIC NARRATIVE FORGING.",
-    image: "/images/about.png",
+    image: "/reference/about-page.png",
     price: "$ 600+",
   },
+];
+
+const images = [
+  {
+    gif: "https://i.pinimg.com/originals/a7/7f/bf/a77fbfec380b3f63e3feb9a7df60616a.gif",
+    text: "AWE SHIT"
+  },
+  {
+    gif: "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExczNwZTdoZ2xxeGM1Mml3czc1NnZzbGNrcmg1d3pxYjg0NHlvOTg5OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/YbHnru6KfNiUGeNeCf/giphy.gif",
+    text: "HERE .WE—GO"
+  },
+  {
+    gif: "https://i.pinimg.com/originals/d8/e9/c4/d8e9c40a8542557a08f6f90745340112.gif",
+    text: "AGAIN"
+  },
+];
+
+// Define social media links
+const brandLinks = [
+  { href: "https://www.instagram.com/", text: "INSTAGRAM" },
+  {
+    href: "https://www.linkedin.com/in/jagmohan-singh-malhi-a67805243",
+    text: "LINKEDIN",
+  },
+  { href: "https://github.com/jxlee007", text: "GITHUB" },
 ];
 
 const contactDetails = [
@@ -58,11 +76,7 @@ const contactDetails = [
   ,
 ];
 const topSkills = ["No-Code Development Platforms", "AI Agents", "Jira"];
-const certifications = [
-  "JavaScript for beginners",
-  "Introduction to HTML Course",
-  "Back End Development and APIs",
-];
+
 const profileExperience = [
   {
     company: "Kit Solutions",
@@ -77,11 +91,31 @@ const profileExperience = [
     location: "Jaipur, Rajasthan, India",
   },
 ];
+
 const education = [
   {
     institution: "Parul University",
     degree: "Bachelor's in Computer Application, Cybersecurity",
     period: "August 2021 - April 2024",
+  },
+];
+
+const stats = [
+  {
+    label: "Years of Experience",
+    value: "4+",
+  },
+  {
+    label: "Projects",
+    value: "10+",
+  },
+  {
+    label: "Creative Potential",
+    value: "♾️",
+  },
+  {
+    label: "Customer Satisfaction",
+    value: "5.00",
   },
 ];
 ---
@@ -100,7 +134,7 @@ const education = [
       </span>
 
       <p
-        class="w-full md:w-2/3 text-zinc-400 leading-relaxed text-2xl md:text-3xl mt-4 text-center tracking-wide font-light px-4 md:px-0"
+        class="w-full md:w-2/3 text-zinc-400 leading-relaxed text-xl md:text-3xl mt-4 text-center tracking-wide font-light px-4 md:px-0"
       >
         UNLEASH YOUR CREATIVITY. SHOWCASE YOU WORK AND
         <br class="hidden md:block" />
@@ -114,49 +148,18 @@ const education = [
     <div
       class="flex flex-col md:flex-row items-center md:items-center justify-around gap-8 md:gap-6 w-full"
     >
-      <div class="flex-1 flex flex-col items-center">
-        <span
-          class="text-4xl md:text-5xl lg:text-6xl font-bold font-space-grotesk text-white"
-          >4+</span
-        >
-        <span
-          class="text-zinc-400 uppercase tracking-widest text-sm mt-2 text-center md:text-left"
-          >YEARS OF EXPERIENCE</span
-        >
-      </div>
-
-      <div class="flex-1 flex flex-col items-center">
-        <span
-          class="text-4xl md:text-5xl lg:text-6xl font-bold font-space-grotesk text-white"
-          >10+</span
-        >
-        <span
-          class="text-zinc-400 uppercase tracking-widest text-sm mt-2 text-center md:text-left"
-          >COMPLETED PROJECTS</span
-        >
-      </div>
-
-      <div class="flex-1 flex flex-col items-center">
-        <span
-          class="text-4xl md:text-5xl lg:text-6xl font-bold font-space-grotesk text-white"
-          >♾️</span
-        >
-        <span
-          class="text-zinc-400 uppercase tracking-widest text-sm mt-2 text-center md:text-left"
-          >CREATIVE POTENTIAL</span
-        >
-      </div>
-
-      <div class="flex-1 flex flex-col items-center">
-        <span
-          class="text-4xl md:text-5xl lg:text-6xl font-bold font-space-grotesk text-white"
-          >5.00</span
-        >
-        <span
-          class="text-zinc-400 uppercase tracking-widest text-sm mt-2 text-center md:text-left"
-          >CUSTOMER SUCCESS</span
-        >
-      </div>
+      {
+        stats.map((stat) => (
+          <div class="flex-1 flex flex-col items-center animate-item opacity-0 translate-y-6 will-change-transform">
+            <span class="text-5xl md:text-7xl lg:text-6xl font-bold font-space-grotesk text-white">
+              {stat.value}
+            </span>
+            <span class="text-zinc-400 uppercase tracking-widest text-md mt-2 text-center md:text-left">
+              {stat.label}
+            </span>
+          </div>
+        ))
+      }
     </div>
   </section>
 
@@ -164,7 +167,7 @@ const education = [
     <div
       class="mt-10 w-full lg:w-2/3 h-full grid grid-flow-row justify-items-end gap-4 md:gap-6"
     >
-      <InfoBlock title="ABOUT JX7">
+      <InfoBlock class="animate-item opacity-0 translate-y-6 will-change-transform" title="ABOUT JX7">
         I'm on the cutting edge of no-code tools that allow me to bring my
         creative visions to life. Though my methods may be unconventional, my
         dedication to the craft is unparalleled. I thrive on finding "unexpected
@@ -175,7 +178,7 @@ const education = [
     <div
       class="mt-10 w-full lg:w-2/3 h-full grid grid-flow-row justify-items-end gap-4 md:gap-6"
     >
-      <InfoBlock title="MY APPROACH & STRATEGY">
+      <InfoBlock class="animate-item opacity-0 translate-y-6 will-change-transform" title="MY APPROACH & STRATEGY">
         I take a pragmatic, design-first approach — rapid code & AI prototyping
         to validate ideas, then polish with hand-crafted HTML/Tailwind/JS when
         it matters. I prioritize clear UX, automation that saves time, and fast
@@ -185,77 +188,58 @@ const education = [
     </div>
   </div>
 
-  <section class="my-8 w-screen md:w-full -mx-4 md:mx-0">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-      {
-        capabilities.slice(0, 3).map((cap) => (
-          <div
-            class="relative overflow-hidden rounded-lg"
-            style="padding-top:100%;"
-          >
-            <img
-              src={cap.image}
-              alt={cap.title}
-              class="absolute inset-0 w-full h-full object-cover"
-            />
-          </div>
-        ))
-      }
+  <!-- Hero Image -->
+  <div class="mt-8 w-full mx-auto animate-item opacity-0 translate-y-6 will-change-transform">
+    <div class="relative overflow-hidden rounded-2xl shadow-lg bg-zinc-900">
+      <!-- square on mobile, horizontal rectangle on md+ -->
+      <div class="relative w-full pt-[100%] md:pt-[50%]">
+        <img
+          src="reference/188_256__avatar.webp"
+          alt="Wide about hero"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+      </div>
     </div>
-  </section>
+  </div>
 
   <!-- Experience -> LEFT shows full content sections (scrollable), RIGHT shows single pinned heading -->
   <div
-    class="gallery w-full flex flex-col lg:flex-row justify-between gap-6 md:gap-10"
+    class="gallery mt-10 w-full flex flex-col lg:flex-row justify-between gap-6 md:gap-10"
   >
     <!-- LEFT: Full content sections (experience + education + profile) -->
     <div class="w-full lg:w-2/3 order-2 space-y-16 experience-content">
-      <section class="experience-section" id="experience-item-1">
-        <h3
-          class="text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-wide mb-4"
-        >
-          KIT SOLUTIONS
-        </h3>
-        <p class="text-zinc-400 text-lg leading-relaxed">
-          IT Business Analyst — April 2024 - April 2025<br />
-          Vadodara, Gujarat, India<br />
-          Led product initiatives, gathered requirements, and translated business
-          needs into actionable technical plans. Focused on optimizing workflows
-          and delivering scalable solutions across cross-functional teams.
-        </p>
-      </section>
+      {
+        profileExperience.map((exp, i) => (
+          <section class="experience-section animate-item opacity-0 translate-y-6 will-change-transform" id={`experience-item-${i + 1}`}>
+            <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-wide mb-4">
+              {exp.company}
+            </h3>
+            <p class="text-zinc-400 text-lg leading-relaxed">
+              {exp.position} — {exp.period}
+              <br />
+              {exp.location}
+            </p>
+          </section>
+        ))
+      }
 
-      <section class="experience-section" id="experience-item-2">
-        <h3
-          class="text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-wide mb-4"
-        >
-          INTERNPE
-        </h3>
-        <p class="text-zinc-400 text-lg leading-relaxed">
-          Web Development Intern — November 2023<br />
-          Jaipur, Rajasthan, India<br />
-          Built frontend features, improved UI/UX consistency, and collaborated with
-          engineering to ship responsive pages and small interactive components.
-        </p>
-      </section>
-
-      <section
-        class="education-section experience-section"
-        id="education-item-1"
-      >
-        <h3
-          class="text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-wide mb-4"
-        >
-          EDUCATION
-        </h3>
-        <p class="text-zinc-400 text-lg leading-relaxed">
-          Parul University — Bachelor's in Computer Application, Cybersecurity<br
-          />
-          August 2021 - April 2024<br />
-          Focused on software fundamentals, security principles, and practical projects
-          that bridged theory with real-world implementation.
-        </p>
-      </section>
+      {
+        education.map((edu, i) => (
+          <section
+            class="education-section experience-section animate-item opacity-0 translate-y-6 will-change-transform"
+            id={`education-item-${i + 1}`}
+          >
+            <h3 class="text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-wide mb-4">
+              EDUCATION
+            </h3>
+            <p class="text-zinc-400 text-lg leading-relaxed">
+              {edu.institution} — {edu.degree}
+              <br />
+              {edu.period}
+            </p>
+          </section>
+        ))
+      }
 
       <!-- shared end marker used by ScrollTrigger to calculate pin duration -->
       <hr id="experience-end" class="border border-transparent mt-2" />
@@ -266,10 +250,10 @@ const education = [
       id="experience-headings"
       class="w-full lg:w-1/3 order-1 flex items-start"
     >
-      <div class="w-full">
+      <div class="w-full animate-item opacity-0 translate-y-6 will-change-transform">
         <h2
           id="experience-main-heading"
-          class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide uppercase"
+          class="text-5xl md:text-7xl lg:text-5xl font-bold tracking-wide uppercase"
         >
           EXPERIENCE
         </h2>
@@ -288,7 +272,7 @@ const education = [
       >
         <h2
           id="my-stack-heading"
-          class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide mb-8 uppercase lg:mb-0 lg:min-w-[220px]"
+          class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide mb-8 uppercase lg:mb-0 lg:min-w-[220px] animate-item opacity-0 translate-y-6 will-change-transform"
         >
           MY STACK
         </h2>
@@ -300,7 +284,7 @@ const education = [
         class="w-full lg:w-1/2 order-2 lg:order-2 flex flex-col gap-6"
       >
         <div
-          class="bg-zinc-900 p-6 md:p-8 rounded-2xl shadow-lg hover:bg-zinc-800 transition-colors duration-300"
+          class="bg-zinc-900 p-6 md:p-8 rounded-2xl shadow-lg hover:bg-zinc-800 transition-colors duration-300 animate-item opacity-0 translate-y-6 will-change-transform"
         >
           <h3
             class="text-xl md:text-2xl font-bold mb-4 uppercase tracking-wide"
@@ -317,7 +301,7 @@ const education = [
         </div>
 
         <div
-          class="bg-zinc-900 p-6 md:p-8 rounded-xl hover:bg-zinc-800 transition-colors duration-300"
+          class="bg-zinc-900 p-6 md:p-8 rounded-xl hover:bg-zinc-800 transition-colors duration-300 animate-item opacity-0 translate-y-6 will-change-transform"
         >
           <h3
             class="text-xl md:text-2xl font-bold mb-4 uppercase tracking-wide"
@@ -334,7 +318,7 @@ const education = [
         </div>
 
         <div
-          class="bg-zinc-900 p-6 md:p-8 rounded-xl hover:bg-zinc-800 transition-colors duration-300"
+          class="bg-zinc-900 p-6 md:p-8 rounded-xl hover:bg-zinc-800 transition-colors duration-300 animate-item opacity-0 translate-y-6 will-change-transform"
         >
           <h3
             class="text-xl md:text-2xl font-bold mb-4 uppercase tracking-wide"
@@ -359,36 +343,59 @@ const education = [
   <section class="w-full px-4 md:px-0">
     <div class="flex flex-col lg:flex-row gap-6 items-end">
       <!-- Left box -->
-      <div class="w-full lg:w-1/2 p-6 md:p-8 order-2 lg:order-1 shadow-lg flex flex-col">
+      <div
+        class="w-full lg:w-1/2 p-6 md:p-8 order-2 lg:order-1 shadow-lg flex flex-col animate-item opacity-0 translate-y-6 will-change-transform"
+      >
         <InfoBlock>
-          A designer crafts visual narratives that blend creativity with
+          A creator crafts visual narratives that blend creativity with
           functionality, shaping impactful experiences through artful design.
         </InfoBlock>
       </div>
       <!-- Right box -->
       <div
-        class="w-full lg:w-1/2 text-4xl md:text-8xl order-1 lg:order-2 leading-tight md:leading-none font-space-grotesk "
+        class="w-full lg:w-1/2 text-4xl md:text-8xl order-1 lg:order-2 leading-tight md:leading-none font-space-grotesk animate-item opacity-0 translate-y-6 will-change-transform"
       >
-        <h1 class="font-semibold text-white  tracking-normal uppercase">
+        <h1 class="font-semibold text-white tracking-normal uppercase">
           AWE MAKES THINGS HAPPEN .wo—nder
+         
         </h1>
       </div>
     </div>
 
-    <!-- Hero Image -->
-    <div class="mt-8 w-full mx-auto">
-      <div class="relative overflow-hidden rounded-2xl shadow-lg bg-zinc-900">
-        <!-- Responsive horizontal rectangle: adjust padding-top for aspect ratio -->
-        <div class="w-full" style="padding-top:36%;">
-          <img
-            src="/images/about.png"
-            alt="Wide about hero"
-            class="absolute inset-0 w-full h-full object-cover"
-            style="position: absolute; left: 0; top: 0;"
-          />
-        </div>
+    <!-- GIF Section -->
+    <section class="my-8 w-screen md:w-full -mx-4 md:mx-0">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        {
+          images.slice(0, 3).map((img) => (
+            <div class="group relative overflow-hidden rounded-lg animate-item opacity-0 translate-y-6 will-change-transform" style="padding-top:100%;">
+              <img
+                src={img.gif}
+                alt="gif"
+                class="absolute inset-0 w-full h-full object-cover"
+              />
+
+              <!-- overlay: visible on lg+, hides on hover -->
+              <div
+                class="absolute inset-0 hidden lg:flex items-center justify-center px-4 text-center bg-gradient-to-t from-gray-800 via-gray-700 to-gray-600 text-white transition-opacity duration-300 lg:opacity-100 lg:group-hover:opacity-0"
+              >
+                <p class="max-w-xs">
+                  <span class="flex flex-col items-center">
+                    <span class="w-16 h-px bg-white/20 mb-4" aria-hidden></span>
+                    {
+                      img.text.split(' ').map((word) => (
+                        <span class="block text-5xl md:text-7xl font-bold uppercase tracking-wider bg-gradient-to-t from-gray-400 via-gray-300 to-gray-200 bg-clip-text text-transparent">
+                          {word}
+                        </span>
+                      ))
+                    }
+                  </span>
+                </p>
+              </div>
+            </div>
+          ))
+        }
       </div>
-    </div>
+    </section>
 
     <!-- Capabilities -->
     <div class="my-14" id="capabilities">
@@ -399,7 +406,7 @@ const education = [
         <div class="md:pl-8 w-full lg:w-1/3 order-1 flex items-start">
           <h2
             id="capabilities-heading"
-            class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide mb-8 uppercase lg:mb-0"
+            class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide mb-8 uppercase lg:mb-0 animate-item opacity-0 translate-y-6 will-change-transform"
           >
             CAPABILITIES
           </h2>
@@ -411,7 +418,7 @@ const education = [
         >
           {
             capabilities.slice(0, 3).map((cap) => (
-              <section class="capability-section flex flex-col my-6 bg-tranparent shadow-sm border border-gray-700 rounded-3xl w-full md:w-4/5">
+              <section class="capability-section flex flex-col my-6 bg-tranparent shadow-sm border border-gray-700 rounded-3xl w-full md:w-4/5 animate-item opacity-0 translate-y-6 will-change-transform">
                 <div class="h-80 m-2.5 overflow-hidden text-white bg-white rounded-md">
                   <img
                     src={cap.image}
@@ -446,6 +453,51 @@ const education = [
     </div>
   </section>
 
+  <!-- inline GSAP reveal: subtle on-scroll animations for .animate-item -->
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      // small delay so GSAP/ScrollTrigger (if loaded) has a chance to register
+      setTimeout(() => {
+        const items = Array.from(document.querySelectorAll('.animate-item'));
+        if (!items.length) return;
+
+        // If GSAP + ScrollTrigger available, use it for smoother reveals
+        if (window.gsap && window.ScrollTrigger) {
+          const gsap = window.gsap;
+          const ScrollTrigger = window.ScrollTrigger;
+          try {
+            gsap.registerPlugin(ScrollTrigger);
+          } catch (e) {
+            // plugin may already be registered
+          }
+
+          items.forEach((el, i) => {
+            // ensure starting state (in case CSS classes removed)
+            gsap.set(el, { autoAlpha: 0, y: 18 });
+            gsap.to(el, {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.6,
+              ease: 'power2.out',
+              delay: 0,
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 85%',
+                toggleActions: 'play none none reverse',
+                markers: false,
+              },
+            });
+          });
+          return;
+        }
+
+        // Fallback (no GSAP): simply remove hidden classes for native appearance
+        items.forEach((el) => {
+          el.classList.remove('opacity-0', 'translate-y-6');
+        });
+      }, 120);
+    });
+  </script>
   <AboutComponent />
 
   <Footer />
