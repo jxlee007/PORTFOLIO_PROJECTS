@@ -212,3 +212,17 @@ a {
 #reload a:focus span {
     color: #111;
 }
+
+.capability-card.is-active {
+    --tw-translate-y: -0.5rem;
+    border-color: rgba(52, 211, 153, 0.58);
+    background-color: rgba(24, 24, 27, 0.92);
+    box-shadow: 0 32px 60px -30px rgba(16, 185, 129, 0.35);
+}
+
+.experience-card.is-active {
+    --tw-translate-y: -0.5rem;
+    border-color: rgba(56, 189, 248, 0.58);
+    background-color: rgba(24, 24, 27, 0.92);
+    box-shadow: 0 32px 60px -30px rgba(59, 130, 246, 0.3);
+}
