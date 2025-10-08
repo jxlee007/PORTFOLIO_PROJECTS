@@ -2,7 +2,7 @@
 import Link from './Link.astro';
 import ProjectCard from './ProjectCard.astro';
 
-const projects = [
+const mobileProjects = [
   {
     id: 1,
     title: "PROJECT 1",
@@ -32,6 +32,65 @@ const projects = [
     src: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
   }
 ];
+
+const desktopProjects = [
+  {
+    id: "soho-2023",
+    title: "SOHO 2023",
+    brand: "converse",
+    category: "environment",
+    mediaType: "video",
+    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/converse.mp4"
+  },
+  {
+    id: "soho-nyc",
+    title: "SOHO NYC",
+    brand: "arc'teryx",
+    category: "environment",
+    mediaType: "image",
+    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/sohonyc.webp"
+  },
+  {
+    id: "nyfw-popup",
+    title: "NYFW Popup",
+    brand: "afterpay",
+    category: "experiential",
+    mediaType: "video",
+    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/afterpay.mp4"
+  },
+  {
+    id: "kidvision",
+    title: "Play New Kidvision",
+    brand: "nike",
+    category: "environment",
+    mediaType: "video",
+    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/newkidvision.mp4"
+  },
+  {
+    id: "air-force-1",
+    title: "Air Force 1 2022",
+    brand: "nike",
+    category: "environment",
+    mediaType: "image",
+    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/airforce.webp"
+  },
+  {
+    id: "makers-studio",
+    title: "Makers Studio HOI",
+    brand: "nike",
+    category: "experiential",
+    mediaType: "image",
+    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/hoi.webp"
+  },
+  {
+    id: "50th-anniversary",
+    title: "50th Anniversary",
+    brand: "nike",
+    category: "environment",
+    mediaType: "image",
+    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/anniversary.webp"
+  }
+];
 ---
 
 <section id="third" class="py-10 md:py-20 w-full h-fit flex flex-col justify-items-end gap-8 md:gap-12 px-4 md:px-0">
@@ -50,9 +109,9 @@ const projects = [
     <Link href="/work">VIEW PORTFOLIO *</Link>
   </div>
 
-  <div class="max-w-full h-full">
-    <div class="grid lg:grid-cols-2 md:grid-cols-1 gap-4 md:gap-6">
-      {projects.map(project => (
+  <div class="max-w-full h-full lg:hidden">
+    <div class="grid md:grid-cols-1 gap-4 md:gap-6">
+      {mobileProjects.map(project => (
         <ProjectCard 
           href={project.href}
           src={project.src}
@@ -62,4 +121,257 @@ const projects = [
       ))}
     </div>
   </div>
+
+  <div class="hidden lg:block w-full relative">
+    <div
+      id="featured-fixed"
+      class="featured-fixed pointer-events-none fixed top-[22vh] left-[58%] w-[24vw] h-[30vw] rounded-2xl overflow-hidden border border-white/20 shadow-[0_40px_90px_rgba(0,0,0,0.45)] bg-black/80 backdrop-blur-md"
+    ></div>
+
+    <div id="featured-list" class="featured-list flex flex-col">
+      {desktopProjects.map((project) => (
+        <article
+          class="featured-elem"
+          data-media-type={project.mediaType}
+          data-media-src={project.mediaSrc}
+          data-project-id={project.id}
+          role="button"
+          tabindex="0"
+          aria-label={`Preview ${project.title} project`}
+        >
+          <div class="featured-overlay" aria-hidden="true"></div>
+          <h2>{project.title}</h2>
+          <div class="featured-meta">
+            <h3>{project.brand}</h3>
+            <h4>{project.category}</h4>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
 </section>
+
+<style>
+  @media (min-width: 1024px) {
+    .featured-list {
+      position: relative;
+      gap: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .featured-elem {
+      position: relative;
+      height: 150px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2.5vw;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      text-transform: uppercase;
+      transition: color 0.25s ease;
+      cursor: pointer;
+    }
+
+    .featured-elem:last-child {
+      border-bottom: none;
+    }
+
+    .featured-elem h2 {
+      font-size: clamp(2.5rem, 2.6vw, 3.4rem);
+      font-weight: 600;
+      color: #f7f7f7;
+      letter-spacing: 0.08em;
+      position: relative;
+      z-index: 2;
+    }
+
+    .featured-meta {
+      width: 14%;
+      min-width: 180px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 4px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .featured-meta h3 {
+      font-size: clamp(1rem, 1.1vw, 1.4rem);
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      color: #f3f3f3;
+    }
+
+    .featured-meta h4 {
+      font-size: clamp(0.9rem, 1vw, 1.2rem);
+      text-transform: capitalize;
+      font-weight: 400;
+      color: #b3b3b3;
+    }
+
+    .featured-overlay {
+      position: absolute;
+      inset: 0;
+      background: #ff9831;
+      transform: translateY(-100%);
+      transition: transform 0.25s ease;
+      z-index: 1;
+    }
+
+    .featured-elem:is(:hover, :focus-visible) .featured-overlay {
+      transform: translateY(0%);
+    }
+
+    .featured-elem:is(:hover, :focus-visible) h2,
+    .featured-elem:is(:hover, :focus-visible) .featured-meta h3,
+    .featured-elem:is(:hover, :focus-visible) .featured-meta h4 {
+      color: #101010;
+    }
+
+    .featured-fixed {
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .featured-fixed.is-visible {
+      display: flex;
+    }
+
+    .featured-fixed video,
+    .featured-fixed img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+  }
+</style>
+
+<script type="module">
+  const initFeaturedCases = () => {
+    const fixed = document.getElementById('featured-fixed');
+    const list = document.getElementById('featured-list');
+
+    if (!fixed || !list) {
+      return () => {};
+    }
+
+    const mq = window.matchMedia('(min-width: 1024px)');
+    const listeners = [];
+
+    const hideMedia = () => {
+      fixed.classList.remove('is-visible');
+      fixed.replaceChildren();
+    };
+
+    const showMedia = (type, src) => {
+      if (!src) return;
+
+      const fragment = document.createDocumentFragment();
+
+      if (type === 'video') {
+        const video = document.createElement('video');
+        video.src = src;
+        video.autoplay = true;
+        video.loop = true;
+        video.muted = true;
+        video.playsInline = true;
+        video.setAttribute('aria-hidden', 'true');
+        fragment.appendChild(video);
+      } else {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = '';
+        fragment.appendChild(img);
+      }
+
+      fixed.replaceChildren(fragment);
+      fixed.classList.add('is-visible');
+    };
+
+    const attachListeners = () => {
+      if (!mq.matches) {
+        return;
+      }
+
+      const elements = list.querySelectorAll('.featured-elem');
+
+      elements.forEach((elem) => {
+        const handleEnter = () => {
+          const { mediaType, mediaSrc } = elem.dataset;
+          showMedia(mediaType, mediaSrc);
+        };
+
+        const handleLeave = () => {
+          hideMedia();
+        };
+
+        elem.addEventListener('mouseenter', handleEnter);
+        elem.addEventListener('focus', handleEnter);
+        elem.addEventListener('mouseleave', handleLeave);
+        elem.addEventListener('blur', handleLeave);
+
+        listeners.push({ elem, handleEnter, handleLeave });
+      });
+
+      list.addEventListener('mouseleave', hideMedia);
+      listeners.push({ elem: list, handleLeave: hideMedia });
+    };
+
+    const detachListeners = () => {
+      listeners.forEach(({ elem, handleEnter, handleLeave }) => {
+        if (handleEnter) {
+          elem.removeEventListener('mouseenter', handleEnter);
+          elem.removeEventListener('focus', handleEnter);
+        }
+        if (handleLeave) {
+          elem.removeEventListener('mouseleave', handleLeave);
+          elem.removeEventListener('blur', handleLeave);
+        }
+      });
+      listeners.length = 0;
+      hideMedia();
+    };
+
+    const handleChange = (event) => {
+      if (event.matches) {
+        attachListeners();
+      } else {
+        detachListeners();
+      }
+    };
+
+    if (mq.matches) {
+      attachListeners();
+    }
+
+    mq.addEventListener('change', handleChange);
+
+    return () => {
+      mq.removeEventListener('change', handleChange);
+      detachListeners();
+    };
+  };
+
+  if (typeof window !== 'undefined') {
+    let cleanup = () => {};
+
+    const onReady = () => {
+      cleanup = initFeaturedCases();
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', onReady, { once: true });
+    } else {
+      onReady();
+    }
+
+    window.addEventListener('beforeunload', () => {
+      cleanup();
+    });
+  }
+</script>
