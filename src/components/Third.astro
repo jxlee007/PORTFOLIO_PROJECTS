@@ -35,61 +35,61 @@ const mobileProjects = [
 
 const desktopProjects = [
   {
-    id: "soho-2023",
-    title: "SOHO 2023",
-    brand: "converse",
-    category: "environment",
-    mediaType: "video",
-    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/converse.mp4"
-  },
-  {
-    id: "soho-nyc",
-    title: "SOHO NYC",
-    brand: "arc'teryx",
-    category: "environment",
-    mediaType: "image",
-    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/sohonyc.webp"
-  },
-  {
-    id: "nyfw-popup",
-    title: "NYFW Popup",
-    brand: "afterpay",
-    category: "experiential",
-    mediaType: "video",
-    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/afterpay.mp4"
-  },
-  {
-    id: "kidvision",
-    title: "Play New Kidvision",
-    brand: "nike",
-    category: "environment",
-    mediaType: "video",
-    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/newkidvision.mp4"
-  },
-  {
-    id: "air-force-1",
-    title: "Air Force 1 2022",
-    brand: "nike",
-    category: "environment",
+    href: "https://tiny-todos.netlify.app/",
+    title: "TINY TODOS 2023",
+    brand: "TYNI",
+    category: "INTERACTIVE WORKS",
     mediaType: "image",
     mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/airforce.webp"
   },
   {
-    id: "makers-studio",
-    title: "Makers Studio HOI",
-    brand: "nike",
-    category: "experiential",
+    href: "https://sundown-jms.netlify.app",
+    title: "SUNDOWN STUDIO",
+    brand: "PROJECT-5",
+    category: "WEB WORKS",
+    mediaType: "video",
+    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/converse.mp4"
+  },
+  {
+    href: "https://rayban-redesign.netlify.app/",
+    title: "RAYBAN REDESIGN",
+    brand: "SHERY JS",
+    category: "INTERACTIVE WORKS",
+    mediaType: "video",
+    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/newkidvision.mp4"
+  },
+  {
+    href: "https://rejoy-jms.netlify.app/",
+    title: "REJOYCE",
+    brand: "PROJECT-4",
+    category: "WEB WORKS",
     mediaType: "image",
+    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/sohonyc.webp"
+  },
+  {
+    href: "PROJECT-2",
+  title: "SNEAKER HEADS",
+    brand: "nike",
+    category: "INTERACTIVE WORKS",
+    mediaType: "video",
     mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/hoi.webp"
   },
   {
-    id: "50th-anniversary",
-    title: "50th Anniversary",
-    brand: "nike",
-    category: "environment",
+    href: "https://project-1-jms.netlify.app",
+    title: "CYNTHIA UGWU",
+    brand: "PROJECT-1",
+    category: "WEB WORKS",
+    mediaType: "image",
+    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/afterpay.mp4"
+  },
+  {
+    href: "PORTFOLIO",
+    title: "CHALLENGE 2022",
+    brand: "PETER MCKINNON",
+    category: "WEB WORKS",
     mediaType: "image",
     mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/anniversary.webp"
-  }
+  },
 ];
 ---
 
@@ -110,7 +110,7 @@ const desktopProjects = [
   </div>
 
   <div class="max-w-full h-full lg:hidden">
-    <div class="grid md:grid-cols-1 gap-4 md:gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
       {mobileProjects.map(project => (
         <ProjectCard 
           href={project.href}
@@ -135,6 +135,7 @@ const desktopProjects = [
           data-media-type={project.mediaType}
           data-media-src={project.mediaSrc}
           data-project-id={project.id}
+          data-href={project.href}
           role="button"
           tabindex="0"
           aria-label={`Preview ${project.title} project`}
@@ -170,8 +171,12 @@ const desktopProjects = [
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       overflow: hidden;
       text-transform: uppercase;
-      transition: color 0.25s ease;
+      transition: color 0.25s ease, transform 0.2s ease;
       cursor: pointer;
+    }
+
+    .featured-elem:hover {
+      transform: translateX(4px);
     }
 
     .featured-elem:last-child {
@@ -310,12 +315,28 @@ const desktopProjects = [
           hideMedia();
         };
 
+        const handleClick = () => {
+          const { href } = elem.dataset;
+          if (href && href !== '#' && href !== 'PROJECT-2' && href !== 'PORTFOLIO') {
+            window.open(href, '_blank', 'noopener,noreferrer');
+          }
+        };
+
+        const handleKeydown = (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            handleClick();
+          }
+        };
+
         elem.addEventListener('mouseenter', handleEnter);
         elem.addEventListener('focus', handleEnter);
         elem.addEventListener('mouseleave', handleLeave);
         elem.addEventListener('blur', handleLeave);
+        elem.addEventListener('click', handleClick);
+        elem.addEventListener('keydown', handleKeydown);
 
-        listeners.push({ elem, handleEnter, handleLeave });
+        listeners.push({ elem, handleEnter, handleLeave, handleClick, handleKeydown });
       });
 
       list.addEventListener('mouseleave', hideMedia);
@@ -323,7 +344,7 @@ const desktopProjects = [
     };
 
     const detachListeners = () => {
-      listeners.forEach(({ elem, handleEnter, handleLeave }) => {
+      listeners.forEach(({ elem, handleEnter, handleLeave, handleClick, handleKeydown }) => {
         if (handleEnter) {
           elem.removeEventListener('mouseenter', handleEnter);
           elem.removeEventListener('focus', handleEnter);
@@ -331,6 +352,12 @@ const desktopProjects = [
         if (handleLeave) {
           elem.removeEventListener('mouseleave', handleLeave);
           elem.removeEventListener('blur', handleLeave);
+        }
+        if (handleClick) {
+          elem.removeEventListener('click', handleClick);
+        }
+        if (handleKeydown) {
+          elem.removeEventListener('keydown', handleKeydown);
         }
       });
       listeners.length = 0;

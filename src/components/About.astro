@@ -2,6 +2,7 @@
 import Link from "./Link.astro";
 import CustomLink from "./CustomLink.astro";
 import Pixelcard from "./Pixelcard.astro";
+import { brandLinks } from "../constants/brandLinks";
 
 const pixelArtLinks = [
   "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWZtMGU2cmJsdHRxaGx4OXF2cWE4enhyZnp4c2lqNGc1cWd6dXk2eCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lkceXNDw4Agryfrwz8/giphy.gif",
@@ -51,11 +52,7 @@ const pixelArtLinks = [
   "https://i.pinimg.com/originals/c5/53/f9/c553f9e54a81c21c8025647aa1ae2eb3.gif",
   "https://i.pinimg.com/originals/53/af/54/53af5444d76896adedadb586069aa67b.gif",
 ];
-const socialLinks = {
-  instagram: "https://www.instagram.com/jx7dev/",
-  linkedin: "https://www.linkedin.com/in/jx7dev/",
-  github: "https://github.com/jxlee007",
-};
+
 
 /* Generate random link from the array */
 const randomLink = pixelArtLinks[Math.floor(Math.random() * pixelArtLinks.length)];
@@ -114,13 +111,13 @@ const randomLink = pixelArtLinks[Math.floor(Math.random() * pixelArtLinks.length
   <div
     class="font-space-grotesk text-lg md:text-xl font-thin w-full md:w-3/5 flex flex-col md:flex-row gap-4 md:gap-0 justify-around items-center"
   >
-    <CustomLink target="_blank" href={socialLinks.instagram}>
+    <CustomLink target="_blank" href={brandLinks.find(link => link.text === 'INSTAGRAM')?.href || '#'}>
       <span class="p-4">INSTAGRAM<i class="ri-arrow-right-up-line "></i></span>
     </CustomLink>
-    <CustomLink target="_blank" href={socialLinks.linkedin}>
+    <CustomLink target="_blank" href={brandLinks.find(link => link.text === 'LINKEDIN')?.href || '#'}>
       <span class="p-4">LINKEDIN<i class="ri-arrow-right-up-line "></i></span>
     </CustomLink>
-    <CustomLink target="_blank" href={socialLinks.github}>
+    <CustomLink target="_blank" href={brandLinks.find(link => link.text === 'GITHUB')?.href || '#'}>
       <span class="p-4">GITHUB<i class="ri-arrow-right-up-line "></i></span>
     </CustomLink>
   </div>

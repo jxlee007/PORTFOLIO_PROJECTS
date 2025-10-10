@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import Footer from "../components/Footer.astro";
+import { brandLinks } from "../constants/brandLinks";
 
 // Define menu items for the sidebar
 const menuItems = [
@@ -13,12 +14,6 @@ const menuItems = [
   { href: "/contact", index: "/05", label: "CONTACT" },
 ];
 
-// Define social media links
-const brandLinks = [
-  { href: "https://www.instagram.com/", text: "INSTAGRAM" },
-  { href: "https://www.linkedin.com/in/jagmohan-singh-malhi-a67805243", text: "LINKEDIN" },
-  { href: "https://github.com/jxlee007", text: "GITHUB" },
-];
 
 // Define work projects with more detail
 const projects = [
@@ -94,7 +89,7 @@ const projects = [
 
       <section class="flex flex-col items-start lg:items-end text-[12vw] md:text-[9.8vw] font-bold">
         <p class="uppercase text-lg md:text-xl text-gray-300 font-thin">
-          ( 2021 - 2024 )
+          {`( 2021 - ${new Date().getFullYear()} )`}
         </p>
 
         <p class="leading-none line-clamp-2 text-left lg:text-right mt-2 md:mt-4">SELECTED WORKS</p>

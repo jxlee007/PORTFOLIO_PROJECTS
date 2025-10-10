@@ -158,32 +158,19 @@ function updateRealTime() {
 function openNav() {
     const sidebar = document.getElementById("sidebar");
     const heading = document.querySelector("#heading");
-
-    if (!sidebar) return;
-
-    sidebar.classList.remove("desktop-open", "mobile-open");
-
-    if (window.innerWidth >= 1024) {
-        sidebar.classList.add("desktop-open");
+    if (window.innerWidth >= 769) {
+        sidebar.style.width = "35%";
     } else {
-        sidebar.classList.add("mobile-open");
-        if (heading) {
-            heading.classList.add("hidden");
-        }
+        sidebar.style.width = "100%";
+        heading.classList.add("hidden");
     }
 }
 
 function closeNav() {
     const sidebar = document.getElementById("sidebar");
     const heading = document.querySelector("#heading");
-
-    if (!sidebar) return;
-
-    sidebar.classList.remove("desktop-open", "mobile-open");
-
-    if (heading) {
-        heading.classList.remove("hidden");
-    }
+    sidebar.style.width = "0";
+    heading.classList.remove("hidden");
 }
 
 // Initialize all functions when DOM is loaded

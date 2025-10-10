@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import CustomLink from "../components/CustomLink.astro";
+import { brandLinks } from "../constants/brandLinks";
 
 // Define menu items for the sidebar
 const menuItems = [
@@ -60,13 +61,6 @@ const pixelArtLinks = [
     "https://i.pinimg.com/originals/53/11/b1/5311b1bbafc3768b015cf977b3eb3069.gif",
     "https://i.pinimg.com/originals/c5/53/f9/c553f9e54a81c21c8025647aa1ae2eb3.gif",
     "https://i.pinimg.com/originals/53/af/54/53af5444d76896adedadb586069aa67b.gif",
-];
-
-// Define social media links
-const brandLinks = [
-    { href: "https://www.instagram.com/", text: "INSTAGRAM" },
-    { href: "https://www.linkedin.com/in/jagmohan-singh-malhi-a67805243", text: "LINKEDIN" },
-    { href: "https://github.com/jxlee007", text: "GITHUB" },
 ];
 
 /* Generate random link from the array */
