@@ -1,5 +1,3 @@
-
-
               <div class="pin-item" data-target="professional-profile">
                 <h2 class="text-3xl font-bold font-space-grotesk mb-4">
                   PROFESSIONAL PROFILE

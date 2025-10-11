@@ -121,20 +121,16 @@ function updateRealTime() {
 // Sidebar open/close functions
 function openNav() {
     const sidebar = document.getElementById("sidebar");
-    const heading = document.querySelector("#heading");
-    if (window.innerWidth >= 769) {
-        sidebar.style.width = "35%";
-    } else {
-        sidebar.style.width = "100%";
-        heading.classList.add("hidden");
+    if (sidebar) {
+        sidebar.classList.add('open');
     }
 }
 
 function closeNav() {
     const sidebar = document.getElementById("sidebar");
-    const heading = document.querySelector("#heading");
-    sidebar.style.width = "0";
-    heading.classList.remove("hidden");
+    if (sidebar) {
+        sidebar.classList.remove('open');
+    }
 }
 
 // Initialize all functions when DOM is loaded

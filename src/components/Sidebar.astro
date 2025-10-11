@@ -1,7 +1,4 @@
 ---
-import MenuLink from './MenuLink.astro';
-import CustomLink from './CustomLink.astro';
-
 interface MenuItem {
   href: string;
   index: string;
@@ -20,27 +17,263 @@ export interface Props {
 
 const { menuItems, brandLinks } = Astro.props;
 ---
-<div id="sidebar" class="sidenav h-screen w-0 fixed top-0 right-0 overflow-x-hidden transition-all duration-500 pt-[60px] bg-black z-[9999]">
-  <div class="flex justify-between items-center mx-4 md:mx-8 border rounded-full border-white-800">
-    <marquee class="text-sm md:text-xl font-semibold" direction="left" behavior="scroll" loop="infinite" scrollamount="10">
-      <span class="text-gray-400 mr-2">+</span> LIGHT MODE COMING SOON <span class="text-gray-400 ml-2">+</span>
-    </marquee>
-    <button type="button" class="closebtn text-white text-lg md:text-2xl py-1 rounded-r-full hover:bg-white hover:text-black transition-all duration-300" onclick="closeNav()">
-      <span class="px-2 md:px-3 border-l border-white text-sm md:text-base">CLOSE</span>
-    </button>
-  </div>
+<div
+  id="sidebar"
+  class="sidenav h-screen w-full fixed top-0 right-0 overflow-hidden transition-all duration-700 ease-in-out bg-black z-[99999] opacity-0 pointer-events-none"
+  aria-hidden="true"
+>
+  <!-- Noise texture overlay -->
+  <div class="absolute inset-0 opacity-30 bg-noise"></div>
+ 
 
-  <div id="reload" class="mt-8 md:mt-16 px-4 md:px-8">
-    {menuItems.map(item => (
-      <MenuLink href={item.href} index={item.index} label={item.label} />
-    ))}
-  </div>
+  <!-- Main navigation -->
+  <div class="flex items-center justify-center h-full p-8">
+    <div class=" w-full max-w-5xl relative ">
+      <!-- Moved Close button / marquee into nav container so it aligns with nav content -->
+      <div class="absolute -top-10 right-0 z-10">
+        <div class="flex justify-between items-center border rounded-full border-gray-800">
+          <marquee
+            class="text-sm md:text-base font-semibold text-gray-400 px-4"
+            direction="left"
+            behavior="scroll"
+            loop="infinite"
+            scrollamount="8"
+          >
+            <span class="text-gray-400 mr-2">+</span> LIGHT MODE COMING SOON <span class="text-gray-400 ml-2">+</span>
+          </marquee>
+          <button
+            type="button"
+            class="closebtn text-white text-sm md:text-base font-medium tracking-wider hover:opacity-70 transition-opacity duration-300 px-4 py-2 border-l border-gray-800"
+            onclick="closeNav()"
+          >
+            CLOSE
+          </button>
+        </div>
+      </div>
+      <!-- Dashed border container for navigation and social links -->
+      <div
+        class="border border-dashed border-gray-600 rounded-xl h-full flex flex-col min-h-[75vh] mt-4"
+      >
+        <!-- Navigation items -->
+        <div class="flex-1">
+          {
+            menuItems.map((item, index) => (
+              <div
+                class="nav-item transform translate-y-8 opacity-0 transition-all duration-500 ease-out"
+                style={`transition-delay: ${index * 100}ms`}
+              >
+                <a href={item.href} class="group block py-3">
+                  <div class=" flex items-center justify-start pl-4 space-x-6 md:space-x-8">
+                      <span class="text-gray-500 text-base md:text-lg font-light">
+                        {item.index}
+                      </span>
+                      <span class="menu-anim">
+                        <div class="menuelem">
+                          <div class="txtdiv text-5xl md:text-8xl lg:text-6xl xl:text-6xl font-space-grotesk font-semibold text-white tracking-wide">
+                            <h1 class="menu-title">{item.label}</h1>
+                            <h1 class="menu-title hidden md:inline-block ">{item.label}</h1>
+                          </div>
+                        </div>
+                      </span>
+                  </div>
+                </a>
+                {index < menuItems.length - 1 && (
+                  <div class="border-b border-dashed border-gray-700 mb-2 md:mt-2" />
+                )}
+              </div>
+            ))
+          }
+        </div>
 
-  <div id="brand" class="absolute text-sm md:text-lg bottom-4 md:bottom-10 left-0 w-full px-4 md:px-8 flex flex-col md:flex-row gap-4 md:gap-0 md:justify-between">
-    {brandLinks.map(link => (
-      <CustomLink href={link.href} underline={true} className="text-gray-400 hover:text-white transition-colors duration-300">
-        <span>{link.text}</span>
-      </CustomLink>
-    ))}
+        <!-- Social links -->
+        <div class=" h-20 md:h-24 flex justify-center items-center  space-x-8 md:space-x-12 border-t border-gray-500 border-dashed pl-8 ">
+          {
+            brandLinks.map((link, index) => (
+              <div
+                class="social-item transform translate-y-4 opacity-0 transition-all duration-500 ease-out"
+                style={`transition-delay: ${(menuItems.length + index) * 100}ms`}
+              >
+                <a
+                  href={link.href}
+                  class="text-gray-400 text-md md:text-lg font-medium tracking-wider hover:text-white transition-colors duration-300 uppercase flex items-center space-x-1"
+                >
+                  <span>{link.text}</span>
+                  <span class="text-xs">↗</span>
+                </a>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<style>
+  .bg-noise {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(255, 255, 255, 0.08) 1px,
+      transparent 0
+    );
+    background-size: 20px 20px;
+  }
+
+  .menuelem {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+  }
+
+  .txtdiv {
+    height: 8vh;
+    overflow: hidden;
+    z-index: 12;
+  }
+
+  .menuelem h1 {
+    margin: 0;
+    transition: all ease-out 0.3s;
+  }
+
+  .menuelem:hover h1 {
+    transform: translateY(-100%);
+  }
+
+  /* Scroll lock when sidebar is open - uses position fixed for better mobile support */
+  html.sidebar-open {
+    overflow: hidden !important;
+  }
+  
+  body.sidebar-open {
+    position: fixed !important;
+    overflow: hidden !important;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Mobile animations - slide from top */
+  @media (max-width: 768px) {
+    #sidebar {
+      transform: translateY(-100%);
+      transition:
+        transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        opacity 0.7s ease;
+    }
+
+    #sidebar.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    #sidebar.open .nav-item,
+    #sidebar.open .social-item {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+        /* Disable hover text slide effect on mobile */
+    .menuelem:hover h1 {
+      transform: none !important;
+    }
+  }
+
+  /* Desktop animations - slide from right */
+  @media (min-width: 769px) {
+    #sidebar {
+      width: 0;
+      right: 0;
+      transform: translateX(100%);
+      transition: all 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* On desktop/tablet, open the sidebar to 40% width */
+    #sidebar.open {
+      width: 100%;
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+
+
+    #sidebar.open .nav-item,
+    #sidebar.open .social-item {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+</style>
+
+<script>
+  function openNav() {
+    const sidebar = document.getElementById("sidebar");
+    if (sidebar) {
+      sidebar.classList.add("open");
+      sidebar.setAttribute('aria-hidden', 'false');
+      
+      // Robust scroll lock: save current scroll position and apply position fixed
+      try {
+        const scrollY = window.scrollY || window.pageYOffset;
+        const scrollX = window.scrollX || window.pageXOffset;
+        
+        // Save scroll position to restore later
+        document.documentElement.dataset.scrollY = String(scrollY);
+        document.documentElement.dataset.scrollX = String(scrollX);
+        
+        // Apply scroll lock classes
+        document.documentElement.classList.add('sidebar-open');
+        document.body.classList.add('sidebar-open');
+        
+        // Apply fixed positioning with negative top to maintain visual scroll position
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.left = `-${scrollX}px`;
+      } catch (e) {
+        // Fallback: just add classes
+        document.documentElement.classList.add('sidebar-open');
+        document.body.classList.add('sidebar-open');
+      }
+    }
+  }
+
+  function closeNav() {
+    const sidebar = document.getElementById("sidebar");
+    if (sidebar) {
+      sidebar.classList.remove("open");
+      sidebar.setAttribute('aria-hidden', 'true');
+      
+      // Restore scroll position and remove lock
+      try {
+        const scrollY = parseInt(document.documentElement.dataset.scrollY || '0', 10);
+        const scrollX = parseInt(document.documentElement.dataset.scrollX || '0', 10);
+        
+        // Remove scroll lock classes and styles
+        document.documentElement.classList.remove('sidebar-open');
+        document.body.classList.remove('sidebar-open');
+        document.body.style.top = '';
+        document.body.style.left = '';
+        
+        // Restore scroll position
+        window.scrollTo(scrollX, scrollY);
+        
+        // Clean up dataset
+        delete document.documentElement.dataset.scrollY;
+        delete document.documentElement.dataset.scrollX;
+      } catch (e) {
+        // Fallback: just remove classes
+        document.documentElement.classList.remove('sidebar-open');
+        document.body.classList.remove('sidebar-open');
+        document.body.style.top = '';
+        document.body.style.left = '';
+      }
+    }
+  }
+
+  // Make functions globally available
+  (window as any).openNav = openNav;
+  (window as any).closeNav = closeNav;
+</script>
