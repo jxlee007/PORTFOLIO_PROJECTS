@@ -1,0 +1,160 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import Split from "../components/Split.astro";
+import TrekSection from "../components/TrekSection.astro";
+import { brandLinks } from "../constants/brandLinks";
+
+const menuItems = [
+  { href: "/", index: "/01", label: "MAIN HOME" },
+  { href: "/about", index: "/02", label: "ABOUT JX7" },
+  { href: "/work", index: "/03", label: "WORKS" },
+  { href: "/trek", index: "/04", label: "MY TREK" },
+  { href: "/contact", index: "/05", label: "CONTACT" },
+];
+
+const trekSections = [
+  {
+    title: "Favorite Sport",
+    description: "Whether I'm cruising through serene landscapes or pushing myself up challenging hills, every pedal stroke brings a sense of exhilaration and freedom. Cycling isn't just about physical endurance.",
+    image: "/images/cycling-neon.jpg"
+  },
+  {
+    title: "Motorsports",
+    description: "Motorsport captivates me with its blend of speed, strategy, and adrenaline. Each discipline showcases the pinnacle of automotive excitement.",
+    image: "/images/motorsport-glow.jpg"
+  },
+  {
+    title: "Video Games",
+    description: "Beyond entertainment, games ignite my curiosity for storytelling, art direction, and interactive design—fostering a deep appreciation for the industry's evolution and modern culture.",
+    image: "/images/video-game-virtual.jpg"
+  },
+  {
+    title: "Aesthetics",
+    description: "I fuel my passion for understanding how visual harmony and expression can evoke emotions, provoke thought, and elevate experiences in both tangible and virtual realms.",
+    image: "/images/aesthetic-view.jpg"
+  },
+  {
+    title: "Futuristic Dream",
+    description: "I'm fascinated by the intersection of innovation and imagination. These dreams inspire me to explore visionary concepts from sustainable cities to artificial intelligence.",
+    image: "/images/futuristic-dreams.jpg"
+  },
+  {
+    title: "Movies",
+    description: "\"Blade Runner 2049\" captivates me with its dystopian vision of the future, blending mesmerizing visuals with thought-provoking themes of technology, and humanity's relationship with creation.",
+    image: "/images/cinematic-blade.jpg"
+  },
+  {
+    title: "Favourite Series",
+    description: "\"Stranger Things\" enthralls me with its nostalgic homage to 80s pop culture, blending supernatural intrigue with heartfelt friendships and dynamic storytelling.",
+    image: "/images/series-stranger.jpg"
+  }
+];
+---
+
+<BaseLayout title="My Trek | JX7 Portfolio">
+  <Nav {menuItems} {brandLinks} />
+
+  <section class="mt-10 pb-16 md:pb-24 px-4 md:px-0">
+    <div class="font-bold font-space-grotesk w-full gap-8 md:gap-12 flex flex-col items-center justify-center">
+      <span class="text-center">
+        <Split text="LOOK INTO" />
+        <Split text="MY TREK" />
+      </span>
+
+      <p class="w-full md:w-2/3 text-zinc-400 leading-relaxed text-xl md:text-3xl mt-6 text-center tracking-wide font-light px-4 md:px-0">
+        GET INTO MY PLAYGROUND, WHERE CREATIVITY TAKES FLIGHT AND IDEAS BLOSSOM THROUGH IMAGINATION. STEP INTO A REALM WHERE INSPIRATION MEETS EXPRESSION.
+      </p>
+    </div>
+  </section>
+
+  <section class="relative w-full mb-16 md:mb-24 animate-item opacity-0 translate-y-6 will-change-transform">
+    <div class="relative overflow-hidden rounded-3xl shadow-2xl">
+      <div class="relative w-full pt-[60%] md:pt-[45%]">
+        <img 
+          src="/images/my-trek-1.jpg" 
+          alt="My Trek Hero"
+          class="absolute inset-0 w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+        <div class="absolute bottom-0 left-0 right-0 p-8 md:p-16">
+          <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-tight font-space-grotesk text-white drop-shadow-2xl">
+            CREATIVE
+            <br />
+            PLAYGROUND
+          </h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="space-y-0 md:space-y-8">
+    {trekSections.map((section, index) => (
+      <TrekSection 
+        title={section.title}
+        description={section.description}
+        image={section.image}
+        index={index + 1}
+      />
+    ))}
+  </div>
+
+  <section class="mt-24 md:mt-32 mb-16 md:mb-24 px-4 md:px-0 text-center animate-item opacity-0 translate-y-6 will-change-transform">
+    <div class="border-t border-zinc-800 pt-12 md:pt-16">
+      <h2 class="text-6xl md:text-8xl lg:text-9xl font-bold uppercase tracking-tighter font-space-grotesk mb-8 bg-gradient-to-r from-red-500 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+        GUETABERTO
+      </h2>
+      <p class="text-zinc-500 text-sm md:text-base tracking-[0.3em] uppercase">
+        © 2025 Alberto Designs
+      </p>
+    </div>
+  </section>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const items = Array.from(document.querySelectorAll('.animate-item'));
+        if (!items.length) return;
+
+        if (window.gsap && window.ScrollTrigger) {
+          const gsap = window.gsap;
+          const ScrollTrigger = window.ScrollTrigger;
+          try {
+            gsap.registerPlugin(ScrollTrigger);
+          } catch (e) {
+          }
+
+          if (typeof ScrollTrigger.defaults === "function") {
+            ScrollTrigger.defaults({ scroller: "#main" });
+          }
+
+          items.forEach((el, i) => {
+            gsap.set(el, { autoAlpha: 0, y: 24 });
+            gsap.to(el, {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.8,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 85%',
+                scroller: '#main',
+                toggleActions: 'play none none reverse',
+                markers: false,
+              },
+            });
+          });
+          ScrollTrigger.refresh();
+          return;
+        }
+
+        items.forEach((el) => {
+          el.classList.remove('opacity-0', 'translate-y-6');
+        });
+      }, 120);
+    });
+  </script>
+
+  <Footer />
+</BaseLayout>

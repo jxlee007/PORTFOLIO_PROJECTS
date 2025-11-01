@@ -1,0 +1,25 @@
+Trek Page Image Requirements:
+================================
+
+The following images are referenced in the My Trek page and need to be placed in /public/images/:
+
+1. my-trek-1.jpg - Hero image for main trek banner
+2. cycling-neon.jpg - Favorite Sport section
+3. motorsport-glow.jpg - Motorsports section
+4. video-game-virtual.jpg - Video Games section
+5. aesthetic-view.jpg - Aesthetics section
+6. futuristic-dreams.jpg - Futuristic Dream section
+7. cinematic-blade.jpg - Movies section (Blade Runner 2049 theme)
+8. series-stranger.jpg - Favourite Series section (Stranger Things theme)
+
+Design Notes:
+- All images should have cinematic quality with high contrast
+- Apply neon-red, blue, or purple color overlays/tints
+- Images should be dramatic and evocative
+- Recommended dimensions: 1920x1440px or similar high-res format
+- Dark mode optimized with deep blacks and vibrant accents
+
+Image placeholders can be created or real assets can be sourced from:
+- Unsplash (https://unsplash.com)
+- Pexels (https://pexels.com)
+- User-uploaded assets
