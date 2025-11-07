@@ -13,6 +13,7 @@ const menuItems = [
   { href: "/contact", index: "/05", label: "CONTACT" },
 ];
 
+// Updated JSON Schema with two content paragraphs for single section
 const trekdata = {
   sections: [
     {
@@ -21,41 +22,57 @@ const trekdata = {
         src: "/images/CyberpunkEdgerunners_3.png",
         alt: "Futuristic cityscape",
         title: "Futuristic Dream",
-        // "subtitle": "I'm fascinated by the intersection of innovation and imagination. These dreams inspire me to explore visionary concepts from sustainable cities to artificial intelligence."
+        subtitle:
+          "I'm fascinated by the intersection of innovation and imagination. These dreams inspire me to explore visionary concepts from sustainable cities to artificial intelligence.",
       },
       singleSection: {
         title: "Movies",
-        description:
-          '"Blade Runner 2049" captivates me with its dystopian vision of the future, blending mesmerizing visuals with thought-provoking themes of technology, and humanity\'s relationship with creation.',
+        contents: [
+          {
+            title: "Creative thinking",
+            description:" Innovative idea generation, design thinking, and rapid prototyping across digital and physical domains.",
+            link: "/interests/creative-thinking",
+          },
+        ],
         image: {
-          src: "/images/cinematic-blade.jpg",
-          alt: "Blade Runner 2049 scene",
+          src: [
+            "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1920&q=80",
+            "https://images.unsplash.com/photo-1505685296765-3a2736de412f?w=1920&q=80",
+            "https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=1920&q=80",
+            "https://images.unsplash.com/photo-1498575207490-4555f51825a4?w=1920&q=80",
+          ],
+          alt: "Iconic cinematic scenes",
         },
-        link: "/interests/movies",
       },
       dualSection: {
         images: [
           {
-            src: "/images/series-stranger.jpg",
-            alt: "Stranger Things poster",
+            src: [
+              "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1920&q=80",
+              "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&q=80",
+            ],
+            alt: "Futuristic cityscapes",
           },
           {
-            src: "/images/placeholder-series-2.jpg",
-            alt: "Another favorite series",
+            src: [
+              "https://images.unsplash.com/photo-1483389127111-e94e29c7fb56?w=1920&q=80",
+              "https://images.unsplash.com/photo-1509099836639-18ba68f1d168?w=1920&q=80",
+            ],
+            alt: "Sci-fi imagination",
           },
         ],
         contents: [
           {
-            title: "Favourite Series",
+            title: "Script writing X character design",
             description:
-              '"Stranger Things" enthralls me with its nostalgic homage to 80s pop culture, blending supernatural intrigue with heartfelt friendships and dynamic storytelling.',
-            link: "/interests/series",
+              " Weaving stories with vivid characters and intricate plots that explore human emotions and imaginative worlds.",
+            link: "/interests/script-writing-character-design",
           },
           {
-            title: "More Series",
+            title: "Songwriting, beat producing, and rapping",
             description:
-              "Exploring diverse narratives across television series that push creative boundaries and redefine storytelling.",
-            link: "/interests/more-series",
+              " Crafting rhythms and lyrical expressions to tell compelling personal and cultural stories.",
+            link: "/interests/music-production",
           },
         ],
       },
@@ -66,45 +83,58 @@ const trekdata = {
         src: "https://images.bikeexif.com/2019/11/arch-motorcycle-review-1.jpg",
         alt: "Cycling adventure hero shot",
         title: "Favorite Sport",
-        // "subtitle": "Motorsport captivates me with its blend of speed, strategy, and adrenaline. Each discipline showcases the pinnacle of automotive excitement."
-      },
-      singleSection: {
-        title: "Motorsports",
-        description:
+        subtitle:
           "Motorsport captivates me with its blend of speed, strategy, and adrenaline. Each discipline showcases the pinnacle of automotive excitement.",
+      },
+
+      singleSection: {
+        contents: [
+          {
+            title: "coding background",
+            description:
+              " Full-stack expertise blending AI integration, web and app development.",
+            link: "/interests/technical-coding",
+          },
+        ],
         image: {
-          src: "/images/motorsport-glow.jpg",
-          alt: "Motorsports action",
+          src: [
+            "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1920&q=80",
+            "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1920&q=80",
+            "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=1920&q=80",
+          ],
+          alt: "Creative workspace and equipment",
         },
-        link: "/interests/motorsports",
       },
       dualSection: {
         images: [
           {
-            src: 
-            [ 
+            src: [
               "https://www.rollingstone.com/wp-content/uploads/2025/03/gow-ft1.jpg?w=1600&h=900&crop=1",
-              "https://i.ytimg.com/vi/K33eiOhjTPg/maxresdefault.jpg", 
+              "https://i.ytimg.com/vi/K33eiOhjTPg/maxresdefault.jpg",
+              "/images/god-of-war-alt.jpg"
             ],
-            alt: "Video games",
+            alt: "Popular video games collection",
           },
           {
-            src: "/images/aesthetic-view.jpg",
-            alt: "Aesthetic visuals",
+            src: [
+              "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1920&q=80",
+              "https://images.unsplash.com/photo-1549924231-f129b911e442?w=1600&q=80",
+            ],
+            alt: "Gaming art composition",
           },
         ],
         contents: [
           {
             title: "Video Games",
             description:
-              "Beyond entertainment, games ignite my curiosity for storytelling, art direction, and interactive design—fostering a deep appreciation for the industry's evolution and modern culture.",
+              "Exploring worlds from God of War’s epic Norse mythology, Call of Duty’s immersive battles, Pokémon's nostalgic GBA adventures to Monument Valley's artistic puzzle design, Dungeons of Dreadlock’s roguelike challenges, Smash Cart’s arcade intensity, Forza Horizon’s racing thrill, and Grimvalor’s dark action.",
             link: "/interests/video-games",
           },
           {
-            title: "Aesthetics",
+            title: "Favourite Movies",
             description:
-              "I fuel my passion for understanding how visual harmony and expression can evoke emotions, provoke thought, and elevate experiences in both tangible and virtual realms.",
-            link: "/interests/aesthetics",
+              "From The Matrix’s mind-bending reality to Shawshank Redemption’s tale of hope and resilience, the Iron Man series’ tech heroism, to Zathura and Jumanji’s adventurous fantasies—each film shapes my imagination and storytelling ethos.Movies inspire reflections on identity, human potential, and the intersection between technology and society.",
+            link: "/interests/movies",
           },
         ],
       },
@@ -112,65 +142,59 @@ const trekdata = {
   ],
 };
 
-// Utility to pick random item from array or parse string array
+// Fixed randomizer function
 function getRandomImage(value) {
-  // If it's already a string (single URL), return it
-  if (typeof value === 'string') {
-    // Check if it looks like an array string: "[ url1, url2, url3 ]"
-    if (value.trim().startsWith('[') && value.trim().endsWith(']')) {
+  if (typeof value === "string") {
+    if (value.trim().startsWith("[") && value.trim().endsWith("]")) {
       try {
-        // Clean up the string and split by comma
         const urls = value
-          .replace(/[\[\]]/g, '') // Remove brackets
-          .split(',')
-          .map(url => url.trim())
-          .filter(url => url.length > 0); // Remove empty strings
-        
+          .replace(/[\[\]]/g, "")
+          .split(",")
+          .map((url) => url.trim())
+          .filter((url) => url.length > 0);
+
         if (urls.length > 0) {
           return urls[Math.floor(Math.random() * urls.length)];
         }
       } catch (e) {
-        return value; // If parsing fails, return original string
+        console.error("Error parsing image array:", e);
+        return value;
       }
     }
-    return value; // Regular single URL string
+    return value;
   }
-  
-  // If it's an array, pick random
+
   if (Array.isArray(value)) {
     return value[Math.floor(Math.random() * value.length)];
   }
-  
+
   return value;
 }
 
-// Recursively process object and randomize any src that might be an array
 function randomizeImageSources(obj) {
   if (Array.isArray(obj)) {
-    return obj.map(item => randomizeImageSources(item));
+    return obj.map((item) => randomizeImageSources(item));
   }
-  
-  if (obj !== null && typeof obj === 'object') {
+
+  if (obj !== null && typeof obj === "object") {
     const result = {};
-    
+
     for (const [key, value] of Object.entries(obj)) {
-      // If key is 'src', process it for randomization
-      if (key === 'src') {
+      if (key === "src") {
         result[key] = getRandomImage(value);
       } else {
         result[key] = randomizeImageSources(value);
       }
     }
-    
+
     return result;
   }
-  
+
   return obj;
 }
 
+// Process data with randomization
 const data = randomizeImageSources(trekdata);
-
-
 ---
 
 <BaseLayout title="My Trek | JX7 Portfolio">
@@ -195,7 +219,7 @@ const data = randomizeImageSources(trekdata);
     </div>
   </section>
 
-  <section class="trek-page pt-[2%] md:pt-[5%]">
+  <section class="trek-page pt-[2%] md:pt-[5%] px-4 md:px-8">
     {
       data.sections.map((sectionGroup) => (
         <div class="section-group mb-24">
@@ -206,75 +230,91 @@ const data = randomizeImageSources(trekdata);
               alt={sectionGroup.heroImage.alt}
               class="absolute inset-0 w-full h-full object-cover"
             />
-            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-              <div class="text-center text-white/10 px-4">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60 flex items-center justify-center">
+              <div class="text-center text-white/10 px-4 max-w-2xl sm:max-w-4xl ">
+                <h1 class="text-4xl md:text-7xl font-bold mb-4 uppercase tracking-wider ">
                   {sectionGroup.heroImage.title}
                 </h1>
-                <p class="text-lg md:text-xl max-w-3xl mx-auto ">
-                  {sectionGroup.heroImage.subtitle}
-                </p>
+                {sectionGroup.heroImage.subtitle && (
+                  <p class="text-lg md:text-2xl font-light tracking-wide">
+                    {/* {sectionGroup.heroImage.subtitle} */}
+                  </p>
+                )}
               </div>
             </div>
           </div>
 
-          {/* Single Section Layout */}
-          <div class="grid grid-cols-1 gap-6 sm:grid-cols-1 md:grid-cols-1 md:gap-12 lg:grid-cols-2 mb-16">
-            <div class="order-1 lg:order-1">
-              <h2 class="text-2xl md:text-3xl font-bold mb-4">
-                {sectionGroup.singleSection.title}
-              </h2>
-              <p class="text-base md:text-lg leading-relaxed mb-6">
-                {sectionGroup.singleSection.description}
-              </p>
-              {sectionGroup.singleSection.link && (
-                <a
-                  href={sectionGroup.singleSection.link}
-                  class="inline-block text-blue-500 hover:text-blue-700 font-medium transition"
-                >
-                  Learn More →
-                </a>
-              )}
+          {/* Single Section Layout - Two Contents Side by Side with Image */}
+          <div class="grid grid-cols-1 gap-8 md:gap-12 lg:grid-cols-2 lg:items-center mb-16 md:mb-24 animate-item opacity-0 translate-y-6">
+            {/* Content Column */}
+            <div class="order-1 space-y-8">
+              {/* Two content blocks */}
+              {sectionGroup.singleSection.contents.map((content, idx) => (
+                <div class="space-y-4">
+                  <h2 class="text-3xl font-bold mb-6 uppercase tracking-wide">
+                    {sectionGroup.singleSection.contents[idx].title}
+                  </h2>
+                  <p class="text-base md:text-lg leading-relaxed text-gray-300">
+                    {content.description}
+                  </p>
+                  {content.link && (
+                    <a
+                      href={content.link}
+                      class="inline-flex items-center space-x-2 text-cyan-400 hover:text-cyan-300 font-semibold transition-colors duration-300 group"
+                    >
+                      <span>Learn More</span>
+                      <span class="transform group-hover:translate-x-1 transition-transform duration-300">
+                        →
+                      </span>
+                    </a>
+                  )}
+                </div>
+              ))}
             </div>
-            <div class="order-2 lg:order-2">
+
+            {/* Image Column */}
+            <div class="order-2">
               <img
                 src={sectionGroup.singleSection.image.src}
                 alt={sectionGroup.singleSection.image.alt}
-                class="w-full h-auto rounded-lg shadow-lg"
+                class="w-full aspect-square object-cover rounded-xl shadow-2xl hover:scale-105 transition-transform duration-500"
               />
             </div>
           </div>
 
           {/* Dual Section Layout */}
-          <div class=" mx-auto mb-16">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div class="mb-16 md:mb-24 animate-item opacity-0 translate-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
               {/* Images container */}
               <div class="order-1 flex flex-col space-y-6 md:space-y-8">
                 {sectionGroup.dualSection.images.map((image, index) => (
                   <img
                     src={image.src}
                     alt={image.alt}
-                    class="w-full object-cover aspect-video md:aspect-video sm:aspect-square rounded-lg shadow-lg"
+                    class="w-full object-cover aspect-[4/3] md:aspect-[4/3] sm:aspect-square rounded-xl shadow-2xl hover:scale-105 transition-transform duration-500"
                   />
                 ))}
               </div>
 
               {/* Content container */}
-              <div class="order-2 flex flex-col gap-10 space-y-6 md:space-y-8">
+              <div class="order-2 flex flex-col space-y-8 md:space-y-12">
                 {sectionGroup.dualSection.contents.map((content, index) => (
-                  <div>
-                    <h2 class="text-xl md:text-2xl font-bold mb-2">
+                  <div class="space-y-4">
+                    <h2 class="text-2xl md:text-4xl font-bold uppercase tracking-wide">
                       {content.title}
                     </h2>
-                    <p class="text-base md:text-lg leading-relaxed mb-4">
+                    <p class="text-base md:text-lg leading-relaxed text-gray-300">
                       {content.description}
                     </p>
                     {content.link && (
                       <a
                         href={content.link}
-                        class="inline-block text-blue-500 hover:text-blue-700 font-medium transition"
+                        class="inline-flex items-center space-x-2 text-cyan-400 hover:text-cyan-300 font-semibold transition-colors duration-300 group"
                       >
-                        Learn More →
+                        <span>Learn More</span>
+                        <span class="transform group-hover:translate-x-1 transition-transform duration-300">
+                          →
+                        </span>
                       </a>
                     )}
                   </div>
@@ -296,9 +336,12 @@ const data = randomizeImageSources(trekdata);
         if (window.gsap && window.ScrollTrigger) {
           const gsap = window.gsap;
           const ScrollTrigger = window.ScrollTrigger;
+
           try {
             gsap.registerPlugin(ScrollTrigger);
-          } catch (e) {}
+          } catch (e) {
+            console.error("GSAP registration failed:", e);
+          }
 
           if (typeof ScrollTrigger.defaults === "function") {
             ScrollTrigger.defaults({ scroller: "#main" });
@@ -320,10 +363,12 @@ const data = randomizeImageSources(trekdata);
               },
             });
           });
+
           ScrollTrigger.refresh();
           return;
         }
 
+        // Fallback if GSAP not available
         items.forEach((el) => {
           el.classList.remove("opacity-0", "translate-y-6");
         });
