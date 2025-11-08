@@ -22,21 +22,21 @@ const capabilities = [
     title: "LANDING PAGES & WEBSITES",
     description:
       "LANDING PAGE DESIGNED TO CONVERT VISITORS INTO ENGAGED USERS EFFORTLESSLY.",
-    image: "/reference/about-page.png",
+    image: "../images/landing.png",
     price: "$ 320+",
   },
   {
-    title: "MOBILE APPS",
+    title: "WEB APPS",
     description:
-      "LEADING THE FOREFRONT OF MOBILE APP DEVELOPMENT WITH ADVANCED TECHNOLOGIES.",
-    image: "/reference/about-page.png",
+      "LEADING THE FOREFRONT OF MOBILE APP PROTOTYPING WITH ADVANCED TECHNOLOGIES.",
+    image: "https://sm.pcmag.com/t/pcmag_uk/news/g/google-unw/google-unwraps-android-16-design-details-springier-animation_ze4e.1920.png",
     price: "$ 500+",
   },
   {
     title: "DIGITAL MARKETING AUTOMATION",
     description:
       "UNIQUE BRAND IDENTITIES THAT RESONATE WITH AUDIENCES MEMORABLE CONNECTIONS THROUGH STRATEGIC NARRATIVE FORGING.",
-    image: "/reference/about-page.png",
+    image: "https://n8niostorageaccount.blob.core.windows.net/n8nio-strapi-blobs-prod/assets/Home_ITO_Ps_5a5aac3fda.webp",
     price: "$ 600+",
   },
 ];
@@ -72,13 +72,13 @@ const profileExperience = [
   {
     company: "Kit Solutions",
     position: "IT Business Analyst",
-    period: "April 2024 - April 2025",
+    period: "March 2024 - April 2025",
     location: "Vadodara, Gujarat, India",
   },
   {
     company: "InternPe",
     position: "Web Development Intern",
-    period: "November 2023 - November 2023",
+    period: "November 2023",
     location: "Jaipur, Rajasthan, India",
   },
 ];
@@ -86,10 +86,10 @@ const profileExperience = [
 const education = [
   {
     institution: "Parul University",
-    degree: "Bachelor's in Computer Application, Cybersecurity",
+    degree: "BCA, Cybersecurity",
     period: "August 2021 - April 2024",
     location: "Vadodara, Gujarat, India",
-    highlight: "Thesis: Cybersecurity",
+    highlight: "Bachelor of Computer Applications",
     status: "Distinction",
   },
 ];
@@ -112,6 +112,75 @@ const stats = [
     value: "5.00",
   },
 ];
+
+const stackdata = [
+  {
+    "id": 1,
+    "icon": "/icons/framer.svg",
+    "name": "LOVABLE",
+    "subtitle": "NO CODE TOOL",
+    "percent": 99,
+    "index": "[1]"
+  },
+  {
+    "id": 2,
+    "icon": "/icons/figma.svg",
+    "name": "FIGMA",
+    "subtitle": "AI PROTOTYPING TOOL",
+    "percent": 88,
+    "index": "[2]"
+  },
+  {
+    "id": 3,
+    "icon": "/icons/chatgpt.svg",
+    "name": "PERPLEXITY",
+    "subtitle": " AI ASSISTANCE",
+    "percent": 100,
+    "index": "[3]"
+  },
+  {
+    "id": 4,
+    "icon": "/icons/midjourney.svg",
+    "name": "MIXBOARD",
+    "subtitle": "AI IMAGE GENERATION",
+    "percent": 96,
+    "index": "[4]"
+  },
+  {
+    "id": 5,
+    "icon": "/icons/notion.svg",
+    "name": "VS-CODE",
+    "subtitle": "PRODUCTIVITY PLATFORM",
+    "percent": 91,
+    "index": "[5]"
+  },
+  {
+    "id": 6,
+    "icon": "/icons/react.svg",
+    "name": "REACT/ASTRO/NEXT-JS",
+    "subtitle": "JAVASCRIPT UI LIBRARY",
+    "percent": 94,
+    "index": "[6]"
+  },
+  {
+    "id": 7,
+    "icon": "/icons/midjourney.svg",
+    "name": "CONVEX",
+    "subtitle": "REALTIME CLOUD DATABASE",
+    "percent": 96,
+    "index": "[7]"
+  },
+  {
+    "id": 8,
+    "icon": "/icons/tailwind.svg",
+    "name": "TAILWIND",
+    "subtitle": "CSS RESPONSIVE-NESS",
+    "percent": 90,
+    "index": "[8]"
+  },
+]
+
+
 ---
 
 <BaseLayout title="About | JX7 Portfolio">
@@ -159,7 +228,7 @@ const stats = [
 
   <div class="w-full px-4 mt-10 flex flex-col items-end">
     <div
-      class="mt-10 w-full lg:w-2/3 h-full grid grid-flow-row justify-items-end gap-4 md:gap-6"
+      class="mt-10 w-full h-full grid grid-flow-row justify-items-end gap-4 md:gap-6"
     >
       <InfoBlock class="animate-item opacity-0 translate-y-6 will-change-transform" title="ABOUT JX7">
         I'm on the cutting edge of no-code tools that allow me to bring my
@@ -170,7 +239,7 @@ const stats = [
     </div>
 
     <div
-      class="mt-10 w-full lg:w-2/3 h-full grid grid-flow-row justify-items-end gap-4 md:gap-6"
+      class="mt-10 w-full h-full grid grid-flow-row justify-items-end gap-4 md:gap-6"
     >
       <InfoBlock class="animate-item opacity-0 translate-y-6 will-change-transform" title="MY APPROACH & STRATEGY">
         I take a pragmatic, design-first approach — rapid code & AI prototyping
@@ -199,15 +268,15 @@ const stats = [
   <!-- Experience Section -->
   <div class="my-24" id="experience">
     <div
-      class="gallery-experience w-full flex flex-col lg:flex-row justify-around gap-8"
+      class="gallery-experience w-full flex flex-col lg:flex-row justify-around sm:gap-20 "
     >
       <!-- Left: Experience heading pinned on large screens -->
       <div
-        class="md:pl-8 w-full lg:w-1/3 order-1 lg:order-1 flex items-start justify-start"
+        class=" w-full lg:w-1/3 order-1 lg:order-1 flex items-start justify-start"
       >
         <h2
           id="experience-headings"
-          class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide mb-8 uppercase lg:mb-0 lg:min-w-[220px] animate-item opacity-0 translate-y-6 will-change-transform"
+          class="text-5xl md:text-4xl lg:text-5xl font-bold tracking-wide mb-8 uppercase lg:mb-0 lg:min-w-[220px] animate-item opacity-0 translate-y-6 will-change-transform"
         >
           EXPERIENCE
         </h2>
@@ -216,24 +285,24 @@ const stats = [
       <!-- Right: Experience cards -->
       <div
         id="experience-cards"
-        class="w-full lg:w-1/2 order-2 lg:order-2 flex flex-col gap-6"
+        class="w-full order-2 lg:order-2 flex flex-col gap-6"
       >
         {
           profileExperience.map((exp, index) => (
             <article
-              class="experience-card relative flex flex-col gap-6 rounded-3xl border border-zinc-800/70 bg-zinc-900/60 p-6 md:p-8 shadow-[0_18px_45px_-25px_rgba(0,0,0,0.65)] transform-gpu hover:-translate-y-2 hover:border-sky-400/60 hover:bg-zinc-900/90 focus-visible:outline focus-visible:outline-sky-400/60 animate-item opacity-0 translate-y-6 will-change-transform"
+              class="experience-card relative flex flex-col gap-6 p-6 md:p-8 shadow-[0_18px_45px_-25px_rgba(0,0,0,0.65)] transform-gpu hover:-translate-y-2 hover:border-sky-400/60 hover:bg-zinc-900/90 focus-visible:outline focus-visible:outline-sky-400/60 animate-item opacity-0 translate-y-6 will-change-transform"
               style={`transition: transform 550ms linear(0, 0.1753, 0.5154, 0.8278, 1.0297, 1.1163, 1.1211, 1.0857, 1.0422, 1.0084, 0.9897, 0.9841, 0.9864, 0.9917, 0.9968, 1.0002, 1.0018, 1), box-shadow 220ms ease, background-color 220ms ease, border-color 220ms ease;`}
             >
-              <div class="flex items-start justify-between gap-4">
-                <div class="flex flex-col gap-3">
+              <div class="flex flex-col md:flex-row items-start justify-between gap-4">
+                <div class="flex flex-col  gap-3">
                   <span class="text-sm font-semibold tracking-[0.35em] text-sky-400/80">
-                    {String(index + 1).padStart(2, "0")}
+                    {/* {String(index + 1).padStart(2, "0")} */}
                   </span>
                   <h3 class="text-2xl md:text-3xl font-semibold uppercase tracking-wide">
                     {exp.company}
                   </h3>
                 </div>
-                <span class="inline-flex items-center rounded-full border border-sky-500/40 bg-sky-500/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.25em] text-sky-300">
+                <span class="inline-flex items-center py-1 text-xs font-medium uppercase tracking-[0.25em] text-sky-300">
                   {exp.period}
                 </span>
               </div>
@@ -247,15 +316,6 @@ const stats = [
                 </p>
               </div>
 
-              <div class="flex items-center justify-between text-[0.7rem] md:text-xs tracking-[0.35em] uppercase text-zinc-500">
-                <span class="flex items-center gap-2">
-                  <span class="h-2.5 w-2.5 rounded-full bg-sky-400 shadow-[0_0_12px_rgba(56,189,248,0.6)]"></span>
-                  Enterprise Ready
-                </span>
-                <span class="font-medium text-zinc-100/80">
-                  Impact Delivered
-                </span>
-              </div>
             </article>
           ))
         }
@@ -263,19 +323,19 @@ const stats = [
         {
           education.map((edu) => (
             <article
-              class="experience-card relative flex flex-col gap-6 rounded-3xl border border-zinc-800/70 bg-zinc-900/60 p-6 md:p-8 shadow-[0_18px_45px_-25px_rgba(0,0,0,0.65)] transform-gpu hover:-translate-y-2 hover:border-sky-400/60 hover:bg-zinc-900/90 focus-visible:outline focus-visible:outline-sky-400/60 animate-item opacity-0 translate-y-6 will-change-transform"
+              class="experience-card relative flex flex-col gap-6  bg-zinc-900/60 p-6 md:p-8 shadow-[0_18px_45px_-25px_rgba(0,0,0,0.65)] transform-gpu hover:-translate-y-2 hover:border-sky-400/60 hover:bg-zinc-900/90 focus-visible:outline focus-visible:outline-sky-400/60 animate-item opacity-0 translate-y-6 will-change-transform"
               style={`transition: transform 550ms linear(0, 0.1753, 0.5154, 0.8278, 1.0297, 1.1163, 1.1211, 1.0857, 1.0422, 1.0084, 0.9897, 0.9841, 0.9864, 0.9917, 0.9968, 1.0002, 1.0018, 1), box-shadow 220ms ease, background-color 220ms ease, border-color 220ms ease;`}
             >
-              <div class="flex items-start justify-between gap-4">
-                <div class="flex flex-col gap-3">
-                  <span class="text-sm font-semibold tracking-[0.35em] text-sky-400/80">
+              <div class="flex flex-col md:flex-row items-start justify-between gap-4">
+                <div class="flex flex-col  gap-3">
+                  {/* <span class="text-sm font-semibold tracking-[0.35em] text-sky-400/80">
                     EDU
-                  </span>
+                  </span> */}
                   <h3 class="text-2xl md:text-3xl font-semibold uppercase tracking-wide">
                     {edu.institution}
                   </h3>
                 </div>
-                <span class="inline-flex items-center rounded-full border border-sky-500/40 bg-sky-500/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.25em] text-sky-300">
+                <span class="inline-flex items-center py-1 text-xs font-medium uppercase tracking-[0.25em] text-sky-300">
                   {edu.period}
                 </span>
               </div>
@@ -311,74 +371,34 @@ const stats = [
   <!-- My Stack Section -->
   <div class="my-24" id="my-stack">
     <div
-      class="gallery-stack w-full flex flex-col lg:flex-row justify-around gap-8"
+      class="gallery-stack w-full flex flex-col lg:flex-row justify-around gap-20"
     >
       <!-- Left: My Stack heading (now on the left and will be pinned on large screens) -->
       <div
-        class="md:pl-8 w-full lg:w-1/3 order-1 lg:order-1 flex items-start justify-start"
+        class="md:mr-10 w-full md:w-1/3 order-1 lg:order-1 flex items-start justify-start"
       >
         <h2
           id="my-stack-heading"
-          class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide mb-8 uppercase lg:mb-0 lg:min-w-[220px] animate-item opacity-0 translate-y-6 will-change-transform"
+          class="text-5xl md:text-4xl lg:text-5xl font-bold tracking-wide mb-8 uppercase lg:mb-0 lg:min-w-[220px] animate-item opacity-0 translate-y-6 will-change-transform"
         >
           MY STACK
         </h2>
       </div>
 
       <!-- Right: Stack cards (moved to the right) -->
-      <div
-        id="my-stack-cards"
-        class="w-full lg:w-1/2 order-2 lg:order-2 flex flex-col gap-6"
-      >
-        <div
-          class="bg-zinc-900 p-6 md:p-8 rounded-2xl shadow-lg hover:bg-zinc-800 transition-colors duration-300 animate-item opacity-0 translate-y-6 will-change-transform"
-        >
-          <h3
-            class="text-xl md:text-2xl font-bold mb-4 uppercase tracking-wide"
-          >
-            DEVELOPMENT
-          </h3>
-          <ul class="text-zinc-400 space-y-3 text-lg">
-            <li>HTML/CSS/JavaScript</li>
-            <li>React/Next.js</li>
-            <li>Astro</li>
-            <li>Tailwind CSS</li>
-            <li>WebGL/Three.js</li>
-          </ul>
-        </div>
-
-        <div
-          class="bg-zinc-900 p-6 md:p-8 rounded-xl hover:bg-zinc-800 transition-colors duration-300 animate-item opacity-0 translate-y-6 will-change-transform"
-        >
-          <h3
-            class="text-xl md:text-2xl font-bold mb-4 uppercase tracking-wide"
-          >
-            NO-CODE
-          </h3>
-          <ul class="text-zinc-400 space-y-3 text-lg">
-            <li>AI-SaaS</li>
-            <li>Convex</li>
-            <li>Figma</li>
-            <li>Make</li>
-            <li>AI Agents</li>
-          </ul>
-        </div>
-
-        <div
-          class="bg-zinc-900 p-6 md:p-8 rounded-xl hover:bg-zinc-800 transition-colors duration-300 animate-item opacity-0 translate-y-6 will-change-transform"
-        >
-          <h3
-            class="text-xl md:text-2xl font-bold mb-4 uppercase tracking-wide"
-          >
-            TOOLS
-          </h3>
-          <ul class="text-zinc-400 space-y-3 text-lg">
-            <li>Figma</li>
-            <li>Framer</li>
-            <li>VS Code</li>
-            <li>GitHub</li>
-            <li>Jira</li>
-          </ul>
+      <div  id="my-stack-cards" class="w-full order-2 lg:order-2 flex flex-col gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {stackdata.map(card => (
+              <div class="relative bg-gradient-to-b from-slate-800 to-black shadow-lg p-6 min-h-[180px] hover:bg-zinc-800 transition-colors duration-300 animate-item opacity-0 translate-y-6">
+                <div class="flex justify-between items-start mb-2">
+                  <img src={card.icon} alt={card.name + ' Icon'} class="w-8 h-8" />
+                  <span class="text-white/60 text-lg tracking-widest absolute right-6 top-6">{card.index}</span>
+                </div>
+                <h3 class="text-white font-bold text-2xl tracking-wider uppercase mb-2">{card.name}</h3>
+                <p class="text-zinc-400 font-mono text-base tracking-wide">{card.subtitle}</p>
+                <span class="absolute right-6 bottom-6 text-white/90 text-xl font-semibold">{card.percent}%</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -391,21 +411,24 @@ const stats = [
     <div class="flex flex-col lg:flex-row gap-6 items-end">
       <!-- Left box -->
       <div
-        class="w-full lg:w-1/2 p-6 md:p-8 order-2 lg:order-1 shadow-lg flex flex-col animate-item opacity-0 translate-y-6 will-change-transform"
+        class="w-full lg:w-96 order-2 lg:order-1 shadow-lg flex flex-col animate-item opacity-0 translate-y-6 will-change-transform"
       >
-        <InfoBlock>
-          A creator crafts visual narratives that blend creativity with
-          functionality, shaping impactful experiences through artful design.
-        </InfoBlock>
+
+      <p class=" uppercase text-white/80 leading-8 tracking-tight text-lg "> 
+        A creator crafts visual narratives that blend creativity with
+        functionality, shaping impactful experiences through artful design.
+      </p>
+
       </div>
       <!-- Right box -->
       <div
-        class="w-full lg:w-1/2 text-4xl md:text-8xl order-1 lg:order-2 leading-tight md:leading-none font-space-grotesk animate-item opacity-0 translate-y-6 will-change-transform"
+        class="w-full flex justify-end order-1 lg:order-2 leading-tight md:leading-none font-space-grotesk  animate-item opacity-0 translate-y-6 will-change-transform"
       >
-        <h1 class="font-semibold text-white tracking-normal uppercase">
+      <span class=" inline-block w-[90%] sm:w-full ">  
+        <p class="font-semibold text-5xl md:text-8xl text-white text-right tracking-normal uppercase line-clamp-3 ">
           AWE MAKES THINGS HAPPEN .wo—nder
-         
-        </h1>
+        </p>
+      </span>
       </div>
     </div>
 
@@ -450,10 +473,10 @@ const stats = [
         class="gallery-capabilities w-full flex flex-col lg:flex-row justify-between gap-8"
       >
         <!-- Left: Capabilities heading (pinned on large screens) -->
-        <div class="md:pl-8 w-full lg:w-1/3 order-1 lg:order-1 flex items-start">
+        <div class="  w-full lg:w-1/3 order-1 lg:order-1 flex items-start">
           <h2
             id="capabilities-heading"
-            class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide mb-8 uppercase lg:mb-0 lg:min-w-[220px] animate-item opacity-0 translate-y-6 will-change-transform"
+            class="text-5xl md:text-4xl lg:text-5xl font-bold tracking-wide mb-8 uppercase lg:mb-0 lg:min-w-[220px] animate-item opacity-0 translate-y-6 will-change-transform"
           >
             CAPABILITIES
           </h2>
@@ -462,31 +485,40 @@ const stats = [
         <!-- Right: capability cards -->
         <div
           id="capabilities-cards"
-          class="w-full lg:w-1/2 order-2 lg:order-2 flex flex-col gap-6"
+          class="w-full order-2 lg:order-2 flex flex-col gap-6"
         >
           {
             capabilities.map((cap, index) => (
               <section
-                class="capability-section capability-card relative flex flex-col gap-6 rounded-3xl border border-zinc-800/70 bg-zinc-900/60 p-6 md:p-8 shadow-[0_18px_45px_-25px_rgba(0,0,0,0.65)] transform-gpu hover:-translate-y-2 hover:border-emerald-400/60 hover:bg-zinc-900/90 focus-visible:outline focus-visible:outline-emerald-400/60 animate-item opacity-0 translate-y-6 will-change-transform"
+                class="capability-section capability-card relative flex flex-col gap-6 p-6 md:p-8 shadow-[0_18px_45px_-25px_rgba(0,0,0,0.65)] transform-gpu hover:-translate-y-2 hover:border-emerald-400/60 hover:bg-zinc-900/90 focus-visible:outline focus-visible:outline-emerald-400/60 animate-item opacity-0 translate-y-6 will-change-transform"
                 style={`transition: transform 550ms linear(0, 0.1753, 0.5154, 0.8278, 1.0297, 1.1163, 1.1211, 1.0857, 1.0422, 1.0084, 0.9897, 0.9841, 0.9864, 0.9917, 0.9968, 1.0002, 1.0018, 1), box-shadow 220ms ease, background-color 220ms ease, border-color 220ms ease;`}
               >
+                  <div class=" size-10 ">
+                    <img src="../images/icon.png" alt="icon">
+                  </div>
                 <div class="flex items-start justify-between gap-4">
-                  <div class="flex flex-col gap-3">
-                    <span class="text-sm font-semibold tracking-[0.3em] text-emerald-400">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <h3 class="text-2xl md:text-3xl font-semibold uppercase tracking-tight">
+
+                  <div class="flex flex-row gap-6">
+                    <h3 class="text-xl md:text-3xl font-semibold uppercase tracking-tight">
                       {cap.title}
                     </h3>
+                    <span class="inline-flex items-center bg-emerald-500/10 px-3 py-1 text-sm font-medium uppercase tracking-[0.25em] text-emerald-300">
+                      {cap.price}
+                    </span>
                   </div>
-                  <span class="hidden md:inline-flex items-center rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.25em] text-emerald-300">
-                    {cap.price}
-                  </span>
                 </div>
 
                 <p class="text-zinc-400 text-lg leading-8 uppercase tracking-tight">
                   {cap.description}
                 </p>
+
+                <div class="w-full h-60 rounded-lg overflow-hidden mb-4">
+                  <img
+                    src={cap.image}
+                    alt={cap.title + " Image"}
+                    class="w-full h-full object-cover bg-red-500 "
+                  />
+                </div>
 
                 <div class="flex items-center justify-between text-xs md:text-sm tracking-[0.3em] uppercase text-zinc-500">
                   <span class="flex items-center gap-2">

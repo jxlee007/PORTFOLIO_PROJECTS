@@ -52,7 +52,7 @@ const trekdata = {
           },
           {
             src: [
-              "../images/pehla-paryog.png",
+              "https://cdn.prod.website-files.com/65a7d326e810bc36dae1978f/67f8e88bfdb4997e35942c03_what_is_suno_ai_.webp",
             ],
             alt: "ALbum cover arts",
           },
@@ -65,7 +65,7 @@ const trekdata = {
             link: "/interests/script-writing-character-design",
           },
           {
-            title: "Songwriting, beat producing, and rapping",
+            title: "Songwriting x rap ",
             description:
               " Crafting rhythms and lyrical expressions to tell compelling personal and cultural stories.",
             link: "/interests/music-production",
@@ -195,24 +195,25 @@ const data = randomizeImageSources(trekdata);
 <BaseLayout title="My Trek | JX7 Portfolio">
   <Nav {menuItems} {brandLinks} />
 
-  <section class="mt-10 px-4 md:px-0">
-    <div
-      class="font-bold font-space-grotesk w-full gap-8 md:gap-12 flex flex-col items-center justify-center"
-    >
-      <span class="text-center">
-        <Split text="LOOK INTO" />
-        <Split text="MY TREK" />
-      </span>
-
-      <p
-        class="w-full md:w-2/3 text-zinc-400 leading-relaxed text-xl md:text-3xl mt-6 text-center tracking-wide font-light px-4 md:px-0"
-      >
-        GET INTO MY PLAYGROUND, WHERE CREATIVITY TAKES FLIGHT AND IDEAS BLOSSOM
-        THROUGH IMAGINATION. STEP INTO A REALM WHERE INSPIRATION MEETS
-        EXPRESSION.
+  <section class=" min-h-80 px-4 py-6 flex flex-col md:flex-row items-start md:items-center w-full gap-4 mt-20 ">
+    <div class="w-full md:w-auto flex-shrink-0">
+      <p class="font-mono text-zinc-300 tracking-widest text-sm mb-3">WELCOME TO PLAYGROUND</p>
+      <h1 class="font-bold text-white text-[3.5rem] md:text-[7rem] leading-none mb-0 uppercase">
+        <span class="block">LOOK INTO</span>
+        <span class="block">MY TREK</span>
+      </h1>
+    </div>
+    <div class="flex-1 flex flex-col justify-center items-start md:ml-10 mt-6 md:mt-0">
+      <div class="mb-4">
+        {/* Optional: top-right dot or icon, centered horizontally if desired */}
+        <!-- <div class="w-3 h-3 bg-white rounded-full mx-auto mb-6 md:mb-0"></div> -->
+      </div>
+      <p class="font-mono text-white/80 text-lg md:text-md tracking-wide uppercase">
+        GET INTO MY PLAYGROUND, WHERE CREATIVITY TAKES FLIGHT AND IDEAS BLOSSOM THROUGH DESIGN. STEP INTO A REALM WHERE IMAGINATION MEETS INNOVATION.
       </p>
     </div>
   </section>
+
 
   <section class="trek-page pt-[2%] md:pt-[5%] px-4 md:px-8">
     {
@@ -250,7 +251,7 @@ const data = randomizeImageSources(trekdata);
                     {sectionGroup.singleSection.contents[idx].title}
                   </h2>
                   <p class="text-base md:text-md leading-relaxed text-gray-300">
-                    <span class=" tracking-4 ">////////</span> {content.description}
+                    <span class=" text-xl tracking-4 ">: : : : </span> {content.description}
                   </p>
                   {content.link && (
                     <a
@@ -299,7 +300,7 @@ const data = randomizeImageSources(trekdata);
                       {content.title}
                     </h2>
                     <p class="text-base md:text-md leading-relaxed text-gray-300">
-                      {content.description}
+                      <span class=" text-xl tracking-4 ">: : : : </span> {content.description}
                     </p>
                     {content.link && (
                       <a
