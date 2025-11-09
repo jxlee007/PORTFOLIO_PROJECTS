@@ -1,96 +1,11 @@
 ---
 import Link from './Link.astro';
 import ProjectCard from './ProjectCard.astro';
+import projectData from '../data/projects.json';
 
-const mobileProjects = [
-  {
-    id: 1,
-    title: "PROJECT 1",
-    subtitle: "/// Direct-biz",
-    href: "#project1",
-    src: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-  },
-  {
-    id: 2,
-    title: "PROJECT 2",
-    subtitle: "/// rayban-redesign",
-    href: "#project2",
-    src: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-  },
-  {
-    id: 3,
-    title: "PROJECT 3",
-    subtitle: "/// duo studio",
-    href: "#project3",
-    src: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-  },
-  {
-    id: 4,
-    title: "PROJECT 4",
-    subtitle: "/// sundown studios",
-    href: "#project4",
-    src: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-  }
-];
-
-const desktopProjects = [
-  {
-    href: "https://tiny-todos.netlify.app/",
-    title: "TINY TODOS 2023",
-    brand: "TYNI",
-    category: "INTERACTIVE WORKS",
-    mediaType: "image",
-    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/airforce.webp"
-  },
-  {
-    href: "https://sundown-jms.netlify.app",
-    title: "SUNDOWN STUDIO",
-    brand: "PROJECT-5",
-    category: "WEB WORKS",
-    mediaType: "video",
-    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/converse.mp4"
-  },
-  {
-    href: "https://rayban-redesign.netlify.app/",
-    title: "RAYBAN REDESIGN",
-    brand: "SHERY JS",
-    category: "INTERACTIVE WORKS",
-    mediaType: "video",
-    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/newkidvision.mp4"
-  },
-  {
-    href: "https://rejoy-jms.netlify.app/",
-    title: "REJOYCE",
-    brand: "PROJECT-4",
-    category: "WEB WORKS",
-    mediaType: "image",
-    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/sohonyc.webp"
-  },
-  {
-    href: "PROJECT-2",
-  title: "SNEAKER HEADS",
-    brand: "nike",
-    category: "INTERACTIVE WORKS",
-    mediaType: "video",
-    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/hoi.webp"
-  },
-  {
-    href: "https://project-1-jms.netlify.app",
-    title: "CYNTHIA UGWU",
-    brand: "PROJECT-1",
-    category: "WEB WORKS",
-    mediaType: "image",
-    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/afterpay.mp4"
-  },
-  {
-    href: "PORTFOLIO",
-    title: "CHALLENGE 2022",
-    brand: "PETER MCKINNON",
-    category: "WEB WORKS",
-    mediaType: "image",
-    mediaSrc: "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/anniversary.webp"
-  },
-];
+const projects = Array.isArray(projectData)
+  ? projectData
+  : projectData.projects ?? [];
 ---
 
 <section id="third" class="py-10 md:py-14 w-full h-fit flex flex-col justify-items-end gap-8 md:gap-12 px-4 md:px-0">
@@ -101,51 +16,51 @@ const desktopProjects = [
   <div class="grid grid-flow-row justify-items-start gap-6 md:gap-10">
     <span class="w-full md:w-3/5 md:pr-28 flex flex-col gap-4">
       <p class="uppercase text-white/80 text-lg md:text-xl line-clamp-4 font-space-grotesk tracking-wider leading-relaxed">
-        My creative spirit comes alive in the digital realm. With nimble fingers flying across the keyboard, 
-        I craft clear experiences out of nothing but ones and zeroes.
+        My creative spirit comes alive in the digital realm. With nimble fingers flying across the keyboard, I craft clear experiences out of nothing but ones and zeroes.
       </p>
     </span>
-
     <Link href="/work">VIEW PORTFOLIO *</Link>
   </div>
 
+  <!-- Mobile & Tablet: ProjectCard grid -->
   <div class="max-w-full h-full lg:hidden">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-      {mobileProjects.map(project => (
-        <ProjectCard 
+      {projects.map(project => (
+        <ProjectCard
           href={project.href}
           src={project.src}
           title={project.title}
-          subtitle={project.subtitle}
         />
       ))}
     </div>
   </div>
 
+  <!-- Desktop: Interactive featured list & preview -->
   <div class="hidden lg:block w-full relative">
     <div
       id="featured-fixed"
       class="featured-fixed pointer-events-none fixed top-[22vh] left-[58%] w-[24vw] h-[30vw] rounded-2xl overflow-hidden border border-white/20 shadow-[0_40px_90px_rgba(0,0,0,0.45)] bg-black/80 backdrop-blur-md"
     ></div>
-
     <div id="featured-list" class="featured-list flex flex-col">
-      {desktopProjects.map((project) => (
+      {projects.map(project => (
         <article
           class="featured-elem"
-          data-media-type={project.mediaType}
-          data-media-src={project.mediaSrc}
-          data-project-id={project.id}
+          data-media-type={project.mediaType ?? 'image'}
+          data-media-src={project.src}
+          data-project-id={project.id ?? project.href}
           data-href={project.href}
           role="button"
           tabindex="0"
-          aria-label={`Preview ${project.title} project`}
+          aria-label={"Preview " + project.title + " project"}
         >
           <div class="featured-overlay" aria-hidden="true"></div>
           <h2>{project.title}</h2>
-          <div class="featured-meta">
-            <h3>{project.brand}</h3>
-            <h4>{project.category}</h4>
-          </div>
+          {(project.brand || project.category) && (
+            <div class="featured-meta">
+              {project.brand && <h3>{project.brand}</h3>}
+              {project.category && <h4>{project.category}</h4>}
+            </div>
+          )}
         </article>
       ))}
     </div>
@@ -160,7 +75,6 @@ const desktopProjects = [
       border-top: 1px solid rgba(255, 255, 255, 0.05);
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
-
     .featured-elem {
       position: relative;
       height: 150px;
@@ -174,15 +88,8 @@ const desktopProjects = [
       transition: color 0.25s ease, transform 0.2s ease;
       cursor: pointer;
     }
-
-    .featured-elem:hover {
-      transform: translateX(4px);
-    }
-
-    .featured-elem:last-child {
-      border-bottom: none;
-    }
-
+    .featured-elem:hover { transform: translateX(4px); }
+    .featured-elem:last-child { border-bottom: none; }
     .featured-elem h2 {
       font-size: clamp(2.5rem, 2.6vw, 3.4rem);
       font-weight: 600;
@@ -191,7 +98,6 @@ const desktopProjects = [
       position: relative;
       z-index: 2;
     }
-
     .featured-meta {
       width: 14%;
       min-width: 180px;
@@ -202,21 +108,18 @@ const desktopProjects = [
       position: relative;
       z-index: 2;
     }
-
     .featured-meta h3 {
       font-size: clamp(1rem, 1.1vw, 1.4rem);
       font-weight: 500;
       letter-spacing: 0.2em;
       color: #f3f3f3;
     }
-
     .featured-meta h4 {
       font-size: clamp(0.9rem, 1vw, 1.2rem);
       text-transform: capitalize;
       font-weight: 400;
       color: #b3b3b3;
     }
-
     .featured-overlay {
       position: absolute;
       inset: 0;
@@ -225,27 +128,16 @@ const desktopProjects = [
       transition: transform 0.25s ease;
       z-index: 1;
     }
-
     .featured-elem:is(:hover, :focus-visible) .featured-overlay {
       transform: translateY(0%);
     }
-
     .featured-elem:is(:hover, :focus-visible) h2,
     .featured-elem:is(:hover, :focus-visible) .featured-meta h3,
     .featured-elem:is(:hover, :focus-visible) .featured-meta h4 {
       color: #101010;
     }
-
-    .featured-fixed {
-      display: none;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .featured-fixed.is-visible {
-      display: flex;
-    }
-
+    .featured-fixed { display: none; justify-content: center; align-items: center; }
+    .featured-fixed.is-visible { display: flex; }
     .featured-fixed video,
     .featured-fixed img {
       width: 100%;
@@ -260,24 +152,16 @@ const desktopProjects = [
   const initFeaturedCases = () => {
     const fixed = document.getElementById('featured-fixed');
     const list = document.getElementById('featured-list');
-
-    if (!fixed || !list) {
-      return () => {};
-    }
-
+    if (!fixed || !list) return () => {};
     const mq = window.matchMedia('(min-width: 1024px)');
     const listeners = [];
-
     const hideMedia = () => {
       fixed.classList.remove('is-visible');
       fixed.replaceChildren();
     };
-
     const showMedia = (type, src) => {
       if (!src) return;
-
       const fragment = document.createDocumentFragment();
-
       if (type === 'video') {
         const video = document.createElement('video');
         video.src = src;
@@ -293,56 +177,41 @@ const desktopProjects = [
         img.alt = '';
         fragment.appendChild(img);
       }
-
       fixed.replaceChildren(fragment);
       fixed.classList.add('is-visible');
     };
-
     const attachListeners = () => {
-      if (!mq.matches) {
-        return;
-      }
-
+      if (!mq.matches) return;
       const elements = list.querySelectorAll('.featured-elem');
-
       elements.forEach((elem) => {
         const handleEnter = () => {
           const { mediaType, mediaSrc } = elem.dataset;
           showMedia(mediaType, mediaSrc);
         };
-
-        const handleLeave = () => {
-          hideMedia();
-        };
-
+        const handleLeave = () => { hideMedia(); };
         const handleClick = () => {
           const { href } = elem.dataset;
           if (href && href !== '#' && href !== 'PROJECT-2' && href !== 'PORTFOLIO') {
             window.open(href, '_blank', 'noopener,noreferrer');
           }
         };
-
         const handleKeydown = (event) => {
           if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
             handleClick();
           }
         };
-
         elem.addEventListener('mouseenter', handleEnter);
         elem.addEventListener('focus', handleEnter);
         elem.addEventListener('mouseleave', handleLeave);
         elem.addEventListener('blur', handleLeave);
         elem.addEventListener('click', handleClick);
         elem.addEventListener('keydown', handleKeydown);
-
         listeners.push({ elem, handleEnter, handleLeave, handleClick, handleKeydown });
       });
-
       list.addEventListener('mouseleave', hideMedia);
       listeners.push({ elem: list, handleLeave: hideMedia });
     };
-
     const detachListeners = () => {
       listeners.forEach(({ elem, handleEnter, handleLeave, handleClick, handleKeydown }) => {
         if (handleEnter) {
@@ -363,42 +232,23 @@ const desktopProjects = [
       listeners.length = 0;
       hideMedia();
     };
-
     const handleChange = (event) => {
-      if (event.matches) {
-        attachListeners();
-      } else {
-        detachListeners();
-      }
+      if (event.matches) attachListeners();
+      else detachListeners();
     };
-
-    if (mq.matches) {
-      attachListeners();
-    }
-
+    if (mq.matches) attachListeners();
     mq.addEventListener('change', handleChange);
-
     return () => {
       mq.removeEventListener('change', handleChange);
       detachListeners();
     };
   };
-
   if (typeof window !== 'undefined') {
     let cleanup = () => {};
-
-    const onReady = () => {
-      cleanup = initFeaturedCases();
-    };
-
+    const onReady = () => { cleanup = initFeaturedCases(); };
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', onReady, { once: true });
-    } else {
-      onReady();
-    }
-
-    window.addEventListener('beforeunload', () => {
-      cleanup();
-    });
+    } else { onReady(); }
+    window.addEventListener('beforeunload', () => { cleanup(); });
   }
 </script>

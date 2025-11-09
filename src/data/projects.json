@@ -1,0 +1,94 @@
+{
+    "projects": [
+        {
+            "id": 1,
+            "title": "SUNDOWN STUDIO",
+            "brand": "PROJECT-5",
+            "category": "WEB WORKS",
+            "href": "https://jxlee007.github.io/PROJECT-5-Sundown",
+            "mediaType": "video",
+            "src": "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/converse.mp4"
+        },
+        {
+            "id": 2,
+            "title": "STORY OF SHADES",
+            "brand": "JLO-WEB",
+            "category": "INTERACTIVE WORKS",
+            "href": "jxlee007.github.io/SPY/",
+            "mediaType": "video",
+            "src": "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/hoi.webp"
+        },
+        {
+            "id": 3,
+            "title": "REJOYCE",
+            "brand": "PROJECT-4",
+            "category": "WEB WORKS",
+            "href": "https://jxlee007.github.io/PROJECT-4-REJOY",
+            "mediaType": "image",
+            "src": "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/sohonyc.webp"
+        },
+        {
+            "id": 4,
+            "title": "TINY TODOS 2023",
+            "brand": "TYNI",
+            "category": "INTERACTIVE WORKS",
+            "href": "https://jxlee007.github.io/Tiny-todos",
+            "mediaType": "image",
+            "src": "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/airforce.webp"
+        },
+        {
+            "id": 5,
+            "title": "DUO STUDIO",
+            "brand": "PROJECT-3",
+            "category": "WEB WORKS",
+            "href": "https://jxlee007.github.io//PROJECT-3-DUO/",
+            "mediaType": "image",
+            "src": "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/afterpay.mp4"
+        },
+        {
+            "id": 6,
+            "title": "RAYBAN REDESIGN",
+            "brand": "SHERY JS",
+            "category": "INTERACTIVE WORKS",
+            "href": "https://jxlee007.github.io/RAY-BAN-REDESIGN",
+            "mediaType": "video",
+            "src": "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/newkidvision.mp4"
+        },
+        {
+            "id": 7,
+            "title": "CHALLENGE 2022",
+            "brand": "PETER MCKINNON",
+            "category": "WEB WORKS",
+            "href": "https://jxlee007.github.io/CHALLENGE-2",
+            "mediaType": "image",
+            "src": "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/anniversary.webp"
+        },
+        {
+            "id": 8,
+            "title": "PROJECT 1",
+            "brand": null,
+            "category": null,
+            "href": "#project1",
+            "mediaType": "image",
+            "src": "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+        },
+        {
+            "id": 9,
+            "title": "DIRECT BIZ",
+            "brand": null,
+            "category": null,
+            "href": "https://jxlee007.github.io//Direct-biz/",
+            "mediaType": "image",
+            "src": "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+        },
+        {
+            "id": 10,
+            "title": "Something new coming soon",
+            "brand": null,
+            "category": null,
+            "href": "#project7",
+            "mediaType": "image",
+            "src": "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
+        }
+    ]
+}

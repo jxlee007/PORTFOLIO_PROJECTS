@@ -5,7 +5,16 @@ import ProjectCard from "../components/ProjectCard.astro";
 import Footer from "../components/Footer.astro";
 import { brandLinks } from "../constants/brandLinks";
 
-// Define menu items for the sidebar
+// Dynamically import projects.json
+const _projMod = await import('../data/projects.json');
+const projectsJson = _projMod?.default ?? _projMod;
+
+// Flatten projects array (adjust if your JSON uses "projects" key)
+const projects = Array.isArray(projectsJson)
+  ? projectsJson
+  : projectsJson.projects ?? [];
+
+// Define menu items for sidebar navigation
 const menuItems = [
   { href: "/", index: "/01", label: "MAIN HOME" },
   { href: "/about", index: "/02", label: "ABOUT JX7" },
@@ -13,77 +22,17 @@ const menuItems = [
   { href: "/trek", index: "/04", label: "MY TREK" },
   { href: "/contact", index: "/05", label: "CONTACT" },
 ];
-
-
-// Define work projects with more detail
-const projects = [
-  {
-    id: 1,
-    title: "PROJECT 1",
-    subtitle: "/// cynthia ugwu",
-    href: "#project1",
-    src: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg",
-  },
-  {
-    id: 2,
-    title: "PROJECT 2",
-    subtitle: "/// rayban-redesign",
-    href: "#project2",
-    src: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg",
-  },
-  {
-    id: 3,
-    title: "PROJECT 3",
-    subtitle: "/// duo studio",
-    href: "#project3",
-    src: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg",
-  },
-  {
-    id: 4,
-    title: "PROJECT 4",
-    subtitle: "/// rejoiuce",
-    href: "#project4",
-    src: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg",
-  },
-  {
-    id: 5,
-    title: "PROJECT 5",
-    subtitle: "/// sundown studios",
-    href: "#project5",
-    src: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg",
-  },
-  {
-    id: 6,
-    title: "PROJECT 6",
-    subtitle: "/// sundown studios",
-    href: "#project6",
-    src: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg",
-  },
-  {
-    id: 7,
-    title: "Something new coming soon",
-    subtitle: "/// sundown studios",
-    href: "#project7",
-    src: "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg",
-  },
-];
 ---
 
 <BaseLayout title="Work & Portfolio - JX7">
-  <!-- Hero section with just the navigation -->
+  <!-- Hero with nav and intro -->
   <div id="hero" class="relative w-full h-full gap-4 flex flex-col">
     <Nav {menuItems} {brandLinks} />
 
-    <div
-      class="w-full h-full px-2 mt-20 md:mt-40 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 md:gap-10"
-    >
+    <div class="w-full h-full px-2 mt-20 md:mt-40 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 md:gap-10">
       <section class="w-full lg:w-auto lg:pr-40 sm:order-3">
-        <p
-          class="uppercase text-gray-400 text-lg md:text-xl font-space-grotesk tracking-wider leading-relaxed"
-        >
-          My creative spirit comes alive in the digital realm. With nimble
-          fingers flying across the keyboard, I craft clear experiences out
-          of nothing but ones and zeroes.
+        <p class="uppercase text-gray-400 text-lg md:text-xl font-space-grotesk tracking-wider leading-relaxed">
+          My creative spirit comes alive in the digital realm. With nimble fingers flying across the keyboard, I craft clear experiences out of nothing but ones and zeroes.
         </p>
       </section>
 
@@ -91,33 +40,28 @@ const projects = [
         <p class="uppercase text-lg md:text-xl text-gray-300 font-thin">
           {`( 2021 - ${new Date().getFullYear()} )`}
         </p>
-
         <p class="leading-none line-clamp-2 text-left lg:text-right mt-2 md:mt-4 sm:order-1">SELECTED WORKS</p>
       </section>
     </div>
   </div>
 
   <!-- Projects gallery -->
-  <section
-    id="third"
-    class="py-10 md:py-20 w-full h-fit flex flex-col justify-items-end gap-8 md:gap-12"
-  >
+  <section id="third" class="py-10 md:py-20 w-full h-fit flex flex-col justify-items-end gap-8 md:gap-12 px-4 md:px-0">
     <div class="w-full h-full">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-        {
-          projects.map((project) => (
-            <ProjectCard
-              href={project.href}
-              src={project.src}
-              title={project.title}
-              subtitle={project.subtitle}
-            />
-          ))
-        }
+        {projects.map((project) => (
+          <ProjectCard 
+            key={project.id ?? project.href}
+            href={project.href}
+            src={project.src}
+            title={project.title}
+            /* subtitle removed in JSON, omit or handle gracefully */
+          />
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- Footer section -->
+  <!-- Footer -->
   <Footer goHref="#hero" title="JAGMOHAN" />
 </BaseLayout>
