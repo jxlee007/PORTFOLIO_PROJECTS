@@ -192,7 +192,11 @@ const projects = Array.isArray(projectData)
         const handleClick = () => {
           const { href } = elem.dataset;
           if (href && href !== '#' && href !== 'PROJECT-2' && href !== 'PORTFOLIO') {
-            window.open(href, '_blank', 'noopener,noreferrer');
+            if (href.startsWith('/')) {
+              window.location.href = href;
+            } else {
+              window.open(href, '_blank', 'noopener,noreferrer');
+            }
           }
         };
         const handleKeydown = (event) => {

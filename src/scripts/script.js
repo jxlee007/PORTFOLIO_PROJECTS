@@ -35,10 +35,7 @@ locoScroll();
 
 document.getElementById('go').addEventListener('click', () => {
     if (locoScrollInstance) {
-        locoScrollInstance.scrollTo(0, {
-            duration: 1000, // duration in ms
-            easing: [0.25, 0.0, 0.35, 1.0] // optional easing (cubic-bezier)
-        });
+        locoScrollInstance.scrollTo('top', 0, 1000);
     }
 });
 

@@ -53,10 +53,7 @@ function toggleBackToTopButton() {
 
 function scrollToTop() {
     if (locoScrollInstance) {
-        locoScrollInstance.scrollTo(0, {
-            duration: 1000,
-            easing: [0.25, 0.0, 0.35, 1.0]
-        });
+        locoScrollInstance.scrollTo('top', 0, 1000);
     } else {
         window.scrollTo({
             top: 0,

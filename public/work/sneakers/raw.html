@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- icon cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- lato font cdn -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap">
+
+
+    <title>Sneakers-store (E-commerce) </title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <nav>
+        <div class="navtop">
+            <div class="navItems"><img src="img/sneakers.png" alt=""></div>
+            <div class="navItems">
+                <div class="search"><input type="text" placeholder="Search..." class="searchInput"><i
+                        style="color: white;" class="ri-search-line"></i></div>
+            </div>
+            <div class="navItems"><span class="limited-offer">limited - offer</span></div>
+        </div>
+
+        <div class="navbottom">
+            <h3 class="menuItem">air force</h3>
+            <h3 class="menuItem">jordan</h3>
+            <h3 class="menuItem">blazer</h3>
+            <h3 class="menuItem">crater</h3>
+            <h3 class="menuItem">hippie</h3>
+        </div>
+    </nav>
+
+    <div class="slider">
+        <div class="sliderWrapper">
+            <div class="sliderItem">
+                <img src="img/air.png" alt="Item - 1" class="sliderImg">
+                <div class="sliderBg"></div>
+                <h1 class="sliderTitle">AIR FORCE <br> NEW <br> SEASON</h1>
+                <h2 class="sliderPrice">$119</h2>
+                <a href="#product"><button class="buyButton">Buy Now !</button></a>
+            </div>
+            <div class="sliderItem">
+                <img src="img/jordan.png" alt="Item - 1" class="sliderImg">
+                <div class="sliderBg"></div>
+                <h1 class="sliderTitle">AIR JORDAN <br> NEW <br> SEASON</h1>
+                <h2 class="sliderPrice">$149</h2>
+                <a href="#product"><button class="buyButton">Buy Now !</button></a>
+            </div>
+            <div class="sliderItem">
+                <img src="img/blazer.png" alt="Item - 1" class="sliderImg">
+                <div class="sliderBg"></div>
+                <h1 class="sliderTitle">BLAZER <br> NEW <br> SEASON</h1>
+                <h2 class="sliderPrice">$109</h2>
+                <a href="#product"><button class="buyButton">Buy Now !</button></a>
+            </div>
+            <div class="sliderItem">
+                <img src="img/crater.png" alt="Item - 1" class="sliderImg">
+                <div class="sliderBg"></div>
+                <h1 class="sliderTitle">CRATER <br> NEW <br> SEASON</h1>
+                <h2 class="sliderPrice">$129</h2>
+                <a href="#product"><button class="buyButton">Buy Now !</button></a>
+            </div>
+            <div class="sliderItem">
+                <img src="img/hippie.png" alt="Item - 1" class="sliderImg">
+                <div class="sliderBg"></div>
+                <h1 class="sliderTitle">HIPPIE <br> NEW <br> SEASON</h1>
+                <h2 class="sliderPrice">$99</h2>
+                <a href="#product"><button class="buyButton">BUY NOW !</button></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="feature">
+            <img class="featureIcon" src="img/shipping.png" alt="free shipping">
+            <span class="featureTitle">FREE SHIPPING</span>
+            <span class="featureDesc">Free Worldwide Shipping on all orders.</span>
+        </div>
+        <div class="feature">
+            <img src="img/return.png" alt=" return & refund" class="featureIcon">
+            <span class="featureTitle">30 DAYS RETURN</span>
+            <span class="featureDesc">No questions return and easy refund in 14 days.</span>
+        </div>
+        <div class="feature">
+            <img src="img/gift.png" alt="gift Cards" class="featureIcon">
+            <span class="featureTitle">GIFT CARDS</span>
+            <span class="featureDesc">Buy gift cards and use coupon codes easily.</span>
+        </div>
+        <div class="feature">
+            <img src="img/contact.png" alt="Contact Us" class="featureIcon">
+            <span class="featureTitle">CONTACT US !</span>
+            <span class="featureDesc">Keep in touch via email and support system</span>
+        </div>
+    </div>
+
+    <div class="product" id="product">
+        <img src="img/air.png" alt="" class="productImg">
+        <div class="productDetails">
+            <h1 class="productTitle">AIR FORCE</h1>
+            <h2 class="productPrice">$199</h2>
+            <p class="productDesc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident sed perferendis
+                quae, pariatur architecto esse. Natus necessitatibus illo, eaque amet nisi blanditiis a quasi ut in,
+                odio perspiciatis esse voluptate.</p>
+            <div class="colors">
+                <div class="color"></div>
+                <div class="color"></div>
+            </div>
+            <div class="sizes">
+                <div class="size">42</div>
+                <div class="size">43</div>
+                <div class="size">44</div>
+            </div>
+            <button class="productButton">BUY NOW !</button>
+        </div>
+
+        <div class="payment">
+            <h1 class="payTitle">Personal Information</h1>
+            <label for="name">Full Name</label>
+            <input id="name" type="text" placeholder="John doe" class="payInput" required>
+            <label for="Contact">Phone Number</label>
+            <input id="Contact" type="tel" placeholder="+91 91293-29499" class="payInput" required>
+            <label for="address">Address</label>
+            <input id="address" type="text" placeholder="Mr John Smith: 132, My Street, Kingston, New York 12401"
+                class="payInput">
+            <h1 class="payTitle">Card Options</h1>
+            <div class="cardIcons">
+                <img src="img/visa.png" width="40" alt="visa card user" class="cardIcon">
+                <img src="img/master.png" width="40" alt="master card user" class="cardIcon">
+            </div>
+            <input id="name" type="tel" placeholder="Card-Number" class="payInput" required>
+            <div class="cardinfo">
+                <input type="text" placeholder="MM" class="payInput card">
+                <input type="text" placeholder="YYYY" class="payInput card">
+                <input type="text" placeholder="CVV" class="payInput card">
+            </div>
+            <button class="payBut">Checkout!</button>
+            <span class="close">X</span>
+        </div>
+    </div>
+
+    <div class="gallery">
+        <div class="galleryItem">
+            <h1 class="galleryTitle">Be Yourself!</h1>
+            <img class="galleryImg"
+                src="https://images.pexels.com/photos/9295809/pexels-photo-9295809.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                alt="be yourself nike">
+        </div>
+        <div class="galleryItem">
+            <img src="https://images.pexels.com/photos/1040427/pexels-photo-1040427.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                alt="" class="galleryImg">
+            <h1 class="galleryTitle">This is the First Day of Your New Life</h1>
+        </div>
+        <div class="galleryItem">
+            <h1 class="galleryTitle">Just Do it!</h1>
+            <img src="https://images.pexels.com/photos/7856965/pexels-photo-7856965.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                alt="" class="galleryImg">
+        </div>
+    </div>
+
+    <div class="ns">
+        <div class="nsItem">
+            <img src="https://images.pexels.com/photos/4753986/pexels-photo-4753986.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                alt="" class="nsImg">
+        </div>
+        <div class="nsItem">
+            <h3 class="nsTitleSm">WINTER NEW ARRIVALS</h3>
+            <h1 class="nsTitle">New Season</h1>
+            <h1 class="nsTitle">New Collection</h1>
+            <a href="#nav">
+                <button class="nsButton">CHOOSE YOUR STYLE</button>
+            </a>
+        </div>
+        <div class="nsItem">
+            <img src="https://images.pexels.com/photos/7856965/pexels-photo-7856965.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                alt="" class="nsImg">
+        </div>
+    </div>
+
+    <footer>
+        <div class="footerLeft">
+            <div class="footerMenu">
+                <h1 class="fMenuTitle">About Us</h1>
+                <ul class="fList">
+                    <li class="fListItem">Company</li>
+                    <li class="fListItem">Contact</li>
+                    <li class="fListItem">Careers</li>
+                    <li class="fListItem">Affiliates</li>
+                    <li class="fListItem">Stores</li>
+                </ul>
+            </div>
+
+            <div class="footerMenu">
+                <h1 class="fMenuTitle">Useful Links</h1>
+                <ul class="fList">
+                    <a href="https://www.nike.com/in/help/" target="_blank" rel="noopener noreferrer"><li class="fListItem">Support</li></a>
+                    <a href="https://www.nike.com/help/a/refund-info" target="_blank" rel="noopener noreferrer"> <li class="fListItem">Refund</li></a>
+                    <a href="https://www.nike.com/help/" target="_blank" rel="noopener noreferrer"><li class="fListItem">FAQ</li></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"><li class="fListItem">Feedback</li></a>
+                    <a href="#" target="_blank" rel="noopener noreferrer"><li class="fListItem">Stories</li></a>
+                </ul>
+            </div>
+
+            <div class="footerMenu">
+                <h1 class="fMenuTitle">Products</h1>
+                <ul class="fList">
+                    <a href="#"><li class="fListItem">Air Force</li></a>
+                    <a href="#"><li class="fListItem">Air Jordan</li></a>
+                    <a href="#"><li class="fListItem">Blazer</li></a>
+                    <a href="#"><li class="fListItem">Crater</li></a>
+                    <a href="#"><li class="fListItem">Hippie</li></a>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footerRight">
+            <div class="footerRightMenu">
+                <h1 class="fMenuTitle">Subscribe to our newsletter</h1>
+                <div class="fMail">
+                    <input type="text" placeholder="your@email.com" class="fInput">
+                    <button class="fButton">Join!</button>
+                </div>
+            </div>
+            <div class="footerRightMenu">
+                <h1 class="fMenuTitle">Follow Us</h1>
+                <div class="fIcons">
+                    <a href="https://www.facebook.com/nike/" target="_blank" rel="noopener noreferrer"> <img src="./img/facebook.png" alt="" class="fIcon"></a>
+                    <a href="https://twitter.com/nike?lang=en" target="_blank" rel="noopener noreferrer">  <img src="./img/twitter.png" alt="" class="fIcon"></a>
+                    <a href="https://www.instagram.com/nike/?hl=en" target="_blank" rel="noopener noreferrer"><img src="./img/instagram.png" alt="" class="fIcon"></a>
+                    <a href="https://github.com/jxlee007" target="_blank" rel="noopener noreferrer"> <img src="data:image/png;base64,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" alt="github" class="fIcon"></a>
+                </div>
+            </div>
+            <div class="footerRightMenu">
+                <span class="copyright">@Jxlee.&nbsp; All rights reserved. 2022.</span>
+            </div>
+        </div>
+
+    </footer>
+
+
+
+
+    <script src="app.js"></script>
+</body>
+
+</html>

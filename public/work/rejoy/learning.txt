@@ -1,0 +1,21 @@
+text lifting anim
+structure = h1 = multiple spans -> each character = span
+--------------------------------------------------------
+host in woff 2 format from ttf
+--------------------------------------------------------
+dot follow feature
+S1 - page content -> eventlisterner -> mousemove(dets)
+cursor in centre of dot -> change in css in cursor =  transform: translate(-50%, -50%);
+
+to make it flow smooth -> write code using gsap
+
+---------------------------------------------------
+
+locomotive or smooth scroll doesn't allow other cdn work properly.
+for that search locomotive scrolltrigger codepen
+note -> no height to main(wrapper div)
+S! - paste js code at top in ur file 
+S2 - line 25 = red panel till purple panel/ 3 line till tl.to = backspace
+S3 - ctrl + d = .smooth-scroll | replace with #main
+
+---------------------------------------------------

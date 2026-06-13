@@ -1,0 +1,28 @@
+---
+// src/pages/work/sundown.astro
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Sundown Studio | Work</title>
+  </head>
+  <body class="bg-black m-0 overflow-hidden">
+    
+    <!-- Floating Back Button (Tailwind) -->
+    <a href="/work" class="fixed bottom-6 right-6 z-50 bg-white/90 backdrop-blur-md text-black w-12 h-12 rounded-full flex items-center justify-center hover:bg-white hover:scale-110 active:scale-95 transition-all shadow-lg" aria-label="Back to Portfolio">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+      </svg>
+    </a>
+
+    <!-- Iframe referencing the raw HTML in the public folder -->
+    <iframe 
+      src="/work/sundown/raw.html" 
+      class="w-full h-screen border-none block"
+      title="Sundown Studio Project">
+    </iframe>
+
+  </body>
+</html>
