@@ -9,10 +9,15 @@ import { brandLinks } from "../constants/brandLinks";
 const _projMod = await import('../data/projects.json');
 const projectsJson = _projMod?.default ?? _projMod;
 
-// Flatten projects array (adjust if your JSON uses "projects" key)
+// Flatten projects array
 const projects = Array.isArray(projectsJson)
   ? projectsJson
   : projectsJson.projects ?? [];
+
+// Filter for landing page projects (the six wrapper routes)
+const landingProjects = projects.filter(p => 
+  ['/work/sundown', '/work/rejoy', '/work/sneakers', '/work/duo', '/work/rayban', '/work/cu'].includes(p.href)
+);
 
 // Define menu items for sidebar navigation
 const menuItems = [
@@ -45,23 +50,100 @@ const menuItems = [
     </div>
   </div>
 
-  <!-- Projects gallery -->
-  <section id="third" class="py-10 md:py-20 w-full h-fit flex flex-col justify-items-end gap-8 md:gap-12 px-4 md:px-0">
-    <div class="w-full h-full">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-        {projects.map((project) => (
-          <ProjectCard 
-            key={project.id ?? project.href}
+  <!-- Main Content Sections -->
+  <div class="w-full flex flex-col gap-24 mt-20 md:mt-32 px-4 md:px-0">
+    
+    <!-- Section 1: One Page Landing (Vertical Columns) -->
+    <section class="w-full flex flex-col gap-10">
+      <div class="border-b border-white/10 pb-4">
+        <h2 class="text-3xl md:text-5xl font-space-grotesk font-semibold text-white tracking-wide uppercase">
+          One Page Landings
+        </h2>
+        <p class="text-gray-400 text-sm md:text-base mt-2 uppercase tracking-widest font-thin">
+          Interactive, high-fidelity responsive landing pages
+        </p>
+      </div>
+
+      <!-- Mobile & Tablet: 2 Column Block Grid -->
+      <div class="grid grid-cols-2 gap-4 lg:hidden mt-8">
+        {landingProjects.map((project) => (
+          <ProjectCard
             href={project.href}
             src={project.src}
             title={project.title}
-            /* subtitle removed in JSON, omit or handle gracefully */
           />
         ))}
       </div>
-    </div>
-  </section>
+
+      <!-- Desktop: Expandable Vertical Bars Accordion (No title animation) -->
+      <div class="hidden lg:flex h-[60vh] w-full overflow-hidden rounded-3xl border border-white/10 bg-black mt-8">
+        {landingProjects.map((project) => (
+          <a
+            href={project.href}
+            class="group relative flex-1 flex flex-col justify-between p-8 border-r border-white/10 overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] hover:flex-[3] bg-neutral-950"
+          >
+            <!-- Background Image with Fade In on Hover -->
+            <div 
+              class="absolute inset-0 bg-cover bg-center opacity-20 group-hover:opacity-60 transition-opacity duration-700 pointer-events-none"
+              style={`background-image: url('${project.src}');`}
+            ></div>
+            <!-- Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80 pointer-events-none"></div>
+
+            <!-- Content Container -->
+            <div class="relative z-10 h-full flex flex-col justify-between items-start w-full">
+              <!-- Top: Meta details -->
+              <div class="flex flex-col gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 w-full">
+                <span class="text-xs tracking-widest text-orange-500 font-semibold uppercase">{project.brand}</span>
+                <span class="text-xs tracking-wider text-gray-400 font-light uppercase">{project.category}</span>
+              </div>
+
+              <!-- Bottom: Title (Vertical) and Arrow -->
+              <div class="w-full flex flex-col items-start gap-6 mt-auto">
+                <h3 class="text-xl lg:text-2xl font-semibold text-white tracking-wide uppercase vertical-title">
+                  {project.title}
+                </h3>
+                
+                <div class="relative flex items-center justify-center w-10 h-10 rounded-full bg-white/10 group-hover:bg-orange-500 text-white transition-all duration-500 self-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 transform -rotate-45 group-hover:rotate-0 transition-transform duration-500">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Section 2: Apps (Empty for now) -->
+    <section class="w-full flex flex-col gap-10 mb-20">
+      <div class="border-b border-white/10 pb-4">
+        <h2 class="text-3xl md:text-5xl font-space-grotesk font-semibold text-white tracking-wide uppercase">
+          Apps
+        </h2>
+        <p class="text-gray-400 text-sm md:text-base mt-2 uppercase tracking-widest font-thin">
+          Complex applications and digital products
+        </p>
+      </div>
+
+      <div class="w-full py-16 flex flex-col items-center justify-center border border-dashed border-white/20 rounded-2xl bg-white/[0.02] backdrop-blur-sm">
+        <p class="text-gray-500 font-space-grotesk tracking-wider uppercase text-center text-sm md:text-base">
+          Applications section is currently empty. Stay tuned for updates!
+        </p>
+      </div>
+    </section>
+
+  </div>
 
   <!-- Footer -->
   <Footer goHref="#hero" title="JAGMOHAN" />
 </BaseLayout>
+
+<style>
+  .vertical-title {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    white-space: nowrap;
+  }
+</style>

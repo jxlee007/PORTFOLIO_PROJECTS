@@ -10,15 +10,6 @@
             "src": "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/converse.mp4"
         },
         {
-            "id": 2,
-            "title": "STORY OF SHADES",
-            "brand": "JLO-WEB",
-            "category": "INTERACTIVE WORKS",
-            "href": "jxlee007.github.io/SPY/",
-            "mediaType": "video",
-            "src": "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/hoi.webp"
-        },
-        {
             "id": 3,
             "title": "REJOY",
             "brand": "PROJECT-4",
@@ -78,15 +69,6 @@
             "brand": null,
             "category": null,
             "href": "https://jxlee007.github.io//Direct-biz/",
-            "mediaType": "image",
-            "src": "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-        },
-        {
-            "id": 10,
-            "title": "Something new coming soon",
-            "brand": null,
-            "category": null,
-            "href": "#project7",
             "mediaType": "image",
             "src": "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
         }
