@@ -16,6 +16,19 @@ export interface Props {
 }
 
 const { menuItems, brandLinks } = Astro.props;
+
+const getIconClass = (text: string) => {
+  switch (text.toUpperCase()) {
+    case 'INSTAGRAM':
+      return 'ri-instagram-line';
+    case 'LINKEDIN':
+      return 'ri-linkedin-fill';
+    case 'GITHUB':
+      return 'ri-github-line';
+    default:
+      return 'ri-global-line';
+  }
+};
 ---
 <div
   id="sidebar"
@@ -55,7 +68,7 @@ const { menuItems, brandLinks } = Astro.props;
         class="border border-dashed border-gray-600 rounded-xl h-full flex flex-col min-h-[75vh] mt-4"
       >
         <!-- Navigation items -->
-        <div class="flex-1">
+        <div class="flex-1 flex flex-col justify-center py-6">
           {
             menuItems.map((item, index) => (
               <div
@@ -95,10 +108,11 @@ const { menuItems, brandLinks } = Astro.props;
               >
                 <a
                   href={link.href}
-                  class="text-gray-400 text-md md:text-lg font-medium tracking-wider hover:text-white transition-colors duration-300 uppercase flex items-center space-x-1"
+                  class="text-gray-400 text-md md:text-lg font-medium tracking-wider hover:text-white transition-colors duration-300 uppercase flex items-center"
                 >
-                  <span>{link.text}</span>
-                  <span class="text-xs">↗</span>
+                  <span class="hidden md:inline">{link.text}</span>
+                  <span class="hidden md:inline text-xs ml-1">↗</span>
+                  <i class={`${getIconClass(link.text)} text-2xl md:hidden`}></i>
                 </a>
               </div>
             ))
@@ -128,7 +142,7 @@ const { menuItems, brandLinks } = Astro.props;
   }
 
   .txtdiv {
-    height: 8vh;
+    height: 1em;
     overflow: hidden;
     z-index: 12;
   }

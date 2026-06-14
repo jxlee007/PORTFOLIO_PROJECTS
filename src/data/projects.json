@@ -1,40 +1,49 @@
 {
     "projects": [
         {
-            "id": 1,
-            "title": "SUNDOWN STUDIO",
-            "brand": "PROJECT-5",
-            "category": "WEB WORKS",
-            "href": "/work/sundown",
-            "mediaType": "video",
-            "src": "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/converse.mp4"
+            "id": 11,
+            "title": "PDF QUERY",
+            "brand": "GEMINI AI & CASSANDRA",
+            "category": "RAG PIPELINE",
+            "href": "https://pdf-query-ly83xfjdwlcgytmrvbdqf5.streamlit.app/",
+            "mediaType": "image",
+            "src": "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
         },
         {
-            "id": 3,
-            "title": "REJOY",
-            "brand": "PROJECT-4",
-            "category": "WEB WORKS",
-            "href": "/work/rejoy",
+            "id": 10,
+            "title": "LLM COUNCIL",
+            "brand": "FASTAPI & REACT NATIVE",
+            "category": "MOBILE APP",
+            "href": "https://llm-council-for-students.vercel.app",
             "mediaType": "image",
-            "src": "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/sohonyc.webp"
+            "src": "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
         },
         {
-            "id": 4,
-            "title": "SNEAKERS STORE",
-            "brand": "NIKE",
-            "category": "E-COMMERCE",
-            "href": "/work/sneakers",
+            "id": 9,
+            "title": "PINTEREST CLONE",
+            "brand": "NEXT JS & MONGODB",
+            "category": "FULL STACK DEV",
+            "href": "https://github.com/jxlee007/Pinterest-EJS",
             "mediaType": "image",
-            "src": "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/airforce.webp"
+            "src": "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
         },
         {
-            "id": 5,
-            "title": "DUO STUDIO",
-            "brand": "PROJECT-3",
+            "id": 8,
+            "title": "CHALLENGE 2022",
+            "brand": "PETER MCKINNON",
             "category": "WEB WORKS",
-            "href": "/work/duo",
+            "href": "https://jxlee007.github.io/PRO-2",
             "mediaType": "image",
-            "src": "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/afterpay.mp4"
+            "src": "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/anniversary.webp"
+        },
+        {
+            "id": 7,
+            "title": "DIRECT BIZ",
+            "brand": "LOVABLE",
+            "category": "BUSINESS DIRECTORY",
+            "href": "https://jxlee007.github.io/DirectBiz/",
+            "mediaType": "image",
+            "src": "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
         },
         {
             "id": 6,
@@ -46,29 +55,47 @@
             "src": "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/newkidvision.mp4"
         },
         {
-            "id": 7,
-            "title": "CHALLENGE 2022",
-            "brand": "PETER MCKINNON",
+            "id": 5,
+            "title": "SUNDOWN STUDIO",
+            "brand": "PROJECT-5",
             "category": "WEB WORKS",
-            "href": "https://jxlee007.github.io/CHALLENGE-2",
-            "mediaType": "image",
-            "src": "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/anniversary.webp"
+            "href": "/work/sundown",
+            "mediaType": "video",
+            "src": "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/converse.mp4"
         },
         {
-            "id": 8,
+            "id": 4,
+            "title": "REJOY",
+            "brand": "PROJECT-4",
+            "category": "WEB WORKS",
+            "href": "/work/rejoy",
+            "mediaType": "image",
+            "src": "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/sohonyc.webp"
+        },
+        {
+            "id": 3,
+            "title": "DUO STUDIO",
+            "brand": "PROJECT-3",
+            "category": "WEB WORKS",
+            "href": "/work/duo",
+            "mediaType": "image",
+            "src": "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/afterpay.mp4"
+        },
+        {
+            "id": 2,
+            "title": "SNEAKERS STORE",
+            "brand": "NIKE",
+            "category": "E-COMMERCE",
+            "href": "/work/sneakers",
+            "mediaType": "image",
+            "src": "https://raw.githubusercontent.com/jxlee007/PROJECT-5-Sundown/main/media/airforce.webp"
+        },
+        {
+            "id": 1,
             "title": "CU PORTFOLIO",
             "brand": "CYNTHIA UGWU",
             "category": "WEB WORKS",
             "href": "/work/cu",
-            "mediaType": "image",
-            "src": "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
-        },
-        {
-            "id": 9,
-            "title": "DIRECT BIZ",
-            "brand": null,
-            "category": null,
-            "href": "https://jxlee007.github.io//Direct-biz/",
             "mediaType": "image",
             "src": "https://flowbite.s3.amazonaws.com/docs/gallery/square/image-1.jpg"
         }
