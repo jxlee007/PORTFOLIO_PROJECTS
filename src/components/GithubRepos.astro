@@ -1,0 +1,85 @@
+---
+// src/components/GithubRepos.astro
+
+export interface Props {
+  limit?: number;
+  ids?: string | (string | number)[];
+}
+
+const { limit = 6, ids = [] } = Astro.props;
+
+// Process the ids prop into a standardized array
+let idsArray: (string | number)[] = [];
+if (Array.isArray(ids)) {
+  idsArray = ids;
+} else if (typeof ids === 'string' && ids.trim()) {
+  idsArray = ids.split(',').map(item => {
+    const trimmed = item.trim();
+    return /^\d+$/.test(trimmed) ? Number(trimmed) : trimmed;
+  });
+}
+
+// Fetch all repositories from the GitHub API (max 100) to ensure we find matches
+const response = await fetch(`https://api.github.com/users/jxlee007/repos?per_page=100`);
+const repos = await response.json();
+
+let filteredRepos: any[] = [];
+if (Array.isArray(repos)) {
+  if (idsArray.length > 0) {
+    // Order and filter based on specified IDs (by numeric ID or repo name)
+    filteredRepos = idsArray
+      .map(id => {
+        return repos.find(repo => {
+          if (typeof id === 'number') {
+            return repo.id === id;
+          }
+          return repo.name.toLowerCase() === id.toLowerCase();
+        });
+      })
+      .filter(Boolean);
+  } else {
+    // Default fallback: non-fork repos sorted by last updated, limited by the limit prop
+    filteredRepos = repos
+      .filter((repo: any) => !repo.fork)
+      .slice(0, limit);
+  }
+}
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+  {filteredRepos.map((repo: any) => (
+    <a 
+      href={repo.html_url} 
+      target="_blank" 
+      rel="noopener noreferrer"
+      class="group flex flex-col justify-between p-6 bg-[#111] border border-zinc-800 hover:border-zinc-500 rounded-xl transition-all hover:-translate-y-1"
+    >
+      <div>
+        <div class="flex justify-between items-start mb-4">
+          <h3 class="text-lg font-medium text-zinc-100 group-hover:text-white transition-colors tracking-wide">
+            {repo.name}
+          </h3>
+          {repo.language && (
+            <span class="text-[10px] uppercase tracking-wider font-semibold px-2 py-1 bg-zinc-800 text-zinc-400 rounded-md">
+              {repo.language}
+            </span>
+          )}
+        </div>
+        
+        <p class="text-zinc-500 text-sm mb-6 line-clamp-2 leading-relaxed">
+          {repo.description || "No description provided."}
+        </p>
+      </div>
+
+      <div class="flex items-center justify-between text-xs text-zinc-600 font-mono">
+        <span class="flex items-center gap-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+          {repo.stargazers_count}
+        </span>
+        <span>
+          {new Date(repo.updated_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+        </span>
+      </div>
+    </a>
+  ))}
+</div>
