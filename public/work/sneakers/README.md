@@ -18,7 +18,7 @@ Welcome to Sneakers Store E-commerce, a modern and stylish e-commerce website fo
 
 ## Screenshots
 
-![Screenshot 1](img/1.png)
+![Screenshot 1](img/1.webp)
 
 ## Getting Started
 
