@@ -1,24 +1,41 @@
 ---
-const { href, src, title, subtitle } = Astro.props;
+const { href, src, title, subtitle, class: className = "rounded-2xl" } = Astro.props;
+const isCircle = className.includes('rounded-full');
 ---
-<div class="uppercase relative overflow-hidden rounded-2xl group w-full aspect-square">
-  <!-- Background Image -->
-  <a href={href} class="absolute inset-0 w-full h-full block">
-    <img
-      src={src}
-      alt={title}
-      class="w-full h-full object-cover absolute inset-0"
-    />
-  </a>
+<div class="flex flex-col items-center w-full">
+  <div class={`uppercase relative overflow-hidden group w-full aspect-square shadow-[0_10px_30px_-15px_rgba(0,0,0,0.5)] hover:-translate-y-1 transition-all duration-300 ${className}`}>
+    <!-- Background Image -->
+    <a href={href} class="absolute inset-0 w-full h-full block">
+      <img
+        src={src}
+        alt={title}
+        class="w-full h-full object-cover absolute inset-0 group-hover:scale-110 transition-transform duration-700 ease-out"
+      />
+    </a>
 
-  <!-- Noise Overlay -->
-  <div class="absolute inset-0 pointer-events-none opacity-10 mix-blend-overlay bg-noise"></div>
+    <!-- Noise Overlay -->
+    <div class={`absolute inset-0 pointer-events-none opacity-10 mix-blend-overlay bg-noise ${isCircle ? 'rounded-full' : ''}`}></div>
 
-  <!-- Text Overlay -->
-  <div class="absolute bottom-0 left-0 right-0 p-4 text-white z-10">
-    <h2 class="text-xl sm:text-2xl font-bold">{title}</h2>
-    <p class="text-lg sm:text-xl tracking-widest">{subtitle}</p>
+    <!-- Text Overlay -->
+    <div class={`absolute text-white z-10 pointer-events-none ${
+      isCircle 
+        ? "hidden md:flex inset-0 flex-col items-center justify-center text-center p-6 bg-black/40 group-hover:bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
+        : "bottom-0 left-0 right-0 p-4"
+    }`}>
+      <h2 class={`font-bold ${
+        isCircle ? "text-lg sm:text-xl tracking-wider translate-y-2 group-hover:translate-y-0 transition-transform duration-300" : "text-xl sm:text-2xl"
+      }`}>{title}</h2>
+      {subtitle && <p class="text-lg sm:text-xl tracking-widest mt-1">{subtitle}</p>}
+    </div>
   </div>
+
+  <!-- Bottom label for mobile/tablet (only when circular) -->
+  {isCircle && (
+    <div class="mt-3 text-center md:hidden w-full px-1">
+      <h2 class="text-xs sm:text-sm font-bold text-white tracking-wider uppercase truncate">{title}</h2>
+      {subtitle && <p class="text-[10px] sm:text-xs text-gray-400 tracking-widest mt-0.5 uppercase truncate">{subtitle}</p>}
+    </div>
+  )}
 </div>
 
 <style>
@@ -28,3 +45,5 @@ const { href, src, title, subtitle } = Astro.props;
     background-size: 182px;
   }
 </style>
+
+

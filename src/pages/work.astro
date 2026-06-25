@@ -65,14 +65,25 @@ const menuItems = [
       </div>
 
       <!-- Mobile & Tablet: 2 Column Block Grid -->
-      <div class="grid grid-cols-2 gap-4 lg:hidden mt-8">
-        {landingProjects.map((project) => (
-          <ProjectCard
-            href={project.href}
-            src={project.src}
-            title={project.title}
-          />
-        ))}
+      <div class="grid grid-cols-2 gap-0 lg:hidden mt-8">
+        {landingProjects.map((project, idx) => {
+          const isCol1 = idx % 2 === 0;
+          const isRow1Or2 = idx < 4;
+          return (
+            <div class={`
+              p-4 sm:p-6 lg:p-0
+              ${isCol1 ? "border-r border-white/25 lg:border-none" : "lg:border-none"}
+              ${isRow1Or2 ? "border-b border-white/25 lg:border-none" : "lg:border-none"}
+            `}>
+              <ProjectCard
+                href={project.href}
+                src={project.src}
+                title={project.title}
+                class="rounded-full"
+              />
+            </div>
+          );
+        })}
       </div>
 
       <!-- Desktop: Expandable Vertical Bars Accordion (No title animation) -->

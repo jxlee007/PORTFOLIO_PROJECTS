@@ -10,36 +10,51 @@ const projects = Array.isArray(projectData)
 <section id="third" class="py-10 md:py-14 w-full h-fit flex flex-col gap-6 px-4 md:px-0">
   <!-- Projects Grid: 3x3 on desk/tab (md and up), 3x2 on phone (below md) -->
   <div class="w-full h-full mt-6">
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-      {projects.slice(0, 8).map((project, idx) => (
-        <div class={idx >= 5 ? "hidden md:block" : "block"}>
-          <ProjectCard
-            href={project.href}
-            src={project.src}
-            title={project.title}
-          />
-        </div>
-      ))}
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-0 md:gap-8">
+      {projects.slice(0, 8).map((project, idx) => {
+        const isCol1 = idx % 2 === 0;
+        const isRow1Or2 = idx < 4;
+        return (
+          <div class={`
+            ${idx >= 5 ? "hidden md:block" : "block"} 
+            p-4 sm:p-6 md:p-0 
+            ${isCol1 ? "border-r border-white/25 md:border-none" : "md:border-none"} 
+            ${isRow1Or2 ? "border-b border-white/25 md:border-none" : "md:border-none"}
+          `}>
+            <ProjectCard
+              href={project.href}
+              src={project.src}
+              title={project.title}
+              class="rounded-full"
+            />
+          </div>
+        );
+      })}
 
       <!-- View Portfolio block at the end of the grid -->
-      <div class="block">
-        <div class="uppercase relative overflow-hidden rounded-2xl group w-full aspect-square bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-950 border border-white/10 flex flex-col justify-between p-6 md:p-8 hover:border-white/30 transition-all duration-500 shadow-[0_18px_45px_-25px_rgba(0,0,0,0.65)] hover:-translate-y-2">
+      <div class="block p-4 sm:p-6 md:p-0">
+        <div class="uppercase relative overflow-hidden rounded-full group w-full aspect-square bg-gradient-to-br from-neutral-950 via-neutral-900 to-neutral-950 border border-white/10 flex items-center justify-center transition-all duration-500 shadow-[0_18px_45px_-25px_rgba(0,0,0,0.65)] hover:-translate-y-2 hover:border-white/30">
           <!-- Link wrapping the entire card -->
           <a href="/work" class="absolute inset-0 w-full h-full z-20"></a>
-          
-          <!-- Noise Overlay -->
-          <div class="absolute inset-0 pointer-events-none opacity-10 mix-blend-overlay bg-noise"></div>
 
-          <!-- Top / Middle: Big arrow icon pointing to the top-right -->
-          <div class="flex items-center justify-center flex-1">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 text-white/30 group-hover:text-orange-500 group-hover:rotate-45 group-hover:scale-110 transition-all duration-500">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          <!-- Rotating Circular Text SVG -->
+          <div class="absolute inset-2 sm:inset-4 flex items-center justify-center">
+            <svg viewBox="0 0 200 200" class="w-full h-full animate-spin origin-center">
+              <!-- Define path for the text to wrap around -->
+              <path id="circlePath" d="M 100, 100 m -68, 0 a 68,68 0 1,1 136,0 a 68,68 0 1,1 -136,0" fill="none" />
+              <text class="text-[20px] uppercase font-bold tracking-[0.24em] fill-white/40 group-hover:fill-orange-500 transition-colors duration-500">
+                <textPath href="#circlePath" startOffset="0%">
+                   VIEW &nbsp &nbsp &nbsp &nbsp &nbsp PORTFOLIO
+                </textPath>
+              </text>
             </svg>
           </div>
 
-          <!-- Bottom: View Portfolio label -->
-          <div class="relative z-10 flex items-center justify-between w-full">
-            <span class="text-xl sm:text-2xl font-bold text-white tracking-wider">VIEW PORTFOLIO *</span>
+          <!-- Center Arrow -->
+          <div class="relative z-10 pointer-events-none flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8 md:w-10 md:h-10 text-white/50 group-hover:text-orange-500 group-hover:translate-x-1 group-hover:scale-110 transition-all duration-500">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
           </div>
         </div>
       </div>
@@ -53,5 +68,17 @@ const projects = Array.isArray(projectData)
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
     background-repeat: repeat;
     background-size: 182px;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .animate-spin {
+    animation: spin 5s linear infinite;
   }
 </style>
