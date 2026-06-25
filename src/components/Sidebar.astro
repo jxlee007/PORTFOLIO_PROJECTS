@@ -65,10 +65,10 @@ const getIconClass = (text: string) => {
       </div>
       <!-- Dashed border container for navigation and social links -->
       <div
-        class="border border-dashed border-gray-600 rounded-xl h-full flex flex-col min-h-[75vh] mt-4"
+        class="border border-dashed border-gray-600 rounded-xl h-full flex flex-col min-h-[60vh] lg:min-h-[75vh] mt-4"
       >
         <!-- Navigation items -->
-        <div class="flex-1 flex flex-col justify-center py-6">
+        <div class="flex-1 flex flex-col justify-center py-3 lg:py-6">
           {
             menuItems.map((item, index) => (
               <div
@@ -82,7 +82,7 @@ const getIconClass = (text: string) => {
                       </span>
                       <span class="menu-anim">
                         <div class="menuelem">
-                          <div class="txtdiv text-5xl md:text-8xl lg:text-6xl xl:text-6xl font-space-grotesk font-semibold text-white tracking-wide">
+                          <div class="txtdiv text-5xl md:text-6xl lg:text-6xl xl:text-6xl font-space-grotesk font-semibold text-white tracking-wide">
                             <h1 class="menu-title">{item.label}</h1>
                             <h1 class="menu-title hidden md:inline-block ">{item.label}</h1>
                           </div>
@@ -99,7 +99,7 @@ const getIconClass = (text: string) => {
         </div>
 
         <!-- Social links -->
-        <div class=" h-20 md:h-24 flex justify-center items-center  space-x-8 md:space-x-12 border-t border-gray-500 border-dashed pl-8 ">
+        <div class="h-14 lg:h-24 flex justify-center items-center space-x-8 md:space-x-12 border-t border-gray-500 border-dashed pl-0 lg:pl-8">
           {
             brandLinks.map((link, index) => (
               <div
